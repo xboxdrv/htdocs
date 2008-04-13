@@ -1,0 +1,33 @@
+body { 
+  background-color: darkgreen;
+}
+
+#body { 
+  background-color: white;
+  width: 80%;
+  margin: auto;
+  padding: 1em 2em 1em 2em;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+h1 { 
+  font-family: sans-serif;
+  background:  lightgreen;
+  padding: 0.5em 1em 0.5em 1em;
+  border-style: solid;
+}
+
+h2,h3,h4,h5 { 
+  background: lightgreen;
+  padding-left: 1em;
+  font-family: sans-serif;
+
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  /* text-decoration: underline; */
+}
+
+/* EOF */

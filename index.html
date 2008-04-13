@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+          PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="default.css" />
+    <!-- <link rel="icon" href="images/favicon.png" type="image/png" /> -->
+    <title>Userspace XBox/XBox360 USB Gamepad Driver for Linux</title>
+  </head>
+
+  <body>
+    <div id="body">
+      <h1>Userspace XBox/XBox360 USB Gamepad Driver<br/> for Linux</h1>
+      <p>
+        Long story short, the xpad kernel driver that comes with the
+        Linux kernel doesn't work with the XBox360 gamepad and the newer
+        ones found in the xbox-linux CVS trees, works in theory, but
+        currently just crashes for me. So I wrote my one and due to lack
+        of Linux kernel knowledge one that works with libusb in
+        userspace. As a nice side effect this makes it much easier to
+        configure the gamepad for games with special requirements.
+      </p>
+      
+      <h2>Features</h2>
+      <ul>
+        <li>runs in userspace on top of libusb, no kernel recompile
+          required, very easy to get started</li>
+        <li>gives you what you would expect from a driver, like a
+          normal joystick device and a event device</li>
+        <li>allows you to handle analog-triggers as a single z-axis, as buttons or as
+          seperate axis</li>
+        <li>allows you to handle the dpad as buttons or as axis</li>
+        <li>allows you to set the LED status of the XBox360 gamepad</li>
+        <li>allows you to set the rumble motors, for use in scripts for
+          new mail notification</li>
+        <li>it supports the use multiple gamepads</li>
+      </ul>
+
+      <h2>Missing Features</h2>
+      <ul>
+        <li>rumble support is limited to scripting or testing, it
+          doesn't yet support Linux force feedback handling, so you
+          can't use it in games</li>
+        <li>you can't remap the buttons</li>
+        <li>you can't change the order of axis</li>
+        <li>XBox dancemat support is untested and limited</li>
+        <li>XBox360 wireless gamepad support isn't tested</li>
+        <li>XBox's analog face buttons can't be used via the joystick
+          device, since they are converted to digital ones</li>
+        <li>no mouse emulation</li>
+      </ul>
+
+      <h2>Download</h2>
+      <ul>
+        <li><a href="http://pingus.seul.org/~grumbel/xboxdrv-linux-0.1.tar.bz2">xboxdrv-linux-0.1.tar.bz2</a></li>
+      </ul>
+
+      <h3>Git Repository</h3>
+      <ul>
+        <li>git clone http://pingus.seul.org/~grumbel/tmp/xboxdrv.git</li>
+      </ul>
+      
+      <hr/>
+      &copy; 2008 <a href="mailto:grumbel@gmx.de">Ingo Ruhnke
+        &lt;grumbel@gmx.de&gt;</a>
+    </div>
+  </body>
+</html>
