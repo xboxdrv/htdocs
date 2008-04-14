@@ -12,6 +12,12 @@ body {
   border-width: 1px;
 }
 
+p { 
+  text-indent: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
 h1 { 
   font-family: sans-serif;
   background:  lightgreen;

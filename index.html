@@ -12,11 +12,25 @@
   <body>
     <div id="body">
       <h1>Userspace XBox/XBox360 USB Gamepad Driver for Linux</h1>
+      <div style="float: right;">
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+          <input type="hidden" name="cmd" value="_donations" />
+          <input type="hidden" name="business" value="grumbel@gmx.de" />
+          <input type="hidden" name="item_name" value="Userspace Gamepad XBox/XBox360 Gamepad Driver for Linux" />
+          <input type="hidden" name="no_shipping" value="0" />
+          <input type="hidden" name="no_note" value="1" />
+          <input type="hidden" name="currency_code" value="EUR" />
+          <input type="hidden" name="tax" value="0" />
+          <input type="hidden" name="lc" value="US" />
+          <input type="hidden" name="bn" value="PP-DonationsBF" />
+          <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate via Paypal" />
+        </form>
+      </div>
       <p>
         Long story short, the xpad kernel driver that comes with the
         Linux kernel doesn't work with the XBox360 gamepad and the newer
         ones found in the xbox-linux CVS trees, works in theory, but
-        currently just crashes for me. So I wrote my one and due to lack
+        currently just crashes for me. So I wrote my own one and due to lack
         of Linux kernel knowledge one that works with libusb in
         userspace. As a nice side effect this makes it much easier to
         configure the gamepad for games with special requirements.
@@ -45,25 +59,53 @@
         <li>you can't remap the buttons</li>
         <li>you can't change the order of axis</li>
         <li>XBox dancemat support is untested and limited</li>
-        <li>XBox360 wireless gamepad support isn't tested</li>
+        <li>XBox360 wireless gamepad support not working</li>
         <li>XBox's analog face buttons can't be used via the joystick
           device, since they are converted to digital ones</li>
         <li>no mouse emulation</li>
+        <li>no chatpad support</li>
+        <li>no way to configure deadzone</li>
+        <li>no headset support (is that even possible from userspace?)</li>
       </ul>
 
-      <h2>Download</h2>
+      <h2>How to help</h2>
+      <p>
+        I only have a wired USB XBox360 gamepad, as well as two XBox
+        Classic gamepads. So I need people to test support for XBox360
+        wireless gamepads as well as the support for the dancemat. The
+        dancemat itself should already work with just a few to many
+        buttons and axis being displayed. With the wireless XBox360
+        gamepad on the other side there are still some things I don't
+        know about the protocol, i.e. how are multiple controllers
+        handled or how to switch the LED on the pads that might
+        require some experimentation. And another thing is the
+        chatpad, I would like to at support for that to, but so far I
+        could find no documentation on it.
+      </p>
+      <p>
+        So if you have some spare time and either a dancemat, multiple
+        wireless XBox360 controller + USB adapter or a Chatpad and
+        would like to help, drop me a mail
+        to <a href="mailto:grumbel@gmx.de">grumbel@gmx.de</a> or
+        contact me via ICQ:59461927 or Jabber
+        xmpp:grumbel@jabber.org.
+      </p>
+
+      <h2>Source Code Download</h2>
       <ul>
         <li><a href="http://pingus.seul.org/~grumbel/xboxdrv/xboxdrv-linux-0.1.tar.bz2">xboxdrv-linux-0.1.tar.bz2</a></li>
       </ul>
 
-      <h3>Git Repository</h3>
+      <h2>Git Repository</h2>
       <ul>
         <li>git clone http://pingus.seul.org/~grumbel/xboxdrv.git</li>
       </ul>
       
       <hr/>
-      &copy; 2008 <a href="mailto:grumbel@gmx.de">Ingo Ruhnke
-        &lt;grumbel@gmx.de&gt;</a>
+      <p style="text-align: right;">
+        &copy; 2008 <a href="mailto:grumbel@gmx.de">Ingo Ruhnke
+          &lt;grumbel@gmx.de&gt;</a>
+      </p>
     </div>
   </body>
 </html>
