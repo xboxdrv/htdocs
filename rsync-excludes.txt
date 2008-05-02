@@ -3,3 +3,4 @@ publish.sh
 rsync-excludes.txt
 .git
 .gitignore
+Makefile

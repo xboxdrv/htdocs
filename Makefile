@@ -1,0 +1,4 @@
+all:
+	./publish.sh
+
+# EOF #

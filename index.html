@@ -6,17 +6,17 @@
   <head>
     <link rel="stylesheet" type="text/css" href="default.css" />
     <!-- <link rel="icon" href="images/favicon.png" type="image/png" /> -->
-    <title>Userspace XBox/XBox360 USB Gamepad Driver for Linux</title>
+    <title>Userspace Xbox/Xbox360 USB Gamepad Driver for Linux</title>
   </head>
 
   <body>
     <div id="body">
-      <h1>Userspace XBox/XBox360 USB Gamepad Driver for Linux</h1>
+      <h1>Userspace Xbox/Xbox360 USB Gamepad Driver for Linux</h1>
       <div style="float: right;">
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
           <input type="hidden" name="cmd" value="_donations" />
           <input type="hidden" name="business" value="grumbel@gmx.de" />
-          <input type="hidden" name="item_name" value="Userspace Gamepad XBox/XBox360 Gamepad Driver for Linux" />
+          <input type="hidden" name="item_name" value="Userspace Gamepad Xbox/Xbox360 Gamepad Driver for Linux" />
           <input type="hidden" name="no_shipping" value="0" />
           <input type="hidden" name="no_note" value="1" />
           <input type="hidden" name="currency_code" value="EUR" />
@@ -28,69 +28,86 @@
       </div>
       <p>
         Long story short, the xpad kernel driver that comes with the
-        Linux kernel doesn't work with the XBox360 gamepad and the newer
-        ones found in the xbox-linux CVS trees, works in theory, but
-        currently just crashes for me. So I wrote my own one and due to lack
-        of Linux kernel knowledge one that works with libusb in
-        userspace. As a nice side effect this makes it much easier to
-        configure the gamepad for games with special requirements.
+        Linux kernel doesn't work with the Xbox360 gamepad and the
+        newer ones found in the xbox-linux CVS trees, works in theory,
+        but currently just crashes for me and causes the machine to
+        halt on boot. So I wrote my own one and due to lack of Linux
+        kernel knowledge one that works with libusb in userspace. As a
+        nice side effect this makes it much easier to configure the
+        gamepad for games with special requirements.
       </p>
       
       <h2>Features</h2>
       <ul>
-        <li>runs in userspace on top of libusb, no kernel recompile
-          required, very easy to get started</li>
+        <li>runs in userspace on top
+          of <a href="libusb.sourceforge.net">libusb</a>, no kernel
+          recompile required, very easy to get started</li>
+
         <li>gives you what you would expect from a driver, like a
-          normal joystick device and a event device</li>
-        <li>allows you to handle analog-triggers as a single z-axis, as buttons or as
-          seperate axis</li>
+          normal joystick device and a event device, works in all
+          games in which a kernel driver would work</li>
+
+        <li>allows you to handle analog-triggers as a single z-axis,
+          as buttons or as seperate axis</li>
+
         <li>allows you to handle the dpad as buttons or as axis</li>
-        <li>allows you to set the LED status of the XBox360 gamepad</li>
+
+        <li>allows you to set the LED status of the Xbox360 gamepad</li>
+
         <li>allows you to set the rumble motors, for use in scripts for
           new mail notification</li>
-        <li>it supports the use multiple gamepads</li>
+
+        <li>it supports the use multiple gamepads by starting multiple
+        instances of the driver</li>
       </ul>
 
-      <h2>Missing Features</h2>
+      <h2>Missing features</h2>
       <ul>
         <li>rumble support is limited to scripting or testing, it
           doesn't yet support Linux force feedback handling, so you
-          can't use it in games</li>
-        <li>you can't remap the buttons</li>
-        <li>you can't change the order of axis</li>
-        <li>XBox dancemat support is untested and limited</li>
-        <li>XBox360 wireless gamepad support not working</li>
-        <li>XBox's analog face buttons can't be used via the joystick
-          device, since they are converted to digital ones</li>
-        <li>no mouse emulation</li>
-        <li>no chatpad support</li>
-        <li>no way to configure deadzone</li>
+          can't use it in games (is there even a single game that uses FF in Linux?)</li>
+
+        <li>you can't remap the buttons (will be added)</li>
+
+        <li>you can't change the order of axis (will be added)</li>
+
+        <li>Xbox's analog face buttons can't be used via the joystick
+          device, since they are converted to digital ones (might be added)</li>
+
+        <li>no proper way to configure deadzone (will be added)</li>
+
+        <li>no mouse emulation (might be added)</li>
+
+        <li>Xbox dancemat support is untested (need help)</li>
+
+        <li>Xbox360 wireless gamepad support not working (need help)</li>
+
+        <li>no chatpad support (like to add, but depends if protocol can be figured out)</li>
+        
         <li>no headset support (is that even possible from userspace?)</li>
+      </ul>
+      
+      <h2>Supported and tested devices</h2>
+      <ul>
+        <li>Xbox1 controller, both official and third party</li>
+        <li>Xbox360 USB controller</li>
+        <li>Xbox360 wireless controller via the USB wireless receiver</li>
+        <li>Xbox360 USB guitar</li>
       </ul>
 
       <h2>How to help</h2>
       <p>
-        I only have a wired USB XBox360 gamepad, as well as two XBox
-        Classic gamepads. So I need people to test support for XBox360
-        wireless gamepads as well as the support for the dancemat. The
-        dancemat itself should already work with just a few to many
-        buttons and axis being displayed. With the wireless XBox360
-        gamepad on the other side there are still some things I don't
-        know about the protocol, i.e. how are multiple controllers
-        handled or how to switch the LED on the pads that might
-        require some experimentation. And another thing is the
-        chatpad, I would like to at support for that to, but so far I
-        could find no documentation on it.
-      </p>
-      <p>
-        So if you have some spare time and either a dancemat, multiple
-        wireless XBox360 controller + USB adapter or a Chatpad and
-        would like to help, drop me a mail
+        The following devices are currently not supported or untested
+        because I havn't found anybody who owns them. So if you have
+        any of them and would like to help, drop me a mail
         to <a href="mailto:grumbel@gmx.de">grumbel@gmx.de</a> or
-        contact me via ICQ:59461927 or Jabber
-        xmpp:grumbel@jabber.org.
+        contact me via ICQ:59461927 or Jabber xmpp:grumbel@jabber.org.
       </p>
-
+      <ul>
+        <li>Xbox1 Dancemat</li>
+        <li>Xbox360 chatpat</li>
+      </ul>
+      
       <h2>Source Code Download</h2>
       <ul>
         <li><a href="http://pingus.seul.org/~grumbel/xboxdrv/xboxdrv-linux-0.1.tar.bz2">xboxdrv-linux-0.1.tar.bz2</a></li>
@@ -101,6 +118,16 @@
         <li>git clone http://pingus.seul.org/~grumbel/xboxdrv.git</li>
       </ul>
       
+      <h2>Links</h2>
+      <ul>
+        <li><a href="http://matt-land.com/xbcd/">Xbox 360 Gamepad Support for Windows</li>
+        <li><a href="http://happypenguin.org/show?xboxdrv">Happypenguin XboxDrv Page, in case you want to leave comments</a></li>
+        <li><a href="http://tattiebogle.net/index.php/ProjectRoot/Xbox360Controller/OsxDriver">Unofficial MacOSX Xbox360 Driver</a></li>
+        <li><a href="http://ubuntuforums.org/showthread.php?t=404577&page=16">Ubuntuforums thread about Xbox360 Controller</a></li>
+        <li><a href="http://gentoo-wiki.com/HOWTO_Xbox_360_controller_on_Linux">Gentoo Howto for the XPad Kernel driver</a></li>
+        <li><a href="http://forums.gentoo.org/viewtopic-p-5061825.html">How to use xboxdrv on Gentoo</a></li>
+      </ul>
+
       <hr/>
       <p style="text-align: right;">
         &copy; 2008 <a href="mailto:grumbel@gmx.de">Ingo Ruhnke

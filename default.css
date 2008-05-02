@@ -36,4 +36,21 @@ h2,h3,h4,h5 {
   /* text-decoration: underline; */
 }
 
+table { 
+  border-style: solid;
+  border-width: thin;
+  margin: auto;
+}
+
+table td, table th { 
+  border-style: solid;
+  border-width: thin;
+}
+
+table th { 
+  border-style: solid;
+  border-width: thin;
+  background: lightgray;
+}
+
 /* EOF */
