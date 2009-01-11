@@ -27,23 +27,41 @@
         </form>
       </div>
       <p>
-        Long story short, the xpad kernel driver that comes with the
-        Linux kernel doesn't work with the Xbox360 gamepad and the
-        newer ones found in the xbox-linux CVS trees, works in theory,
-        but currently just crashes for me and causes the machine to
-        halt on boot. So I wrote my own one and due to lack of Linux
-        kernel knowledge one that works with libusb in userspace. As a
-        nice side effect this makes it much easier to configure the
-        gamepad for games with special requirements.
+        This is a Xbox/Xbox360 gamepad driver for Linux that works in
+        userspace. It is an alternative to the xpad kernel driver and has
+        support for Xbox1 gamepads, Xbox360 USB gamepads and Xbox360 wireless
+        gamepads. The Xbox360 guitar and some Xbox1 dancemats might work too.
+        The Xbox 360 racing wheel is not supported, but shouldn't be to hard
+        to add if somebody is interested.
+      </p>
+      <p>
+        This driver is only of interest if the xpad kernel driver doesn't work
+        for you or if you want more configurabity. If the xpad kernel driver
+        works for you there is no need to try this driver.
       </p>
 
-      <h2>Features</h2>
+      <h2>News</h2>
       <dl>
+        <dt>11. January 2008</dt>
+        <dd>0.4.2 released, fixes broken --dpad-only option</dd>
+
+        <dt>08. January 2008</dt>
+        <dd>0.4.1 released, fixes little compile problem with KEY_MEDIA_REPEAT, nothing more</dd>
+
+        <dt>07. January 2008</dt>
+        <dd>0.4 released, autofire, throttle, mouse and keyboard emulation added</dd>
+
+        <dt>06. November 2008</dt>
+        <dd>0.3 released, mostly smaller bugfixes</dd>
+
+        <dt>20. Septemper 2008</dt>
+        <dd>Some chatpad development is in progress, discussion at <a href="http://www.mp3car.com/vbulletin/input-devices/108554-xbox360-chatpad-awsome-backlit-mini-keyboard-16.html#post1256444">here</a></dd>
+
         <dt>03. May 2008</dt>
-        <dd>0.2rc1 released, adding guitar and wireless support</dd>
+        <dd>0.2 released, adding guitar and wireless support</dd>
 
         <dt>13. April 2008</dt>
-        <dd>0.1 released</dd>
+        <dd>0.1 released, Xbox and Xbox360 USB support</dd>
       </dl>
 
       <h2>Features</h2>
@@ -78,18 +96,18 @@
       <ul>
         <li>rumble support is limited to scripting or testing, it
           doesn't yet support Linux force feedback handling, so you
-          can't use it in games (is there even a single game that uses FF in Linux?)</li>
+          can't use it in games</li>
 
         <li>Xbox's analog face buttons can't be used via the joystick
           device, since they are converted to digital ones (might be added)</li>
 
-        <li>no mouse emulation (might be added)</li>
+        <li>Xbox dancemat support isn't tested</li>
 
-        <li>Xbox dancemat support is untested (need help)</li>
-
-        <li>no chatpad support (like to add, but depends if protocol can be figured out)</li>
+        <li>no chatpad support</li>
         
-        <li>no headset support (is that even possible from userspace?)</li>
+        <li>no headset support</li>
+
+        <li>no proper support for running it as daemon</li>
       </ul>
       
       <h2>Supported and tested devices</h2>
@@ -102,21 +120,63 @@
 
       <h2>How to help</h2>
       <p>
-        The following devices are currently not supported or untested
-        because I havn't found anybody who owns them. So if you have
-        any of them and would like to help, drop me a mail
+        Three things are currently not working, the headset, the
+        chatpad and the racing wheel. With the headset it is relativly
+        easy to capture and play sound, but I don't know the sound
+        format that is used. Two samples of the raw data:
+      </p>
+
+      <ul>
+        <li><a href="http://pingus.seul.org/~grumbel/tmp/xbox360-headset-1-2-3-test.raw">1, 2, 3, test</a></li>
+        <li><a href="http://pingus.seul.org/~grumbel/tmp/xbox360-headset-5sec-silence.raw">5sec silence</a></li>
+      </ul>
+      
+      <p>
+        If you have any idea what format that could be let me
+        know. Playing it as 8bit PCM, Mono, 8192Hz makes the sound
+        somewhat understandable, but there is likely something more
+        going on.
+      </p>
+
+      <p>
+        The chatpad is tricker, since it doesn't send out any data on
+        its own, it likely needs some magical init string, but
+        figuring that out might require a USB protocol analysing
+        device to which I don't have access. Capturing the USB data
+        from Windows won't work, since the official windows driver
+        doesn't support the chatpad either.<br/> <b>Update:</b> We got
+        a first protocol log, discussion is going
+        on <a href="http://www.mp3car.com/vbulletin/input-devices/108554-xbox360-chatpad-awsome-backlit-mini-keyboard-16.html#post1256444">here</a>.
+      </p>
+
+      <p>
+        The racing wheel support should be doable if somebody wants to
+        spend some time on it, according to first reports the device
+        sends out events, so those just need to be deciphered. It is
+        also supported by the Windows driver, so capturing the
+        communication is possible.
+      </p>
+      
+      <p>
+        If you can help with either of these or just have a feature
+        request, drop me a mail
         to <a href="mailto:grumbel@gmx.de">grumbel@gmx.de</a> or
         contact me via ICQ:59461927 or Jabber xmpp:grumbel@jabber.org.
       </p>
+
+      <h2>Contact / Discussion</h2>
+      <p>A Google Group for discussion around xboxdrv exist at:</p>
       <ul>
-        <li>Xbox1 Dancemat (untested)</li>
-        <li>Xbox360 chatpat (unsupported)</li>
-        <li>Xbox360 headset connected to USB controller (unsupported)</li>
+        <li><a href="http://groups.google.com/group/xboxdrv">xboxdrv - Google Groups</a></li>
       </ul>
-      
+
       <h2>Source Code Download</h2>
       <ul>
-        <li><a href="xboxdrv-linux-0.2rc1.tar.bz2">xboxdrv-linux-0.2rc1.tar.bz2</a></li>
+        <li><a href="xboxdrv-linux-0.4.2.tar.bz2">xboxdrv-linux-0.4.2.tar.bz2</a></li>
+        <li><a href="xboxdrv-linux-0.4.1.tar.bz2">xboxdrv-linux-0.4.1.tar.bz2</a></li>
+        <li><a href="xboxdrv-linux-0.4.tar.bz2">xboxdrv-linux-0.4.tar.bz2</a></li>
+        <li><a href="xboxdrv-linux-0.3.tar.bz2">xboxdrv-linux-0.3.tar.bz2</a></li>
+        <li><a href="xboxdrv-linux-0.2.tar.bz2">xboxdrv-linux-0.2.tar.bz2</a></li>
         <li><a href="xboxdrv-linux-0.1.tar.bz2">xboxdrv-linux-0.1.tar.bz2</a></li>
       </ul>
 
@@ -129,17 +189,17 @@
       <ul>
         <li><a href="http://happypenguin.org/show?xboxdrv">Happypenguin XboxDrv Page, in case you want to leave comments</a></li>
         <li><a href="http://matt-land.com/xbcd/">Xbox 360 Gamepad Support for Windows</li>
-        <li><a href="http://tattiebogle.net/index.php/ProjectRoot/Xbox360Controller/OsxDriver">Unofficial MacOSX Xbox360 Driver</a></li>
-        <li><a href="http://ubuntuforums.org/showthread.php?t=404577&page=16">Ubuntuforums thread about Xbox360 Controller</a></li>
-        <li><a href="http://gentoo-wiki.com/HOWTO_Xbox_360_controller_on_Linux">Gentoo Howto for the XPad Kernel driver</a></li>
-        <li><a href="http://forums.gentoo.org/viewtopic-p-5061825.html">How to use xboxdrv on Gentoo</a></li>
-      </ul>
+          <li><a href="http://tattiebogle.net/index.php/ProjectRoot/Xbox360Controller/OsxDriver">Unofficial MacOSX Xbox360 Driver</a></li>
+          <li><a href="http://ubuntuforums.org/showthread.php?t=404577&page=16">Ubuntuforums thread about Xbox360 Controller</a></li>
+          <li><a href="http://gentoo-wiki.com/HOWTO_Xbox_360_controller_on_Linux">Gentoo Howto for the XPad Kernel driver</a></li>
+          <li><a href="http://forums.gentoo.org/viewtopic-p-5061825.html">How to use xboxdrv on Gentoo</a></li>
+        </ul>
 
-      <hr/>
-      <p style="text-align: right;">
-        &copy; 2008 <a href="mailto:grumbel@gmx.de">Ingo Ruhnke
-          &lt;grumbel@gmx.de&gt;</a>
-      </p>
-    </div>
-  </body>
-</html>
+        <hr/>
+        <p style="text-align: right;">
+          &copy; 2008 <a href="mailto:grumbel@gmx.de">Ingo Ruhnke
+            &lt;grumbel@gmx.de&gt;</a>
+        </p>
+      </div>
+    </body>
+  </html>
