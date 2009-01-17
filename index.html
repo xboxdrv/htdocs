@@ -42,6 +42,19 @@
 
       <h2>News</h2>
       <dl>
+        <dt>17. January 2008</dt>
+        <dd>0.4.3 released
+          <ul>
+            <li>added support for X11 keysym in --ui-buttonmap</li>
+            <li>added --ui-clear and 'void' mappings to unmap buttons and axis</li>
+            <li>fixed LED handling for wireless gamepads</li>
+            <li>Thrustmaster Firestorm Dual Power support</li>
+            <li>added --name option to set device name</li>
+            <li>added JS_${NUM} name to address joystick buttons by number instead of name</li>
+            <li>fixed issue with multiple wireless controller</li>
+            <li>some preparation for rumble (prints FF events)</li>
+          </ul>
+        </dd>
         <dt>11. January 2008</dt>
         <dd>0.4.2 released, fixes broken --dpad-only option</dd>
 
@@ -68,7 +81,7 @@
       <ul>
         <li>runs in userspace on top
           of <a href="libusb.sourceforge.net">libusb</a>, no kernel
-          recompile required, very easy to get started</li>
+          recompile required, very easy to get build</li>
 
         <li>gives you what you would expect from a driver, like a
           normal joystick device and a event device, works in all
@@ -172,6 +185,7 @@
 
       <h2>Source Code Download</h2>
       <ul>
+        <li><a href="xboxdrv-linux-0.4.3.tar.bz2">xboxdrv-linux-0.4.3.tar.bz2</a></li>
         <li><a href="xboxdrv-linux-0.4.2.tar.bz2">xboxdrv-linux-0.4.2.tar.bz2</a></li>
         <li><a href="xboxdrv-linux-0.4.1.tar.bz2">xboxdrv-linux-0.4.1.tar.bz2</a></li>
         <li><a href="xboxdrv-linux-0.4.tar.bz2">xboxdrv-linux-0.4.tar.bz2</a></li>
@@ -181,8 +195,14 @@
       </ul>
 
       <h2>Git Repository</h2>
+      <p>
+        You can get xboxdrv
+        from <a href="http://github.com/Grumbel/xboxdrv/">github</a>
+        or via http from seul.org. Both repositories are identical.
+      </p>
       <ul>
         <li>git clone http://pingus.seul.org/~grumbel/xboxdrv.git</li>
+        <li>git clone git://github.com/Grumbel/xboxdrv.git</li>
       </ul>
       
       <h2>Links</h2>
