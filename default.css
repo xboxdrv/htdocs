@@ -1,5 +1,5 @@
 body { 
-  background-color: darkgreen;
+  background-color: rgb(0,100,0);
 }
 
 #body { 
@@ -30,13 +30,13 @@ dl dt {
 
 h1 { 
   font-family: sans-serif;
-  background:  lightgreen;
+  background:  rgb(144,238,144);
   padding: 0.5em 1em 0.5em 1em;
   border-style: solid;
 }
 
 h2,h3,h4,h5 { 
-  background: lightgreen;
+  background: rgb(144,238,144);
   padding-left: 1em;
   font-family: sans-serif;
 
@@ -60,7 +60,7 @@ table td, table th {
 table th { 
   border-style: solid;
   border-width: thin;
-  background: lightgray;
+  background: rgb(211,211,211);
 }
 
 /* EOF */

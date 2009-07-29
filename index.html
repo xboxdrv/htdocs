@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html 
-          PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
+   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <link rel="stylesheet" type="text/css" href="default.css" />
     <!-- <link rel="icon" href="images/favicon.png" type="image/png" /> -->
@@ -23,7 +23,7 @@
           <input type="hidden" name="tax" value="0" />
           <input type="hidden" name="lc" value="US" />
           <input type="hidden" name="bn" value="PP-DonationsBF" />
-          <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate via Paypal" />
+          <input type="image" style="border-style: none" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="Donate via Paypal" />
         </form>
       </div>
       <p>
@@ -39,9 +39,44 @@
         for you or if you want more configurabity. If the xpad kernel driver
         works for you there is no need to try this driver.
       </p>
+      <p>
+        In addition to all the Xbox related stuff, the driver also
+        supports the Thrustmaster Dual Power 3 gamepad, including
+        rumble, which isn't supported by the normal kernel driver.
+      </p>
 
       <h2>News</h2>
       <dl>
+        <dt>29. July 2009</dt>
+        <dd>0.4.7 released
+          <ul>
+            <li>support for Pelican TSZ360 pad</li>
+            <li>support for Saitek P3200 pad</li>
+            <li>support for Thrustmaster Firestorm Dual Power (044f:b312)</li>
+            <li>deadzone support for trigger via --deadzone-trigger NUM</li>
+            <li>some documentation improvements</li>
+          </ul>
+        </dd>
+
+        <dt>21. February 2009</dt>
+        <dd>0.4.6 released
+          <ul>
+            <li><tt>--calibration MIN,CENTER,MAX</tt> option to workaround broken controller</li>
+            <li><tt>xboxdrv-daemon.py</tt> to launch xboxdrv automatically when device gets plugged in</li>
+          </ul>
+        </dd>
+
+        <dt>15. February 2009</dt>
+        <dd>0.4.5 released
+          <ul>
+            <li>fixed mixup between strong and weak rumble</li>
+            <li>added Harmonix Drum Kit for Xbox 360 support</li>
+            <li>added Logitech Chillstream support</li>
+            <li>added evsend tool to send events to /dev/input/eventX</li>
+            <li>Y-Axis for Firestorm gamepad fixed</li>
+          </ul>
+        </dd>
+
         <dt>24. January 2009</dt>
         <dd>0.4.4 released
           <ul>
@@ -117,20 +152,12 @@
 
       <h2>Missing features</h2>
       <ul>
-        <li>rumble support is limited to scripting or testing, it
-          doesn't yet support Linux force feedback handling, so you
-          can't use it in games</li>
-
         <li>Xbox's analog face buttons can't be used via the joystick
-          device, since they are converted to digital ones (might be added)</li>
-
-        <li>Xbox dancemat support isn't tested</li>
+          device, since they are converted to digital ones</li>
 
         <li>no chatpad support</li>
         
         <li>no headset support</li>
-
-        <li>no proper support for running it as daemon</li>
       </ul>
       
       <h2>Supported and tested devices</h2>
@@ -138,7 +165,8 @@
         <li>Xbox1 controller, both official and third party</li>
         <li>Xbox360 USB controller</li>
         <li>Xbox360 wireless controller via the USB wireless receiver</li>
-        <li>Xbox360 USB guitar</li>
+        <li>Xbox360 USB guitar and drum kit</li>
+        <li>Thrustmaster Dual Power 3 Gamepad</li>
       </ul>
 
       <h2>How to help</h2>
@@ -195,6 +223,9 @@
 
       <h2>Source Code Download</h2>
       <ul>
+        <li><a href="xboxdrv-linux-0.4.7.tar.bz2">xboxdrv-linux-0.4.7.tar.bz2</a></li>
+        <li><a href="xboxdrv-linux-0.4.6.tar.bz2">xboxdrv-linux-0.4.6.tar.bz2</a></li>
+        <li><a href="xboxdrv-linux-0.4.5.tar.bz2">xboxdrv-linux-0.4.5.tar.bz2</a></li>
         <li><a href="xboxdrv-linux-0.4.4.tar.bz2">xboxdrv-linux-0.4.4.tar.bz2</a></li>
         <li><a href="xboxdrv-linux-0.4.3.tar.bz2">xboxdrv-linux-0.4.3.tar.bz2</a></li>
         <li><a href="xboxdrv-linux-0.4.2.tar.bz2">xboxdrv-linux-0.4.2.tar.bz2</a></li>
@@ -219,18 +250,18 @@
       <h2>Links</h2>
       <ul>
         <li><a href="http://happypenguin.org/show?xboxdrv">Happypenguin XboxDrv Page, in case you want to leave comments</a></li>
-        <li><a href="http://matt-land.com/xbcd/">Xbox 360 Gamepad Support for Windows</li>
-          <li><a href="http://tattiebogle.net/index.php/ProjectRoot/Xbox360Controller/OsxDriver">Unofficial MacOSX Xbox360 Driver</a></li>
-          <li><a href="http://ubuntuforums.org/showthread.php?t=404577&page=16">Ubuntuforums thread about Xbox360 Controller</a></li>
-          <li><a href="http://gentoo-wiki.com/HOWTO_Xbox_360_controller_on_Linux">Gentoo Howto for the XPad Kernel driver</a></li>
-          <li><a href="http://forums.gentoo.org/viewtopic-p-5061825.html">How to use xboxdrv on Gentoo</a></li>
-        </ul>
+        <li><a href="http://matt-land.com/xbcd/">Xbox 360 Gamepad Support for Windows</a></li>
+        <li><a href="http://tattiebogle.net/index.php/ProjectRoot/Xbox360Controller/OsxDriver">Unofficial MacOSX Xbox360 Driver</a></li>
+        <li><a href="http://ubuntuforums.org/showthread.php?t=404577&amp;page=16">Ubuntuforums thread about Xbox360 Controller</a></li>
+        <li><a href="http://gentoo-wiki.com/HOWTO_Xbox_360_controller_on_Linux">Gentoo Howto for the XPad Kernel driver</a></li>
+        <li><a href="http://forums.gentoo.org/viewtopic-p-5061825.html">How to use xboxdrv on Gentoo</a></li>
+      </ul>
 
-        <hr/>
-        <p style="text-align: right;">
-          &copy; 2008 <a href="mailto:grumbel@gmx.de">Ingo Ruhnke
-            &lt;grumbel@gmx.de&gt;</a>
-        </p>
-      </div>
-    </body>
-  </html>
+      <hr/>
+      <p style="text-align: right;">
+        &copy; 2009 <a href="mailto:grumbel@gmx.de">Ingo Ruhnke
+          &lt;grumbel@gmx.de&gt;</a>
+      </p>
+    </div>
+  </body>
+</html>
