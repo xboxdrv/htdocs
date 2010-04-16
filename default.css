@@ -1,15 +1,51 @@
 body { 
   background-color: rgb(0,100,0);
+  font-family: sans-serif;
 }
 
 #body { 
-  background-color: white;
   max-width: 60em;
   margin: auto;
-  padding: 1em 2em 1em 2em;
-  border-style: solid;
-  border-color: black;
-  border-width: 1px;
+
+  -moz-border-radius: 16px;
+}
+
+#title { 
+  display: block;
+
+  font-family: sans-serif;
+  background:  rgb(144,238,144);
+  overflow: hidden;
+
+  border-radius: 16px 16px 0 0;
+  -moz-border-radius: 16px 16px 0 0;
+  -webkit-border-radius: 16px 16px 0 0;
+
+  margin: 0;
+  padding: 0.5em 1em 0.5em 1em;
+}
+
+#content { 
+  overflow: hidden;
+  display: block;
+  padding: 0em 2em 1em 2em;
+
+  background-color: white;
+}
+
+#footer { 
+  overflow: hidden;
+  display: block;
+  font-size: small;
+
+  padding: 0.5em;
+
+  text-align: right;
+  background:  rgb(144,238,144);
+ 
+  -moz-border-radius: 0 0 16px 16px;
+  -webkit-border-radius: 0 0 16px 16px;
+  border-radius: 0 0 16px 16px;
 }
 
 p { 
@@ -18,21 +54,24 @@ p {
   padding-right: 1em;
 }
 
-dl { 
-  text-indent: 1em;
-  padding-left: 1em;
-  padding-right: 1em;
+ul { 
+  padding-left:  4em;
+  padding-right: 4em;
+  padding-top: 0;
+  margin: 0;
 }
 
-dl dt {  
+dl { 
+  padding-left:  4em;
+  padding-right: 4em;
+}
+
+dl>dt {  
   font-weight: bold;
 }
 
-h1 { 
-  font-family: sans-serif;
-  background:  rgb(144,238,144);
-  padding: 0.5em 1em 0.5em 1em;
-  border-style: solid;
+dl>dd {
+  margin-bottom: 1em;
 }
 
 h2,h3,h4,h5 { 
@@ -41,26 +80,13 @@ h2,h3,h4,h5 {
   font-family: sans-serif;
 
   border-style: solid;
-  border-color: black;
+  border-color: rgb(124,218,124);
   border-width: 1px;
+
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
   /* text-decoration: underline; */
-}
-
-table { 
-  border-style: solid;
-  border-width: thin;
-  margin: auto;
-}
-
-table td, table th { 
-  border-style: solid;
-  border-width: thin;
-}
-
-table th { 
-  border-style: solid;
-  border-width: thin;
-  background: rgb(211,211,211);
 }
 
 /* EOF */
