@@ -1,20 +1,35 @@
 body { 
-  background-color: rgb(0,100,0);
+
   font-family: sans-serif;
+
+  background-color: rgb(0,100,0);
+  background-image: url("pagebackground.png");
+  background-repeat: repeat-x;
 }
 
 #body { 
   max-width: 60em;
   margin: auto;
 
+  border-radius: 16px;
   -moz-border-radius: 16px;
+  -webkit-border-radius: 16px;  
+  
+  border-style: solid;
+  border-color: white;
+  border-width: 2px;
 }
 
 #title { 
+  text-shadow: 0.1em 0.1em 0.2em white;
   display: block;
 
   font-family: sans-serif;
+
   background:  rgb(144,238,144);
+  background-image: url("background.jpg");
+  background-repeat: repeat-x;
+
   overflow: hidden;
 
   border-radius: 16px 16px 0 0;
@@ -34,6 +49,10 @@ body {
 }
 
 #footer { 
+  background:  rgb(144,238,144);
+  background-image: url("background.jpg");
+  background-repeat: repeat-x;
+
   overflow: hidden;
   display: block;
   font-size: small;
@@ -41,7 +60,6 @@ body {
   padding: 0.5em;
 
   text-align: right;
-  background:  rgb(144,238,144);
  
   -moz-border-radius: 0 0 16px 16px;
   -webkit-border-radius: 0 0 16px 16px;
@@ -75,7 +93,11 @@ dl>dd {
 }
 
 h2,h3,h4,h5 { 
-  background: rgb(144,238,144);
+  background:  rgb(144,238,144);
+  background-image: url("background2.jpg");
+  background-repeat: repeat-x;
+
+
   padding-left: 1em;
   font-family: sans-serif;
 
