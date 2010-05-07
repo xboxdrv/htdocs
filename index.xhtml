@@ -37,19 +37,21 @@
           to add if somebody is interested.
         </p>
         <p>
-          This driver is only of interest if the xpad kernel driver doesn't work
-          for you or if you want more configurabity. If the xpad kernel driver
-          works for you there is no need to try this driver.
-        </p>
-        <p>
           In addition to all the Xbox related stuff, the driver also
           supports the Thrustmaster Dual Power 3 gamepad, including
           rumble.
         </p>
+        <p>
+          Unlike the stock xpad kernel driver, xboxdrv provides a wide
+          varity of configuration options, it allows you to simulate
+          keyboard and mouse events, remap buttons and axes, apply
+          autofire, invert or tweak axis sensitivity or emulate
+          throttle and rudder controls.
+        </p>
 
         <h2>News</h2>
         <dl>
-          <dt>17. February 2010</dt>
+          <dt>01. Mai 2010</dt>
           <dd>0.4.11 released
             <ul>
               <li>added --axis-sensitivity</li>
@@ -168,7 +170,7 @@
         <ul>
           <li>runs in userspace on top
             of <a href="libusb.sourceforge.net">libusb</a>, no kernel
-            recompile required, very easy to get build</li>
+            recompile required, very easy to build</li>
 
           <li>gives you what you would expect from a driver, like a
             normal joystick device and a event device, works in all
@@ -263,6 +265,19 @@
           <li><a href="http://groups.google.com/group/xboxdrv">xboxdrv - Google Groups</a></li>
         </ul>
 
+        <h2>Binary Package Download</h2>
+        <p>
+          Prebuild binary packages are available for Ubuntu 10.04 from
+          the <a href="https://launchpad.net/~grumbel/+archive/xboxdrv">xboxdrv-PPA</a>. The <tt>/etc/apt/sources.list</tt>
+          lines are:
+        </p>
+
+        <div class="code">
+          deb http://ppa.launchpad.net/grumbel/xboxdrv/ubuntu lucid main<br/>
+          deb-src http://ppa.launchpad.net/grumbel/xboxdrv/ubuntu lucid main<br/>
+        </div>
+   
+
         <h2>Source Code Download</h2>
         <ul>
           <li><a href="xboxdrv-linux-0.4.11.tar.bz2">xboxdrv-linux-0.4.11.tar.bz2</a></li>
@@ -306,7 +321,7 @@
 
       <div id="footer">
         Copyright &copy; 2008-2010 <a href="mailto:grumbel@gmx.de?subject=XboxDrv">Ingo Ruhnke
-            &lt;grumbel@gmx.de&gt;</a>
+          &lt;grumbel@gmx.de&gt;</a>
       </div>
     </div>
   </body>

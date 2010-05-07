@@ -111,4 +111,15 @@ h2,h3,h4,h5 {
   /* text-decoration: underline; */
 }
 
+.code { 
+  background-color: hsl(60, 100%, 95%);
+  padding: 1em;
+  margin: 0em 4em;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  font-family: monospace;
+  border-color: hsl(60, 100%, 40%);
+}
+
 /* EOF */
