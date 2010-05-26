@@ -64,19 +64,30 @@
 
         <h2>News</h2>
         <dl>
+          <dt>26. May 2010</dt>
+          <dd>0.5.0 released
+            <lu>
+              <li>added device_id handling to <tt>--ui-buttonmap</tt> and <tt>--ui-axismap</tt>, allows the creation of multiple input devices from a single controller</li>
+              <li>added shifting to <tt>--ui-buttonmap</tt>, allows sending of different events when a shift button is pressed</li>
+              <li>added support to send keyboard combination from <tt>--ui-buttonmap</tt></li>
+              <li>added <tt>--mouse</tt>, a simple shortcut to enable mouse emulation</li>
+              <li>added dummy events to the mouse device to let it register properly by the kernel without messing with hal</li>
+              <li>auto-detect USB endpoints on Xbox1 controller</li>
+          </dd>
+
           <dt>13. May 2010</dt>
           <dd>0.4.13 released
             <ul>
-              <li>added --mimic-xpad</li>
-              <li>added --no-extra-devices</li>
+              <li>added <tt>--mimic-xpad</tt></li>
+              <li>added <tt>--no-extra-devices</tt></li>
             </ul>
           </dd>
 
           <dt>08. May 2010</dt>
           <dd>0.4.12 released
             <ul>
-              <li>added --four-way-restrictor</li>
-              <li>added --dpad-rotation</li>
+              <li>added <tt>--four-way-restrictor</tt></li>
+              <li>added <tt>--dpad-rotation</tt></li>
               <li>added proper man pages for xboxdrv and xboxdrv-daemon</li>
             </ul>
           </dd>
@@ -84,7 +95,7 @@
           <dt>01. May 2010</dt>
           <dd>0.4.11 released
             <ul>
-              <li>added --axis-sensitivity</li>
+              <li>added <tt>--axis-sensitivity</tt></li>
               <li>added number aliases for button names</li>
               <li>added left/right/up/down aliases for dpad</li>
               <li>some compiler warnings got cleaned up</li>
@@ -127,7 +138,7 @@
               <li>support for Pelican TSZ360 pad</li>
               <li>support for Saitek P3200 pad</li>
               <li>support for Thrustmaster Firestorm Dual Power (044f:b312)</li>
-              <li>deadzone support for trigger via --deadzone-trigger NUM</li>
+              <li>deadzone support for trigger via <tt>--deadzone-trigger NUM</tt></li>
               <li>some documentation improvements</li>
             </ul>
           </dd>
@@ -155,27 +166,27 @@
           <dd>0.4.4 released
             <ul>
               <li>auto-detect USB endpoints</li>
-              <li>rumble support, enabled via --force-feedback</li>
-              <li>added --rumble-gain to control rumble strength</li>
-              <li>--deadzone accepts values in percentage</li>
+              <li>rumble support, enabled via <tt>--force-feedback</tt></li>
+              <li>added <tt>--rumble-gain</tt> to control rumble strength</li>
+              <li><tt>--deadzone</tt> accepts values in percentage</li>
               <li>DDR Universe 2 Mat added</li>
             </ul>
           </dd>
           <dt>17. January 2009</dt>
           <dd>0.4.3 released
             <ul>
-              <li>added support for X11 keysym in --ui-buttonmap</li>
-              <li>added --ui-clear and 'void' mappings to unmap buttons and axis</li>
+              <li>added support for X11 keysym in <tt>--ui-buttonmap</tt></li>
+              <li>added <tt>--ui-clear</tt> and <tt>void</tt> mappings to unmap buttons and axis</li>
               <li>fixed LED handling for wireless gamepads</li>
               <li>Thrustmaster Firestorm Dual Power support</li>
-              <li>added --name option to set device name</li>
-              <li>added JS_${NUM} name to address joystick buttons by number instead of name</li>
+              <li>added <tt>--name</tt> option to set device name</li>
+              <li>added <tt>JS_${NUM}</tt> name to address joystick buttons by number instead of name</li>
               <li>fixed issue with multiple wireless controller</li>
               <li>some preparation for rumble (prints FF events)</li>
             </ul>
           </dd>
           <dt>11. January 2009</dt>
-          <dd>0.4.2 released, fixes broken --dpad-only option</dd>
+          <dd>0.4.2 released, fixes broken <tt>--dpad-only</tt> option</dd>
 
           <dt>08. January 2009</dt>
           <dd>0.4.1 released, fixes little compile problem with KEY_MEDIA_REPEAT, nothing more</dd>
