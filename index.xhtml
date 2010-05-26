@@ -10,26 +10,30 @@
   </head>
 
   <body>
-    <div id="body">
-        <a href="http://flattr.com/thing/2423/Xbox360-Gamepad-Driver-for-Linux" target="_blank"><img style="position: fixed; left: 8px; top: 8px;" src="http://api.flattr.com/button/button-static-50x60.png" title="Flattr this" border="0" /></a>
+    <div style="position: absolute; left: 16px; top: 16px;">
+      <a href="http://flattr.com/thing/2423/Xbox360-Gamepad-Driver-for-Linux" target="_blank">
+        <img src="http://api.flattr.com/button/button-static-50x60.png" title="Flattr this" border="0" />
+      </a>
+    </div>
 
+    <div style="position: absolute; right: 16px; top: 16px;">
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+        <input type="hidden" name="cmd" value="_donations" />
+        <input type="hidden" name="business" value="grumbel@gmx.de" />
+        <input type="hidden" name="item_name" value="Userspace Gamepad Xbox/Xbox360 Gamepad Driver for Linux" />
+        <input type="hidden" name="no_shipping" value="0" />
+        <input type="hidden" name="no_note" value="1" />
+        <input type="hidden" name="currency_code" value="EUR" />
+        <input type="hidden" name="tax" value="0" />
+        <input type="hidden" name="lc" value="US" />
+        <input type="hidden" name="bn" value="PP-DonationsBF" />
+        <input type="image" style="border-style: none" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="Donate via Paypal" />
+      </form>
+    </div>
+
+    <div id="body">
       <h1 id="title"><img src="xbox360.png" style="float: right;" alt="" /> Userspace Xbox/Xbox360 USB Gamepad Driver for Linux</h1>
       <div id="content">
-        <div style="float: right; margin: 0; padding: 1em;">
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-            <input type="hidden" name="cmd" value="_donations" />
-            <input type="hidden" name="business" value="grumbel@gmx.de" />
-            <input type="hidden" name="item_name" value="Userspace Gamepad Xbox/Xbox360 Gamepad Driver for Linux" />
-            <input type="hidden" name="no_shipping" value="0" />
-            <input type="hidden" name="no_note" value="1" />
-            <input type="hidden" name="currency_code" value="EUR" />
-            <input type="hidden" name="tax" value="0" />
-            <input type="hidden" name="lc" value="US" />
-            <input type="hidden" name="bn" value="PP-DonationsBF" />
-            <input type="image" style="border-style: none" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="Donate via Paypal" />
-          </form>
-        </div>
-
         <p>
           This is a Xbox/Xbox360 gamepad driver for Linux that works in
           userspace. It is an alternative to the xpad kernel driver and has
@@ -60,7 +64,7 @@
 
         <h2>News</h2>
         <dl>
-          <dt>13. Mai 2010</dt>
+          <dt>13. May 2010</dt>
           <dd>0.4.13 released
             <ul>
               <li>added --mimic-xpad</li>
@@ -68,7 +72,7 @@
             </ul>
           </dd>
 
-          <dt>08. Mai 2010</dt>
+          <dt>08. May 2010</dt>
           <dd>0.4.12 released
             <ul>
               <li>added --four-way-restrictor</li>
@@ -77,7 +81,7 @@
             </ul>
           </dd>
 
-          <dt>01. Mai 2010</dt>
+          <dt>01. May 2010</dt>
           <dd>0.4.11 released
             <ul>
               <li>added --axis-sensitivity</li>
@@ -294,13 +298,13 @@
         <h2>Binary Package Download</h2>
         <p>
           Prebuild binary packages are available for Ubuntu 10.04 from
-          the <a href="https://launchpad.net/~grumbel/+archive/xboxdrv">xboxdrv-PPA</a>. The <tt>/etc/apt/sources.list</tt>
+          the <a href="https://launchpad.net/~grumbel/+archive/xboxdrv">xboxdrv-PPA</a>. The
+          to automatically add them to your sources.list, just use:
           lines are:
         </p>
 
         <div class="code">
-          deb http://ppa.launchpad.net/grumbel/ppa/ubuntu lucid main<br/>
-          deb-src http://ppa.launchpad.net/grumbel/ppa/ubuntu lucid main<br/>
+          sudo  add-apt-repository ppa:grumbel/ppa
         </div>
         
 
