@@ -159,4 +159,9 @@ h2 {
   display: none;
 }
 
+pre.programlisting { 
+  background-color: rgb(240, 240, 240);
+  padding: 0.5em;
+}
+
 /* EOF */
