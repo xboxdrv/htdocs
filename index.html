@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta  charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="default.css" />
+    <link rel="shortcut icon" href="favicon.png" type="image/png" /> 
+    <title>Userspace Xbox/Xbox360 USB Gamepad Driver for Linux</title>
+  </head>
+
+  <body>
+    <div style="position: absolute; left: 16px; top: 16px;">
+      <script type="text/javascript">
+	var flattr_url = 'http://pingus.seul.org/~grumbel/xboxdrv/';
+      </script>
+      <script src="http://api.flattr.com/button/load.js" type="text/javascript"></script>
+    </div>
+
+    <div style="position: absolute; right: 16px; top: 16px;">
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+        <input type="hidden" name="cmd" value="_donations" />
+        <input type="hidden" name="business" value="grumbel@gmx.de" />
+        <input type="hidden" name="item_name" value="Userspace Gamepad Xbox/Xbox360 Gamepad Driver for Linux" />
+        <input type="hidden" name="no_shipping" value="0" />
+        <input type="hidden" name="no_note" value="1" />
+        <input type="hidden" name="currency_code" value="EUR" />
+        <input type="hidden" name="tax" value="0" />
+        <input type="hidden" name="lc" value="US" />
+        <input type="hidden" name="bn" value="PP-DonationsBF" />
+        <input type="image" style="border-style: none" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="Donate via Paypal" />
+      </form>
+    </div>
+
+    <div id="body">
+      <header>
+        <h1 id="title"><img src="xbox360.png" style="float: right;" alt="" /> Userspace Xbox/Xbox360 USB Gamepad Driver for Linux</h1>
+      </header>
+
+      <div id="content">
+        <p>
+          This is a Xbox/Xbox360 gamepad driver for Linux that works in
+          userspace. It is an alternative to the xpad kernel driver and has
+          support for Xbox1 gamepads, Xbox360 USB gamepads and Xbox360 wireless
+          gamepads. The Xbox360 guitar and some Xbox1 dancemats might work too.
+          The Xbox 360 racing wheel is not supported, but shouldn't be to hard
+          to add if somebody is interested.
+        </p>
+        <p>
+          Note that using a wireless Xbox360 controller with the
+          Play&amp;Charge USB cable will <em>not</em> work. The cable
+          is for recharging only and does not transmit any input data
+          over the wire. To use the wireless Xbox360 controller you
+          need the wireless receiver.
+        </p>
+        <p>
+          In addition to all the Xbox related stuff, the driver also
+          supports the Thrustmaster Dual Power 3 gamepad, including
+          rumble.
+        </p>
+        <p>
+          Unlike the stock xpad kernel driver, xboxdrv provides a wide
+          varity of configuration options, it allows you to simulate
+          keyboard and mouse events, remap buttons and axes, apply
+          autofire, invert or tweak axis sensitivity or emulate
+          throttle and rudder controls.
+        </p>
+        <p>
+          You can find a full list of possible options in the <a href="xboxdrv.html">xboxdrv manpage</a>.
+        </p>
+        
+        <section>
+          <header>
+            <h2>News</h2>
+          </header>
+          <article class="news">
+            <header>
+              <h3>0.6.0 released</h3>
+              <time datetime="2010-12-18" pubdate="pubdate">18. Dec 2010</time>
+            </header>
+            <ul>
+              <li>support for reading from evdev, this allows the use of regular regular PC joysticks or the Playstation 3 controllers with xboxdrv, useful if you need configurability or joy2key-like functionality, but don't have a Xbox360 gamepad</li>
+              <li>added KEY_#num, ABS_#num and REL_#num to allow refering to events by number instead of name</li>
+              <li>support for reading configuration from a INI configuration file</li>
+              <li>cleaned up uinput mapping, --dpad-as-button, --dpad-only, etc. are now simple mappings instead of special case hackery</li>
+              <li>--ui-axismap and --ui-buttonmap now work with all axis and button</li>
+              <li>smooth deadzone handling without jumps </li>
+              <li>added --detach-kernel-driver</li>
+              <li>automatically insert dummy events to make input device register as joystick</li>
+              <li>added ability to have multiple configs running at the same time with --ui-new</li>
+              <li>added shifting to --ui-axismap, allows sending of different events when a shift button is pressed</li>
+              <li>Saitek Cyborg Rumble Pad support added</li>
+              <li>Gamestop Xbox 360 Controller support added</li>
+            </ul>
+          </article>
+
+          <article class="news">
+            <header>
+              <h3>0.5.0 released</h3>
+              <time datetime="2010-05-26" pubdate="pubdate">26. May 2010</time>
+            </header>
+            <ul>
+              <li>added device_id handling to <kbd>--ui-buttonmap</kbd> and <kbd>--ui-axismap</kbd>, allows the creation of multiple input devices from a single controller</li>
+              <li>added shifting to <kbd>--ui-buttonmap</kbd>, allows sending of different events when a shift button is pressed</li>
+              <li>added support to send keyboard combination from <kbd>--ui-buttonmap</kbd></li>
+              <li>added <kbd>--mouse</kbd>, a simple shortcut to enable mouse emulation</li>
+              <li>added dummy events to the mouse device to let it register properly by the kernel without messing with hal</li>
+              <li>auto-detect USB endpoints on Xbox1 controller</li>
+            </ul>
+          </article>
+
+          <article class="news">
+            <header>
+              <h3>0.4.13 released</h3>
+              <time datetime="2010-05-13" pubdate="pubdate">13. May 2010</time>
+            </header>
+            <ul>
+              <li>added <kbd>--mimic-xpad</kbd></li>
+              <li>added <kbd>--no-extra-devices</kbd></li>
+            </ul>
+          </article>
+
+          <article class="news">
+            <header>
+              <h3>0.4.12 released</h3>
+              <time datetime="2010-05-08" pubdate="pubdate">08. May 2010</time>
+            </header>
+            <ul>
+              <li>added <kbd>--four-way-restrictor</kbd></li>
+              <li>added <kbd>--dpad-rotation</kbd></li>
+              <li>added proper man pages for xboxdrv and xboxdrv-daemon</li>
+            </ul>
+          </article>
+
+          <article class="news">
+            <header>
+              <h3>0.4.11 released</h3>
+              <time datetime="2010-05-01" pubdate="pubdate">01. May 2010</time>
+            </header>
+
+            <ul>
+              <li>added <kbd>--axis-sensitivity</kbd></li>
+              <li>added number aliases for button names</li>
+              <li>added left/right/up/down aliases for dpad</li>
+              <li>some compiler warnings got cleaned up</li>
+              <li>confusing uinput error messages got cleaned up</li>
+              <li>fixed missing 'report sync' event that broke keyboard emulation</li>
+            </ul>
+          </article>
+
+          <article class="news oldnews">
+            <header>
+              <h3>0.4.10 released</h3>
+              <time datetime="2010-02-17" pubdate="pubdate">17. February 2010</time>
+            </header>
+            <ul>
+              <li>fixed mouse emulation a bit, still somewhat broken</li>
+              <li>Mad Catz Xbox 360 controller support</li>
+              <li>Harmonix controller support</li>
+              <li>minor compile fix (missing string.h)</li>
+            </ul>
+          </article>
+
+          <article class="news oldnews">
+            <header>
+              <h3>0.4.9 released</h3>
+              <time datetime="2009-11-01" pubdate="pubdate">01. November 2009</time>
+            </header>
+            <ul>
+              <li>Saitek P2500 support (no rumble, untested)</li>
+              <li>Hori Real Arcade Pro Ex support</li>
+              <li>changes in the thread handling to reduce latency</li>
+              <li>include fixes for g++-4.4</li>
+            </ul>
+          </article>
+
+          <article class="news oldnews">
+            <header>
+              <h3>0.4.8 released</h3>
+              <time datetime="2009-06-30" pubdate="pubdate">30. July 2009</time>
+            </header>
+            <ul>
+              <li>usb reading in separate thread, should fix missed events and stuck buttons</li>
+              <li>some SCons configuration magic for better compatibility</li>
+            </ul>
+          </article>
+
+          <article class="news oldnews">
+            <header>
+              <h3>0.4.7 released</h3>
+              <time datetime="2009-06-29" pubdate="pubdate">29. July 2009</time>
+            </header>
+            <ul>
+              <li>support for Pelican TSZ360 pad</li>
+              <li>support for Saitek P3200 pad</li>
+              <li>support for Thrustmaster Firestorm Dual Power (044f:b312)</li>
+              <li>deadzone support for trigger via <kbd>--deadzone-trigger NUM</kbd></li>
+              <li>some documentation improvements</li>
+            </ul>
+          </article>
+
+          <article class="news oldnews">
+            <header>
+              <h3>0.4.6 released</h3>
+              <time datetime="2009-02-21" pubdate="pubdate">21. February 2009</time>
+            </header>
+            <ul>
+              <li><kbd>--calibration MIN,CENTER,MAX</kbd> option to workaround broken controller</li>
+              <li><kbd>xboxdrv-daemon.py</kbd> to launch xboxdrv automatically when device gets plugged in</li>
+            </ul>
+          </article>
+
+          <article class="news oldnews">
+            <header>
+              <h3>0.4.5 released</h3>
+              <time datetime="2009-02-15" pubdate="pubdate">15. February 2009</time>
+            </header>
+            <ul>
+              <li>fixed mixup between strong and weak rumble</li>
+              <li>added Harmonix Drum Kit for Xbox 360 support</li>
+              <li>added Logitech Chillstream support</li>
+              <li>added evsend tool to send events to /dev/input/eventX</li>
+              <li>Y-Axis for Firestorm gamepad fixed</li>
+            </ul>
+          </article>
+
+          <article class="news oldnews">
+            <header>
+              <h3>0.4.4 released</h3>
+              <time datetime="2009-01-24" pubdate="pubdate">24. January 2009</time>
+            </header>
+            <ul>
+              <li>auto-detect USB endpoints</li>
+              <li>rumble support, enabled via <kbd>--force-feedback</kbd></li>
+              <li>added <kbd>--rumble-gain</kbd> to control rumble strength</li>
+              <li><kbd>--deadzone</kbd> accepts values in percentage</li>
+              <li>DDR Universe 2 Mat added</li>
+            </ul>
+          </article>
+
+          <article class="news oldnews">
+            <header>
+              <h3>0.4.3 released</h3>
+              <time datetime="2009-01-17" pubdate="pubdate">17. January 2009</time>
+            </header>
+            <ul>
+              <li>added support for X11 keysym in <kbd>--ui-buttonmap</kbd></li>
+              <li>added <kbd>--ui-clear</kbd> and <kbd>void</kbd> mappings to unmap buttons and axis</li>
+              <li>fixed LED handling for wireless gamepads</li>
+              <li>Thrustmaster Firestorm Dual Power support</li>
+              <li>added <kbd>--name</kbd> option to set device name</li>
+              <li>added <kbd>JS_${NUM}</kbd> name to address joystick buttons by number instead of name</li>
+              <li>fixed issue with multiple wireless controller</li>
+              <li>some preparation for rumble (prints FF events)</li>
+            </ul>
+          </article>
+
+          <article class="news oldnews">
+            <header>
+              <h3>0.4.2 released</h3>
+              <time datetime="2009-01-11" pubdate="pubdate">11. January 2009</time>
+            </header>
+            <ul>
+              <li>fixes broken <kbd>--dpad-only</kbd> option</li>
+            </ul>
+          </article>
+
+          <article class="news oldnews">
+            <header>
+              <h3>0.4.1 released</h3>
+              <time datetime="2009-01-08" pubdate="pubdate">08. January 2009</time>
+            </header>
+            <ul>
+              <li>fixes little compile problem with KEY_MEDIA_REPEAT, nothing more</li>
+            </ul>
+          </article>
+
+          <article class="news oldnews">
+            <header>
+              <h3>0.4 released</h3>
+              <time datetime="2009-01-07" pubdate="pubdate">07. January 2009</time>
+            </header>
+            <ul>
+              <li>autofire, throttle, mouse and keyboard emulation added</li>
+            </ul>
+          </article>
+
+          <article class="news oldnews">
+            <header>
+              <h3>0.3 released</h3>
+              <time datetime="2008-11-06" pubdate="pubdate">06. November 2008</time>
+            </header>
+            <ul>
+              <li>mostly smaller bugfixes</li>
+            </ul>
+          </article>
+
+          <article class="news oldnews">
+            <header>
+              <h3>Chatpad Development</h3>
+              <time datetime="2008-09-20" pubdate="pubdate">20. Septemper 2008</time>
+            </header>
+            <ul>
+              <li>Some chatpad development is in progress, discussion at <a href="http://www.mp3car.com/vbulletin/input-devices/108554-xbox360-chatpad-awsome-backlit-mini-keyboard-16.html#post1256444">here</a></li>
+            </ul>
+          </article>
+
+          <article class="news oldnews">
+            <header>
+              <h3>0.2 released</h3>
+              <time datetime="2008-05-03" pubdate="pubdate">03. May 2008</time>
+            </header>
+            <ul>
+              <li>adding guitar and wireless support</li>
+            </ul>
+          </article>
+
+          <article class="news oldnews">
+            <header>
+              <time datetime="2008-04-13" pubdate="pubdate">13. April 2008</time>
+              <h3>0.1 released</h3>
+            </header>
+            <ul>
+              <li>Xbox and Xbox360 USB support</li>
+            </ul>
+          </article>
+        </section>
+
+        <section>
+          <h2>Features</h2>
+          <ul>
+            <li>runs in userspace on top
+              of <a href="libusb.sourceforge.net">libusb</a>, no kernel
+              recompile required, very easy to build</li>
+
+            <li>gives you what you would expect from a driver, like a
+              normal joystick device and a event device, works in all
+              games in which a kernel driver would work</li>
+
+            <li>allows you to handle analog-triggers as a single z-axis,
+              as buttons or as seperate axis</li>
+
+            <li>allows you to handle the dpad as buttons or as axis</li>
+
+            <li>allows you to set the LED status of the Xbox360 gamepad</li>
+
+            <li>allows you to set the rumble motors, for use in scripts for
+              new mail notification</li>
+
+            <li>it supports the use multiple gamepads by starting multiple
+              instances of the driver</li>
+
+            <li>allows you to remap buttons and axes</li>
+
+            <li>allows you to configure the deadzone</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Missing features</h2>
+          <ul>
+            <li>Xbox's analog face buttons get converted to digital
+              ones so they can be used on a joystick device</li>
+
+            <li>no chatpad support</li>
+            
+            <li>no headset support</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Supported and tested devices</h2>
+          <ul>
+            <li>Xbox1 controller, both official and third party</li>
+            <li>Xbox360 USB controller</li>
+            <li>Xbox360 wireless controller via the USB wireless receiver</li>
+            <li>Xbox360 USB guitar and drum kit</li>
+            <li>Thrustmaster Dual Power 3 Gamepad</li>
+          </ul>
+
+          <h2>How to help</h2>
+          <p>
+            Three things are currently not working, the headset, the
+            chatpad and the racing wheel. With the headset it is relativly
+            easy to capture and play sound, but I don't know the sound
+            format that is used. Two samples of the raw data:
+          </p>
+
+          <ul>
+            <li><a href="http://pingus.seul.org/~grumbel/tmp/xbox360-headset-1-2-3-test.raw">1, 2, 3, test</a></li>
+            <li><a href="http://pingus.seul.org/~grumbel/tmp/xbox360-headset-5sec-silence.raw">5sec silence</a></li>
+          </ul>
+          
+          <p>
+            If you have any idea what format that could be let me
+            know. Playing it as 8bit PCM, Mono, 8192Hz makes the sound
+            somewhat understandable, but there is likely something more
+            going on.
+          </p>
+
+          <p>
+            The chatpad is tricker, since it doesn't send out any data on
+            its own, it likely needs some magical init string, but
+            figuring that out might require a USB protocol analysing
+            device to which I don't have access. Capturing the USB data
+            from Windows won't work, since the official windows driver
+            doesn't support the chatpad either.<br/> <b>Update:</b> We got
+            a first protocol log, discussion is going
+            on <a href="http://www.mp3car.com/vbulletin/input-devices/108554-xbox360-chatpad-awsome-backlit-mini-keyboard-16.html#post1256444">here</a>.
+          </p>
+
+          <p>
+            The racing wheel support should be doable if somebody wants to
+            spend some time on it, according to first reports the device
+            sends out events, so those just need to be deciphered. It is
+            also supported by the Windows driver, so capturing the
+            communication is possible.
+          </p>
+        </section>
+
+        <section>
+          <h2>Documentation</h2>
+          <p>
+            Xboxdrv provides extensive documentation in the form of two man-pages:
+          </p>
+          <ul>
+            <li><a href="xboxdrv.1.txt">xboxdrv (1)</a></li>
+            <li><a href="xboxdrv-daemon.1.txt">xboxdrv-daemon (1)</a></li>
+          </ul>
+        </section>
+
+
+        <section>
+          <h2>Contact / Discussion</h2>
+          <h3>Google Groups</h3>
+          <ul>
+            <li><a href="http://groups.google.com/group/xboxdrv">xboxdrv - Google Groups</a></li>
+          </ul>
+
+          <h3>IRC Channel</h3>
+          <ul>
+            <li><a href="irc://freenode.net/%23xboxdrv">irc://irc.freenode.net/#xboxdrv</a></li>
+          </ul>
+
+          <h3>Instant Messaging</h3>
+          <ul>
+            <li>XMPP/Jabber: <a href="xmpp:grumbel@jabber.org">xmpp:grumbel@jabber.org</a></li>
+            <li>ICQ: 59461927</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Binary Package Download</h2>
+          <p>
+            Prebuild binary packages are available for Ubuntu 10.04
+            from
+            my <a href="https://launchpad.net/~grumbel/+archive/ppa">PPA</a>.
+            To automatically add them to your sources.list, just use:
+          </p>
+
+          <div class="code">
+            sudo  add-apt-repository ppa:grumbel/ppa
+          </div>
+          <!--
+             <p>
+               or click the apturl link below:
+             </p>
+             
+             <p>
+               <ul>
+                 <li><a href="apt:apt+http://launchpad.net/~grumbel/ppa?package=xboxdrv">Install xboxdrv</a></li>
+                 <li><a href="apt:apt+http://launchpad.net/~grumbel/ppa?package=sdl-jstest">Install sdl-jstest</a></li>
+               </ul>
+             </p>
+             -->
+          <p>
+            That repository also contains <tt>sdl-jstest</tt>, which
+            you might want to grab for debugging purposes with SDL
+            applications.
+          </p>
+        </section>        
+
+        <section>
+          <h2>Source Code Download</h2>
+          <ul>
+            <li><a href="xboxdrv-linux-0.6.0.tar.bz2">xboxdrv-linux-0.6.0.tar.bz2</a> (newest)</li>
+            <li><a href="xboxdrv-linux-0.5.0.tar.bz2">xboxdrv-linux-0.5.0.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.4.13.tar.bz2">xboxdrv-linux-0.4.13.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.4.12.tar.bz2">xboxdrv-linux-0.4.12.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.4.11.tar.bz2">xboxdrv-linux-0.4.11.tar.bz2</a></li>
+            <li class="oldrelease"><a href="xboxdrv-linux-0.4.10.tar.bz2">xboxdrv-linux-0.4.10.tar.bz2</a></li>
+            <li class="oldrelease"><a href="xboxdrv-linux-0.4.9.tar.bz2">xboxdrv-linux-0.4.9.tar.bz2</a></li>
+            <li class="oldrelease"><a href="xboxdrv-linux-0.4.8.tar.bz2">xboxdrv-linux-0.4.8.tar.bz2</a></li>
+            <li class="oldrelease"><a href="xboxdrv-linux-0.4.7.tar.bz2">xboxdrv-linux-0.4.7.tar.bz2</a></li>
+            <li class="oldrelease"><a href="xboxdrv-linux-0.4.6.tar.bz2">xboxdrv-linux-0.4.6.tar.bz2</a></li>
+            <li class="oldrelease"><a href="xboxdrv-linux-0.4.5.tar.bz2">xboxdrv-linux-0.4.5.tar.bz2</a></li>
+            <li class="oldrelease"><a href="xboxdrv-linux-0.4.4.tar.bz2">xboxdrv-linux-0.4.4.tar.bz2</a></li>
+            <li class="oldrelease"><a href="xboxdrv-linux-0.4.3.tar.bz2">xboxdrv-linux-0.4.3.tar.bz2</a></li>
+            <li class="oldrelease"><a href="xboxdrv-linux-0.4.2.tar.bz2">xboxdrv-linux-0.4.2.tar.bz2</a></li>
+            <li class="oldrelease"><a href="xboxdrv-linux-0.4.1.tar.bz2">xboxdrv-linux-0.4.1.tar.bz2</a></li>
+            <li class="oldrelease"><a href="xboxdrv-linux-0.4.tar.bz2">xboxdrv-linux-0.4.tar.bz2</a></li>
+            <li class="oldrelease"><a href="xboxdrv-linux-0.3.tar.bz2">xboxdrv-linux-0.3.tar.bz2</a></li>
+            <li class="oldrelease"><a href="xboxdrv-linux-0.2.tar.bz2">xboxdrv-linux-0.2.tar.bz2</a></li>
+            <li class="oldrelease"><a href="xboxdrv-linux-0.1.tar.bz2">xboxdrv-linux-0.1.tar.bz2</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Git Repository</h2>
+          <p>
+            You can get xboxdrv
+            from <a href="http://github.com/Grumbel/xboxdrv/">github</a>
+            or via http from seul.org. Both repositories are identical.
+          </p>
+          <ul>
+            <li>git clone http://pingus.seul.org/~grumbel/xboxdrv.git</li>
+            <li>git clone git://github.com/Grumbel/xboxdrv.git</li>
+          </ul>
+        </section>        
+
+        <section>
+          <h2>Links</h2>
+          <ul>
+            <li><a href="http://happypenguin.org/show?xboxdrv">Happypenguin XboxDrv Page, in case you want to leave comments</a></li>
+            <li><a href="http://matt-land.com/xbcd/">Xbox 360 Gamepad Support for Windows</a></li>
+            <li><a href="http://tattiebogle.net/index.php/ProjectRoot/Xbox360Controller/OsxDriver">Unofficial MacOSX Xbox360 Driver</a></li>
+            <li><a href="http://ubuntuforums.org/showthread.php?t=404577&amp;page=16">Ubuntuforums thread about Xbox360 Controller</a></li>
+            <li><a href="http://gentoo-wiki.com/HOWTO_Xbox_360_controller_on_Linux">Gentoo Howto for the XPad Kernel driver</a></li>
+            <li><a href="http://forums.gentoo.org/viewtopic-p-5061825.html">How to use xboxdrv on Gentoo</a></li>
+          </ul>
+        </section>
+      </div>
+
+      <footer id="footer">
+        Copyright &copy; 2008-2010 <a href="mailto:grumbel@gmx.de?subject=XboxDrv">Ingo Ruhnke
+          &lt;grumbel@gmx.de&gt;</a>
+      </footer>
+    </div>
+  </body>
+</html>

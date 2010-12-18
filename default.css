@@ -7,7 +7,13 @@ body {
   background-repeat: repeat-x;
 }
 
-#body { 
+header, article, section { 
+  display: block;
+}
+
+#body, .refentry { 
+  background-color: white;
+
   max-width: 60em;
   margin: auto;
 
@@ -18,6 +24,8 @@ body {
   border-style: solid;
   border-color: white;
   border-width: 2px;
+
+  overflow: hidden;
 }
 
 #title { 
@@ -30,8 +38,6 @@ body {
   background-image: url("background.jpg");
   background-repeat: repeat-x;
 
-  overflow: hidden;
-
   border-radius: 16px 16px 0 0;
   -moz-border-radius: 16px 16px 0 0;
   -webkit-border-radius: 16px 16px 0 0;
@@ -40,10 +46,10 @@ body {
   padding: 0.5em 1em 0.5em 1em;
 }
 
-#content { 
+#content, .refentry { 
   overflow: hidden;
   display: block;
-  padding: 0em 2em 1em 2em;
+  padding: 0em 3em 1em 3em;
 
   background-color: white;
 }
@@ -68,13 +74,9 @@ body {
 
 p { 
   text-indent: 1em;
-  padding-left: 1em;
-  padding-right: 1em;
 }
 
 ul { 
-  padding-left:  4em;
-  padding-right: 4em;
   padding-top: 0;
   margin: 0;
 }
@@ -92,7 +94,38 @@ dl>dd {
   margin-bottom: 1em;
 }
 
-h2,h3,h4,h5 { 
+article.news header { 
+  width: 100%;
+  border-bottom: thin solid lightgrey;
+  margin-bottom: 0.5em;
+}
+
+article.news h3 {
+  display: inline;
+  font-size: 1em;
+  margin: 0em;
+  padding: 0em;
+}
+
+article.news time {
+  float: right;
+  font-size: smaller;
+  color: grey;
+}
+
+article.news { 
+  margin-bottom: 1.5em;
+}
+
+article.oldnews { 
+  display: none;
+}
+
+li.oldrelease { 
+  display: none;
+}
+
+h2 { 
   background:  rgb(144,238,144);
   background-image: url("background2.jpg");
   background-repeat: repeat-x;
@@ -120,6 +153,10 @@ h2,h3,h4,h5 {
   border-style: solid;
   font-family: monospace;
   border-color: hsl(60, 100%, 40%);
+}
+
+.navheader /* manpage */ { 
+  display: none;
 }
 
 /* EOF */
