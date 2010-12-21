@@ -164,4 +164,16 @@ pre.programlisting {
   padding: 0.5em;
 }
 
+#ShowOldNewsButton, #HideOldNewsButton {
+  background-color: rgb(240,240,240);
+  padding: 0.25em 0.5em;
+  font-weight: bold;
+  text-decoration: none;
+  margin: auto;
+}
+
+#HideOldNewsButton {
+  display: none;
+}
+
 /* EOF */
