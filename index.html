@@ -16,14 +16,14 @@
       <script src="jquery-1.4.4.min.js" type="text/javascript"></script>
       <script type="text/javascript">
         function ShowOldNews() {
-          $('.oldnews').show('slow')
-          $('#ShowOldNewsButton').hide()
-          $('#HideOldNewsButton').show()
+        $('.oldnews').show('slow')
+        $('#ShowOldNewsButton').hide()
+        $('#HideOldNewsButton').show()
         }
         function HideOldNews() {
-          $('.oldnews').hide('slow')
-          $('#ShowOldNewsButton').show()
-          $('#HideOldNewsButton').hide()
+        $('.oldnews').hide('slow')
+        $('#ShowOldNewsButton').show()
+        $('#HideOldNewsButton').hide()
         }
       </script>
     </div>
@@ -84,6 +84,39 @@
           <header>
             <h2>News</h2>
           </header>
+
+          <article class="news">
+            <header>
+              <h3>0.6.2 released</h3>
+              <time datetime="2010-12-31" pubdate="pubdate">31. Dec 2010</time>
+            </header>
+            <ul>
+              <li>merged Xbox360 guitar handling into the regular Xbox360 controller handling, use --guitar to get the old mapping back</li>
+              <li>added generic event filter framework</li>
+              <li>added toggle button filter</li>
+              <li>added invert button filter</li>
+              <li>added auto fire button filter</li>
+              <li>added log filter for button and axis</li>
+              <li>added invert axis filter</li>
+              <li>added sensitivity axis filter</li>
+              <li>added relative axis filter</li>
+              <li>added response curve axis filter</li>
+              <li>added deadzone axis filter</li>
+              <li>added calibration axis filter</li>
+              <li>added ability to send different events depending on how long a button was pressed</li>
+              <li>added ability to launch a program on button press</li>
+              <li>added ability to replay a macro on a button press</li>
+              <li>added ability to launch a child program from within xboxdrv, making wrapper scripts easier to write without race conditions</li>
+              <li>added --option NAME=VALUE to allow INI-style config options from command line</li>
+              <li>added --evdev-debug to print out all received events from evdev</li>
+              <li>added --evdev-no-grab to avoid a full grab on the event device</li>
+              <li>unified ini and command line parsing some more</li>
+              <li>Mad Catz Xbox controller - MW2 controller support added</li>
+              <li>added support for Xbox1 analog buttons, use --ui-axismap with A, B, X, Y, black, white</li>
+              <li>give proper error message when the Play&Charge kit is used</li>
+            </ul>
+          </article>
+
           <article class="news">
             <header>
               <h3>0.6.1 released</h3>
@@ -362,32 +395,31 @@
               games in which a kernel driver would work</li>
 
             <li>allows you to handle analog-triggers as a single z-axis,
-              as buttons or as seperate axis</li>
+              as buttons or as seperate axes</li>
 
-            <li>allows you to handle the dpad as buttons or as axis</li>
+            <li>allows to handle the directional pad as buttons or as axis</li>
 
-            <li>allows you to set the LED status of the Xbox360 gamepad</li>
+            <li>allows to set the LED status of the Xbox360 gamepad</li>
 
-            <li>allows you to set the rumble motors, for use in scripts for
-              new mail notification</li>
-
-            <li>it supports the use multiple gamepads by starting multiple
+            <li>supports the use multiple gamepads by starting multiple
               instances of the driver</li>
 
-            <li>allows you to remap buttons and axes</li>
+            <li>allows to remap buttons and axes</li>
 
-            <li>allows you to configure the deadzone</li>
+            <li>allows to transform events to allow things such as
+              autofire, deadzones, axis inversion, axis sensitivity
+              changes, throttle emulation, etc.</li>
+
+            <li>supports macro programming</li>
+
+            <li>allows launching applications on a button press</li>
           </ul>
         </section>
 
         <section>
           <h2>Missing features</h2>
           <ul>
-            <li>Xbox's analog face buttons get converted to digital
-              ones so they can be used on a joystick device</li>
-
-            <li>no chatpad support</li>
-            
+            <li>no chatpad support</li>           
             <li>no headset support</li>
           </ul>
         </section>
@@ -445,11 +477,11 @@
         <section>
           <h2>Documentation</h2>
           <p>
-            Xboxdrv provides extensive documentation in the form of two man-pages:
+            Xboxdrv provides extensive documentation in the form of man-pages:
           </p>
           <ul>
-            <li><a href="xboxdrv.1.txt">xboxdrv (1)</a></li>
-            <li><a href="xboxdrv-daemon.1.txt">xboxdrv-daemon (1)</a></li>
+            <li><a href="xboxdrv.html">xboxdrv (1)</a></li>
+            <!-- <li><a href="xboxdrv-daemon.1.txt">xboxdrv-daemon (1)</a></li> -->
           </ul>
         </section>
 
@@ -507,8 +539,9 @@
         <section>
           <h2>Source Code Download</h2>
           <ul>
-            <li><strong><a href="xboxdrv-linux-0.6.1.tar.bz2">xboxdrv-linux-0.6.1.tar.bz2</a> ← newest</strong></li>
-            <li><a href="xboxdrv-linux-0.6.0.tar.bz2">xboxdrv-linux-0.6.0.tar.bz2</a></strong>
+            <li><strong><a href="xboxdrv-linux-0.6.2.tar.bz2">xboxdrv-linux-0.6.2.tar.bz2</a> ← newest</strong></li>
+            <li><a href="xboxdrv-linux-0.6.1.tar.bz2">xboxdrv-linux-0.6.1.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.6.0.tar.bz2">xboxdrv-linux-0.6.0.tar.bz2</a></li>
             <li><a href="xboxdrv-linux-0.5.0.tar.bz2">xboxdrv-linux-0.5.0.tar.bz2</a></li>
             <li class="oldrelease"><a href="xboxdrv-linux-0.4.13.tar.bz2">xboxdrv-linux-0.4.13.tar.bz2</a></li>
             <li class="oldrelease"><a href="xboxdrv-linux-0.4.12.tar.bz2">xboxdrv-linux-0.4.12.tar.bz2</a></li>
