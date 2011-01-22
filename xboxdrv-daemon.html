@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator" content="HTML Tidy for Linux/x86 (vers 25 March 2009), see www.w3.org" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <title>xboxdrv-daemon</title>
+  <link rel="stylesheet" href="default.css" type="text/css" />
+  <meta name="generator" content="DocBook XSL Stylesheets V1.75.2" />
+  <link rel="home" href="index.html" title="xboxdrv-daemon" />
+</head>
+
+<body>
+  <div class="navheader">
+    <table width="100%" summary="Navigation header">
+      <tr>
+        <th colspan="3" align="center"><span class="application">xboxdrv-daemon</span></th>
+      </tr>
+    </table>
+    <hr />
+  </div>
+
+  <div class="refentry" title="xboxdrv-daemon">
+    <a id="xboxdrv" name="xboxdrv"></a>
+
+    <div class="titlepage"></div>
+
+    <div class="refnamediv">
+      <h2>Name</h2>
+
+      <p><span class="application">xboxdrv-daemon</span> — A simple daemon that automatically launches xboxdrv when it detects a controller.</p>
+    </div>
+
+    <div class="refsynopsisdiv" title="Synopsis">
+      <h2>Synopsis</h2>
+
+      <div class="cmdsynopsis">
+        <p><code class="command">xboxdrv</code> [OPTION...] [--] {XBOXDRV} [ARGS...]</p>
+      </div>
+    </div>
+
+    <div class="refsect1" title="DESCRIPTION">
+      <a id="id2848279" name="id2848279"></a>
+
+      <h2>DESCRIPTION</h2>
+
+      <div class="variablelist">
+        <dl>
+          <dt><span class="term"><code class="option">-h</code>, <code class="option">--help</code></span></dt>
+
+          <dd>
+            <p>Display help text and exit.</p>
+          </dd>
+
+          <dt><span class="term"><code class="option">--version</code></span></dt>
+
+          <dd>
+            <p>Print the version number and exit.</p>
+          </dd>
+
+          <dt><span class="term"><code class="option">-v</code>, <code class="option">--verbose</code></span></dt>
+
+          <dd>
+            <p>Be verbose with printed output.</p>
+          </dd>
+
+          <dt><span class="term"><code class="option">-a FILENAME, --attach=FILENAME</code></span></dt>
+
+          <dd>
+            <p>Launch EXE when a new controller is connected</p>
+          </dd>
+
+          <dt><span class="term"><code class="option">-d FILENAME, --detach=FILENAME</code></span></dt>
+
+          <dd>
+            <p>Launch EXE when a controller is detached</p>
+          </dd>
+
+          <dt><span class="term"><code class="option">-x FILENAME, --xboxdrv=FILENAME</code></span></dt>
+
+          <dd>
+            <p>Set the location of the xboxdrv executable</p>
+          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="refsect1" title="Running xboxdrv via xboxdrv-daemon">
+      <a id="id2843404" name="id2843404"></a>
+
+      <h2>Running xboxdrv via xboxdrv-daemon</h2>
+
+      <p><span class="command"><strong>xboxdrv-daemon</strong></span> allows you to run xboxdrv automatically whenever you plug in a gamepad. Since xboxdrv-daemon.py needs to know where xboxdrv is located you need to supply the location of the xboxdrv binary manually if its not located in <code class="envar">PATH</code>:</p>
+      <pre class="programlisting">
+% xboxdrv-daemon --xboxdrv ./xboxdrv
+</pre>
+
+      <p>You can pass arguments to xboxdrv after a double dash '--':</p>
+      <pre class="programlisting">
+% xboxdrv-daemon -- --buttonmap B=A,X=A,Y=A
+</pre>
+
+      <p>You can also run scripts that get started after xboxdrv is started via:</p>
+      <pre class="programlisting">
+% xboxdrv-daemon \
+  --attach /home/juser/xboxdrv_attach \
+  --detach /home/juser/xboxdrv_deatach
+</pre>
+
+      <p>This is useful in Kiosk settings, such as a media center PC, where you might want to restart the media center to have the controller working properly after it got attached.</p>
+
+      <p>Note that you can't dynamically reconfigurabilty xboxdrv when you launch it automatically via the daemon, so using this daemon isn't generally recommend.</p>
+
+      <p>When you want configurability and automatic launching, it is recomment that you write little startup scripts for your games, such as this:</p>
+      <pre class="programlisting">
+#!/bin/sh
+
+# Start xboxdrv and remember its PID in the variable XBOXPID
+xboxdrv --trigger-as-button -s &amp;amp;
+XBOXPID=$!
+
+# Give xboxdrv a second to startup and create the device
+sleep 1
+
+# Launch your favorite game
+your_favorite_game
+
+# Kill xboxdrv and wait for it to finish
+kill $XBOXPID
+wait $XBOXPID
+
+# EOF #
+</pre>
+
+      <p>That way you can individually configure every game and still not have to worry about launching xboxdrv manually.</p>
+    </div>
+
+    <div class="refsect1" title="See also">
+      <a id="id2843491" name="id2843491"></a>
+
+      <h2>See also</h2>
+
+      <p>xboxdrv(1)</p>
+    </div>
+  </div>
+
+  <div class="navfooter">
+    <hr />
+  </div>
+</body>
+</html>

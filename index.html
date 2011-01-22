@@ -89,14 +89,66 @@
 
           <article class="news">
             <header>
-              <h3>Chatpad Support</h3>
-              <time datetime="2011-01-01" pubdate="pubdate">01. Jan 2011</time>
+              <h3>0.6.5 released</h3>
+              <time datetime="2011-01-22" pubdate="pubdate">22. Jan 2011</time>
+            </header>
+            <ul>
+              <li>fixed incorrect variable initalisation, leading to button presses getting lost sometimes</li>
+              <li>fixed initialisation issue for Chatpad connected to controllers with bcdDevice 0x0114</li>
+            </ul>
+          </article>
+
+          <article class="news">
+            <header>
+              <h3>libusb-1.0 switch</h3>
+              <time datetime="2011-01-14" pubdate="pubdate">14. Jan 2011</time>
             </header>
             <p>
-              Chatpad support is now in the Git repository. Its still
-              a work in progress and has plenty of issues, but basic
-              typing works. Special thanks to GAFBlizzard
+              The <a href="#gitrepository">development version of
+              git</a> switched
+              to <a href="http://www.libusb.org/wiki/libusb-1.0">libusb-1.0</a>,
+              as this is a rather large change, there might be new
+              bugs. Testers are welcome to give it a try.
             </p>
+          </article>
+
+          <article class="news">
+            <header>
+              <h3>0.6.4 released</h3>
+              <time datetime="2011-01-13" pubdate="pubdate">13. Jan 2011</time>
+            </header>
+            <ul>
+              <li>fixed bug that disabled all axis when a button was pressed</li>
+              <li>fixed some missing include</li>
+            </ul>
+          </article>
+
+          <article class="news">
+            <header>
+              <h3>0.6.4 released</h3>
+              <time datetime="2011-01-13" pubdate="pubdate">13. Jan 2011</time>
+            </header>
+            <ul>
+              <li>fixed bug that disabled all axis when a button was pressed</li>
+              <li>fixed some missing include</li>
+            </ul>
+          </article>
+
+          <article class="news">
+            <header>
+              <h3>0.6.3 released</h3>
+              <time datetime="2011-01-10" pubdate="pubdate">10. Jan 2011</time>
+            </header>
+            <ul>
+              <li>chatpad support (still rough), special thanks to Jani Virta, Andy Kirkham, dwomac and GAFBlizzard who helped make it possible</li>
+              <li>added  --chatpad, --chatpad-no-init and --chatpad-debug</li>
+              <li>added --headset, --headset-dump FILE and --headset-play FILE, for experimentation only</li>
+              <li>added optional abs:/rel:/key: prefixes to --ui-axismap</li>
+              <li>added input filters for --axismap and --buttonmap</li>
+              <li>fixed multiple bugs that made it impossible to assign events to specific devices</li>
+              <li>fixed axis getting stuck when using a shift key</li>
+              <li>fixed incorrect error handling on fork()/exec()</li>
+            </ul>
           </article>
 
           <article class="news">
@@ -471,7 +523,7 @@
           </p>
           <ul>
             <li><a href="xboxdrv.html">xboxdrv (1)</a></li>
-            <!-- <li><a href="xboxdrv-daemon.1.txt">xboxdrv-daemon (1)</a></li> -->
+            <li><a href="xboxdrv-daemon.html">xboxdrv-daemon (1)</a></li>
           </ul>
         </section>
 
@@ -499,13 +551,17 @@
           <h2>Binary Package Download</h2>
           <p>
             Prebuild official binary packages are available for Ubuntu
-            10.10 and Ubuntu 10.04 can be obtained from
+            10.10 and Ubuntu 10.04 LTS can be obtained from
             the <a href="https://launchpad.net/~grumbel/+archive/ppa">PPA</a>.
-            To automatically add them to the <tt>sources.list</tt> use:
+            To automatically add the repository to
+            the <tt>sources.list</tt> and install <tt>xboxdrv</tt>
+            use:
           </p>
 
           <div class="code">
-            sudo  add-apt-repository ppa:grumbel/ppa
+            sudo add-apt-repository ppa:grumbel/ppa<br/>
+            sudo apt-get update<br/>
+            sudo apt-get install xboxdrv
           </div>
           <!--
              <p>
@@ -529,7 +585,9 @@
         <section>
           <h2>Source Code Download</h2>
           <ul>
-            <li><strong><a href="xboxdrv-linux-0.6.3.tar.bz2">xboxdrv-linux-0.6.3.tar.bz2</a> ← newest</strong></li>
+            <li><strong><a href="xboxdrv-linux-0.6.5.tar.bz2">xboxdrv-linux-0.6.5.tar.bz2</a> ← newest</strong></li>
+            <li><a href="xboxdrv-linux-0.6.4.tar.bz2">xboxdrv-linux-0.6.4.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.6.3.tar.bz2">xboxdrv-linux-0.6.3.tar.bz2</a></li>
             <li><a href="xboxdrv-linux-0.6.2.tar.bz2">xboxdrv-linux-0.6.2.tar.bz2</a></li>
             <li><a href="xboxdrv-linux-0.6.1.tar.bz2">xboxdrv-linux-0.6.1.tar.bz2</a></li>
             <li><a href="xboxdrv-linux-0.6.0.tar.bz2">xboxdrv-linux-0.6.0.tar.bz2</a></li>
@@ -555,7 +613,7 @@
         </section>
 
         <section>
-          <h2>Git Repository</h2>
+          <h2 id="gitrepository">Git Repository</h2>
           <p>
             You can get xboxdrv
             from <a href="http://github.com/Grumbel/xboxdrv/">github</a>
