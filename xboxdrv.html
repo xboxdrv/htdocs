@@ -43,7 +43,7 @@
     </div>
 
     <div class="refsect1" title="Description">
-      <a id="id2940715" name="id2940715"></a>
+      <a id="id3030500" name="id3030500"></a>
 
       <h2>Description</h2>
 
@@ -51,18 +51,18 @@
 
       <p>Aside from the pure driver, <span class="command"><strong>xboxdrv</strong></span> also includes a rich set of configuration options that allow you to tweak the abilities of the virtual input devices that xboxdrv will create. This includes basic button and axis remapping, as well as more complicated things like mouse and keyboard emulation, auto-fire and throttle control emulation.</p>
 
-      <p>It is also possible for <span class="command"><strong>xboxdrv</strong></span> to read input data directly from an event device, this allows to use the configurability of <span class="command"><strong>xboxdrv</strong></span> on regular PC joysticks, keyboards and mice and thus lets <span class="command"><strong>xboxdrv</strong></span> serve a similar purpose as <span class="command"><strong>joy2key</strong></span>. See the option <code class="option">--evdev</code> below for more information.</p>
+      <p>It is also possible for <span class="command"><strong>xboxdrv</strong></span> to read input data directly from an event device, this allows the use of the configurability of <span class="command"><strong>xboxdrv</strong></span> on regular PC joysticks, keyboards and mice and thus lets <span class="command"><strong>xboxdrv</strong></span> serve a similar purpose as <span class="command"><strong>joy2key</strong></span>. See the option <code class="option">--evdev</code> below for more information.</p>
 
-      <p>When a <code class="option">COMMAND</code> is provided xboxdrv will launch that application and be running till that application exits. This is a convenience function to make it easier to use xboxdrv in wrapper scripts.</p>
+      <p>When a <code class="option">COMMAND</code> is provided xboxdrv will launch that application and be running till that application exits. This is a convenience function to make it easier to use xboxdrv in wrapper scripts. See the section <a class="link" href="index.html#wrapperscripts" title="Writing Start-Up Scripts for Games">Writing Start-Up Scripts for Games</a> for more information.</p>
     </div>
 
     <div class="refsect1" title="Options">
-      <a id="id2931584" name="id2931584"></a>
+      <a id="id3020834" name="id3020834"></a>
 
       <h2>Options</h2>
 
       <div class="refsect2" title="General Options">
-        <a id="id2931590" name="id2931590"></a>
+        <a id="id3020840" name="id3020840"></a>
 
         <h3>General Options</h3>
 
@@ -86,6 +86,34 @@
               <p>Print verbose messages.</p>
             </dd>
 
+            <dt><span class="term"><code class="option">--debug</code></span></dt>
+
+            <dd>
+              <p>Print even more verbose messages then <code class="option">--verbose</code>.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">-s</code>, <code class="option">--silent</code></span></dt>
+
+            <dd>
+              <p>Do not display controller events on the terminal. For regular use this option should alway be used as output data to the terminal can eat up quite a bit of CPU.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">--quiet</code></span></dt>
+
+            <dd>
+              <p>Do not display startup text and suppress most other output.</p>
+            </dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="refsect2" title="List Options">
+        <a id="id3021341" name="id3021341"></a>
+
+        <h3>List Options</h3>
+
+        <div class="variablelist">
+          <dl>
             <dt><span class="term"><code class="option">--help-led</code></span></dt>
 
             <dd>
@@ -96,24 +124,6 @@
 
             <dd>
               <p>List supported devices.</p>
-            </dd>
-
-            <dt><span class="term"><code class="option">-s</code>, <code class="option">--silent</code></span></dt>
-
-            <dd>
-              <p>Do not display events on console.</p>
-            </dd>
-
-            <dt><span class="term"><code class="option">--quiet</code></span></dt>
-
-            <dd>
-              <p>Do not display startup text.</p>
-            </dd>
-
-            <dt><span class="term"><code class="option">-L</code>, <code class="option">--list-controller</code></span></dt>
-
-            <dd>
-              <p>List available controllers on the system.</p>
             </dd>
 
             <dt><span class="term"><code class="option">--list-supported-devices</code></span></dt>
@@ -128,12 +138,58 @@
               <p>List supported devices in <code class="filename">xpad.c</code> style.</p>
             </dd>
 
-            <dt><span class="term"><code class="option">-D</code>, <code class="option">--daemon</code></span></dt>
+            <dt><span class="term"><code class="option">--help-abs</code></span></dt>
 
             <dd>
-              <p>Run xboxdrv as daemon. This option hasn't been tested much and it is not recommented to be used.</p>
+              <p>List all allowed EV_ABS symbols.</p>
             </dd>
 
+            <dt><span class="term"><code class="option">--help-rel</code></span></dt>
+
+            <dd>
+              <p>List all allowed EV_REL symbols.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">--help-key</code></span></dt>
+
+            <dd>
+              <p>List all allowed EV_KEY symbols.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">--help-x11keysym</code></span></dt>
+
+            <dd>
+              <p>List all allowed X11 Keysym symbols.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">--help-axis</code></span></dt>
+
+            <dd>
+              <p>List all allowed XboxAxis symbols.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">--help-button</code></span></dt>
+
+            <dd>
+              <p>List all allowed XboxButton symbols.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">--help-all</code></span></dt>
+
+            <dd>
+              <p>List all symbols that can be used in <code class="option">--ui-buttonmap</code>, <code class="option">--ui-axismap</code>, <code class="option">--buttonmap</code> and <code class="option">--axismap</code>. This option is the same as <code class="option">--help-abs</code>, <code class="option">--help-rel</code>, <code class="option">--help-key</code>, <code class="option">--help-x11keysym</code>, <code class="option">--help-axis</code> and <code class="option">--help-button</code>.</p>
+            </dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="refsect2" title="Config File Options">
+        <a id="id3021561" name="id3021561"></a>
+
+        <h3>Config File Options</h3>
+
+        <div class="variablelist">
+          <dl>
             <dt><span class="term"><code class="option">-c</code>, <code class="option">--config</code> <em class="replaceable"><code>FILE</code></em></span></dt>
 
             <dd>
@@ -186,7 +242,7 @@ start=KEY_ESC
             <dt><span class="term"><code class="option">--alt-config</code> <em class="replaceable"><code>FILE</code></em></span></dt>
 
             <dd>
-              <p>A shortcut for writing <code class="option">--ui-new</code> <code class="option">--config</code> <em class="replaceable"><code>FILE</code></em>.</p>
+              <p>A shortcut for writing <code class="option">--next-config</code> <code class="option">--config</code> <em class="replaceable"><code>FILE</code></em>.</p>
 
               <p>To load multiple configuration options use:</p>
               <pre class="programlisting">
@@ -209,17 +265,59 @@ xboxdrv --config first.ini --alt-config second.ini --alt-config third.ini
         </div>
       </div>
 
+      <div class="refsect2" title="Daemon Options">
+        <a id="id3022667" name="id3022667"></a>
+
+        <h3>Daemon Options</h3>
+
+        <div class="variablelist">
+          <dl>
+            <dt><span class="term"><code class="option">-D</code>, <code class="option">--daemon</code></span></dt>
+
+            <dd>
+              <p>Run xboxdrv as daemon. If this option is given xboxdrv will listen to udev for USB connection events and launch driver threads for newly connected controllers.</p>
+
+              <p>Configuration options can still be supplied as usual. Note however that xboxdrv when run as daemon will not create new uinput devices on demand, instead it will only create devices once at startup for the given configurations and then assign new controllers to these configurations. While this means xboxdrv can't support an unlimited number of controllers, it also means that xboxdrv can allow hot plugging even for applications that don't support it themselves, as applications will only see the permanent device files, not the controller that xboxdrv will change around under the hood.</p>
+
+              <p>An example configuration that supports three controller would look like this:</p>
+              <pre class="programlisting">
+xboxdrv --daemon \
+    # config options for the first controller
+  --next-controller \
+    # config options for the second controller
+  --next-controller
+    # config options for the third controller
+</pre>
+
+              <p>The <code class="option">--match</code> option can be used to limit the controller slots to only those controllers that match the given RULE and thus be used to assign configurations only to specific controllers.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">--detach</code></span></dt>
+
+            <dd>
+              <p>Detaches xboxdrv from the current shell, only valid if <code class="option">--daemon</code> is given.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">--pid-file</code> <em class="replaceable"><code>FILE</code></em></span></dt>
+
+            <dd>
+              <p>Write the xboxdrv daemon process id to FILE.</p>
+            </dd>
+          </dl>
+        </div>
+      </div>
+
       <div class="refsect2" title="Device Options">
-        <a id="id2931072" name="id2931072"></a>
+        <a id="id3069915" name="id3069915"></a>
 
         <h3>Device Options</h3>
 
         <div class="variablelist">
           <dl>
-            <dt><span class="term"><code class="option">-d</code>, <code class="option">--detach-kernel-driver</code></span></dt>
+            <dt><span class="term"><code class="option">-L</code>, <code class="option">--list-controller</code></span></dt>
 
             <dd>
-              <p>Detaches the kernel driver that is currently associated with the given device. This is useful when you have the xpad module loaded and want to use xboxdrv without unloading it.</p>
+              <p>List available controllers on the system.</p>
             </dd>
 
             <dt><span class="term"><code class="option">-i</code>, <code class="option">--id</code> <em class="replaceable"><code>N</code></em></span></dt>
@@ -237,13 +335,13 @@ xboxdrv --config first.ini --alt-config second.ini --alt-config third.ini
             <dt><span class="term"><code class="option">--device-by-path</code> <em class="replaceable"><code>BUS:DEV</code></em></span></dt>
 
             <dd>
-              <p>Use device BUS:DEV, do not do any scanning</p>
+              <p>Use the controller at BUS:DEV, do not do any automatic scanning. Useful for cases when a controller isn't known by xboxdrv, but supports one of the given protocols.</p>
             </dd>
 
             <dt><span class="term"><code class="option">--device-by-id</code> <em class="replaceable"><code>VENDOR:PRODUCT</code></em></span></dt>
 
             <dd>
-              <p>Use device that matches VENDOR:PRODUCT (as returned by <span class="command"><strong>lsusb</strong></span>)</p>
+              <p>Use device that matches VENDOR:PRODUCT (as returned by <span class="command"><strong>lsusb</strong></span>). Useful for cases when a controller isn't known by xboxdrv, but supports one of the given protocols.</p>
             </dd>
 
             <dt><span class="term"><code class="option">--type</code> <em class="replaceable"><code>TYPE</code></em></span></dt>
@@ -275,12 +373,18 @@ xboxdrv --config first.ini --alt-config second.ini --alt-config third.ini
                 </ul>
               </div>
             </dd>
+
+            <dt><span class="term"><code class="option">-d</code>, <code class="option">--detach-kernel-driver</code></span></dt>
+
+            <dd>
+              <p>Detaches the kernel driver that is currently associated with the given device. This is useful when you have the xpad module loaded and want to use xboxdrv without unloading it.</p>
+            </dd>
           </dl>
         </div>
       </div>
 
       <div class="refsect2" title="Evdev Option">
-        <a id="id2932819" name="id2932819"></a>
+        <a id="id3070119" name="id3070119"></a>
 
         <h3>Evdev Option</h3>
 
@@ -343,7 +447,7 @@ ABSMAP = EVDEV_ABS [ "+", "-" ] "=" XBOXAXIS ;
       </div>
 
       <div class="refsect2" title="Status Options">
-        <a id="id2980187" name="id2980187"></a>
+        <a id="id3070347" name="id3070347"></a>
 
         <h3>Status Options</h3>
 
@@ -355,7 +459,7 @@ ABSMAP = EVDEV_ABS [ "+", "-" ] "=" XBOXAXIS ;
               <p>Set LED status. Possible values for <em class="replaceable"><code>NUM</code></em> are:</p>
 
               <div class="table">
-                <a id="id2980221" name="id2980221"></a>
+                <a id="id3070380" name="id3070380"></a>
 
                 <p class="title"><b>Table&nbsp;1.&nbsp;LED Status Codes</b></p>
 
@@ -476,6 +580,17 @@ ABSMAP = EVDEV_ABS [ "+", "-" ] "=" XBOXAXIS ;
               </div><br class="table-break" />
             </dd>
 
+            <dt><span class="term"><code class="option">--rumble-gain</code> <em class="replaceable"><code>AMOUNT</code></em></span></dt>
+
+            <dd>
+              <p>You can change the rumble strength via:</p>
+              <pre class="programlisting">
+$ xboxdrv --rumble-gain 50%
+</pre>
+
+              <p>Values larger then 100% are possible as well and will amplify small rumble commands, rumble commands already at the maximum will stay unchanged.</p>
+            </dd>
+
             <dt><span class="term"><code class="option">-q</code>, <code class="option">--quit</code></span></dt>
 
             <dd>
@@ -486,7 +601,7 @@ ABSMAP = EVDEV_ABS [ "+", "-" ] "=" XBOXAXIS ;
       </div>
 
       <div class="refsect2" title="Chatpad Options (experimental)">
-        <a id="id2980408" name="id2980408"></a>
+        <a id="id3070597" name="id3070597"></a>
 
         <h3>Chatpad Options (experimental)</h3>
 
@@ -518,7 +633,7 @@ ABSMAP = EVDEV_ABS [ "+", "-" ] "=" XBOXAXIS ;
       </div>
 
       <div class="refsect2" title="Headset Options (experimental, Xbox360 USB only)">
-        <a id="id2980486" name="id2980486"></a>
+        <a id="id3070675" name="id3070675"></a>
 
         <h3>Headset Options (experimental, Xbox360 USB only)</h3>
 
@@ -548,7 +663,7 @@ ABSMAP = EVDEV_ABS [ "+", "-" ] "=" XBOXAXIS ;
       </div>
 
       <div class="refsect2" title="Force Feedback">
-        <a id="id2980558" name="id2980558"></a>
+        <a id="id3070749" name="id3070749"></a>
 
         <h3>Force Feedback</h3>
 
@@ -562,17 +677,8 @@ ABSMAP = EVDEV_ABS [ "+", "-" ] "=" XBOXAXIS ;
               <p>Since the Xbox360 controller supports just rumble not full force feedback, xboxdrv tries to emulate other effects. This emulation hasn't been tested much and might not always work as expected. Bug reports and test cases are welcome.</p>
 
               <p>Note that you must close the application that is using force feedback always before you close the xboxdrv driver, else you might end up with a hanging non-interruptable xboxdrv process that will require a reboot to get rid of.</p>
-            </dd>
 
-            <dt><span class="term"><code class="option">--rumble-gain</code> <em class="replaceable"><code>AMOUNT</code></em></span></dt>
-
-            <dd>
-              <p>You can change the rumble strength via:</p>
-              <pre class="programlisting">
-$ xboxdrv --rumble-gain 50%
-</pre>
-
-              <p>Values larger then 100% are possible as well and will amplify small rumble commands, rumble commands already at the maximum will stay unchanged.</p>
+              <p>When using xboxdrv in daemon mode with multiple controller slots you have to enable force feedback for each slot separately.</p>
             </dd>
 
             <dt><span class="term"><code class="option">-R</code>, <code class="option">--test-rumble</code></span></dt>
@@ -590,36 +696,140 @@ $ xboxdrv --rumble-gain 50%
         </div>
       </div>
 
+      <div class="refsect2" title="Controller Slot Options">
+        <a id="id3070845" name="id3070845"></a>
+
+        <h3>Controller Slot Options</h3>
+
+        <p>Controller slots are used when running xboxdrv in daemon mode. Each slot represents a complete controller configuration. If you want to use multiple controller in daemon mode you have to supply multiple controller slots.</p>
+
+        <div class="variablelist">
+          <dl>
+            <dt><span class="term"><code class="option">--controller-slot</code> <em class="replaceable"><code>N</code></em></span></dt>
+
+            <dd>
+              <p>Switches to the controller slot with the number N, numbering starts at zero.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">--next-controller</code></span></dt>
+
+            <dd>
+              <p>Switches to the next controller slot.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">--match</code> <em class="replaceable"><code>RULE,...</code></em></span></dt>
+
+            <dd>
+              <p>Limits a controller slot to devices that match any one of the given rules. Possible match rules are:</p>
+
+              <div class="variablelist">
+                <dl>
+                  <dt><span class="term">usbid=<em class="replaceable"><code>VENDOR</code></em>:<em class="replaceable"><code>PRODUCT</code></em></span></dt>
+
+                  <dd>
+                    <p>Match controllers that have the given USB vendor and product ids.</p>
+                  </dd>
+
+                  <dt><span class="term">vendor=<em class="replaceable"><code>VENDOR</code></em></span></dt>
+
+                  <dd>
+                    <p>Match controllers that have the given USB idVendor.</p>
+                  </dd>
+
+                  <dt><span class="term">product=<em class="replaceable"><code>PRODUCT</code></em></span></dt>
+
+                  <dd>
+                    <p>Match controllers that have the given USB idProduct.</p>
+                  </dd>
+
+                  <dt><span class="term">property=<em class="replaceable"><code>PROPERTY</code></em>:<em class="replaceable"><code>VALUE</code></em></span></dt>
+
+                  <dd>
+                    <p>Match against an arbitary udev property, with name <em class="replaceable"><code>PROPERTY</code></em> and value <em class="replaceable"><code>VALUE</code></em>.</p>
+                  </dd>
+
+                  <dt><span class="term">usbpath=<em class="replaceable"><code>BUS</code></em>:<em class="replaceable"><code>DEV</code></em></span></dt>
+
+                  <dd>
+                    <p>Match against the USB path given by <em class="replaceable"><code>BUS</code></em> and <em class="replaceable"><code>DEV</code></em>.</p>
+                  </dd>
+
+                  <dt><span class="term">usbserial=<em class="replaceable"><code>SERIAL</code></em></span></dt>
+
+                  <dd>
+                    <p>Match against the USB iSerial number.</p>
+                  </dd>
+                </dl>
+              </div>
+            </dd>
+
+            <dt><span class="term"><code class="option">--match-group</code> <em class="replaceable"><code>RULE,...</code></em></span></dt>
+
+            <dd>
+              <p>Limits a controller slot to devices that match all of the given rules. Possible match rules are the same as for <code class="option">--match</code>.</p>
+            </dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="refsect2" title="Config Slot Options">
+        <a id="id3071071" name="id3071071"></a>
+
+        <h3>Config Slot Options</h3>
+
+        <p>You can use multple configurations, called config slots, with your controller. You switch between those multiple configurations by pressing the Guide button by default, but you can also set another button via the option <code class="option">--toggle</code>.</p>
+
+        <div class="variablelist">
+          <dl>
+            <dt><span class="term"><code class="option">--config-slot</code> <em class="replaceable"><code>NUM</code></em></span></dt>
+
+            <dd>
+              <p>Select the config slot <em class="replaceable"><code>NUM</code></em>.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">--next-config</code></span></dt>
+
+            <dd>
+              <p>Allows the creation of an alternative uinput configuration to which one can toggle at runtime by pressing the ui-toggle button (defaults to guide).</p>
+              <pre class="programlisting">
+$ xboxdrv \
+    --mouse \
+  --next-config 
+    --ui-axismap X1=ABS_X,Y1=ABS_Y \
+    --ui-buttonmap A=JS_0,B=JS_1
+</pre>
+
+              <p>The above configuration would install mouse emulation as first configuration and a simple joystick emulation as second configuration. Allowing toggling between mouse emulation and joystick handling by pressing the guide button.</p>
+
+              <p>Not that <code class="option">--next-config</code> is currently limited to only configurations done with <code class="option">--ui-buttonmap</code> and <code class="option">--ui-axismap</code>, autofire, throttle emulation, deadzones and all other things can currently not be switched at runtime.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">--toggle</code> <em class="replaceable"><code>XBOXBTN</code></em></span></dt>
+
+            <dd>
+              <p>Sets the button that will be used to toggle between different different configurations.</p>
+            </dd>
+          </dl>
+        </div>
+      </div>
+
       <div class="refsect2" title="Configuration Options">
-        <a id="id2980678" name="id2980678"></a>
+        <a id="id3071188" name="id3071188"></a>
 
         <h3>Configuration Options</h3>
 
         <div class="variablelist">
           <dl>
-            <dt><span class="term"><code class="option">--deadzone <em class="replaceable"><code>NUM</code></em></code></span></dt>
+            <dt><span class="term"><code class="option">--modifier <em class="replaceable"><code>MOD</code></em></code></span></dt>
 
             <dd>
-              <p>The deadzone is the area at which the sticks do not report any events. The default is zero, which gives the best sensitifity but might also cause trouble in some games in that the character or camera might move without moving the stick. To fix this one has to set the value to something higher:</p>
-              <pre class="programlisting">
-$ xboxdrv --deadzone 4000
-</pre>
-
-              <p>A value of 4000 works quite well for most games.</p>
-
-              <p>You can also give the deadzone in percentage:</p>
-              <pre class="programlisting">
-$ xboxdrv --deadzone 15%
-</pre>
+              <p>Add a modifier to the modifier stack, see <a class="link" href="index.html#modifier" title="Modifier">Modifier</a> for a full list of possible modifier.</p>
             </dd>
 
-            <dt><span class="term"><code class="option">--deadzone-trigger <em class="replaceable"><code>NUM</code></em></code></span></dt>
+            <dt><span class="term"><code class="option">--timeout <em class="replaceable"><code>MSEC</code></em></code></span></dt>
 
             <dd>
-              <p>The left and right trigger have a separate deadzone value which can be specified with:</p>
-              <pre class="programlisting">
-$ xboxdrv --deadzone-trigger 15%  
-</pre>
+              <p>Specify the number of miliseconds that xboxdrv will wait for events from the controller before moving on and processing things like auto-fire or relative-axis. Default value is 25, smaller values will give you a higher resoultion auto fire, but will waste some more CPU.</p>
             </dd>
 
             <dt><span class="term"><code class="option">-b, --buttonmap BUTTON=BUTTON,...</code></span></dt>
@@ -638,7 +848,7 @@ $ xboxdrv --buttonmap B=A,X=A,Y=A
               <p>Possible button names are (aliases are in parenthesis):</p>
 
               <div class="table">
-                <a id="id2980793" name="id2980793"></a>
+                <a id="id3071285" name="id3071285"></a>
 
                 <p class="title"><b>Table&nbsp;2.&nbsp;Button Names</b></p>
 
@@ -715,6 +925,8 @@ $ xboxdrv --buttonmap B=A,X=A,Y=A
                   </table>
                 </div>
               </div><br class="table-break" />
+
+              <p>Just like with <code class="option">--ui-buttonmap</code> you can add button filter to each button.</p>
             </dd>
 
             <dt><span class="term"><code class="option">--axismap</code> <em class="replaceable"><code>AXIS=MAPPING,...</code></em></span></dt>
@@ -733,17 +945,145 @@ $ xboxdrv --axismap X2=X1,Y2=Y1,X1=X2,Y1=Y2
               <p>Possible axis names are: x1, y1, x2, y2, lt, rt</p>
 
               <p>Swaping lt or rt with x1, y1, x2, y2 will not work properly, since their range is different.</p>
+
+              <p>Just like with <code class="option">--ui-axismap</code> you can add axis filter to each axis.</p>
+            </dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="refsect2" title="Modifier Preset Configuration Options">
+        <a id="id3071477" name="id3071477"></a>
+
+        <h3>Modifier Preset Configuration Options</h3>
+
+        <p>The options in this sections are sortcuts for <code class="option">--modifier</code>. Unlike <code class="option">--modifier</code> they are not order depended, but have a predefined order that is used no matter the order in which the options are given.</p>
+
+        <div class="variablelist">
+          <dl>
+            <dt><span class="term"><code class="option">--autofire BUTTON=FREQUENCY,...</code></span></dt>
+
+            <dd>
+              <p>Autofire mapping allows you to let a button automatically fire with a given frequency in miliseconds:</p>
+              <pre class="programlisting">
+$ xboxdrv --autofire A=250
+</pre>
+
+              <p>Combining <code class="option">--autofire</code> with button map allows you to have one button act as autofire while another one, emitting the same signal, acts normally.</p>
+              <pre class="programlisting">
+$ xboxdrv --autofire B=250 --buttonmap B=A
+</pre>
+            </dd>
+
+            <dt><span class="term"><code class="option">--axis-sensitivty <em class="replaceable"><code>AXIS=SENSITIVITY</code></em></code>,...</span></dt>
+
+            <dd>
+              <p>The sensitive of an axis can be adjusted via --axis-sensitivty:</p>
+              <pre class="programlisting">
+$ xboxdrv --axis-sensitivty X1=-1.0,Y1=-1.0
+</pre>
+
+              <p>A value of 0 gives you the default linear sensitivity, values larger then 0 will give you higher sensitivity, while values smaller then 0 will give you lower sensitivity. Sensitivity values in the range of [-1, 1] will generally give good results, everything beyond that won't be of much practical use.</p>
+
+              <p>Sensitivity works by applying:</p>
+              <pre class="programlisting">
+t = 2 ** sensitivity;
+pos = (1.0f - (1.0f - pos) ** t) ** (1 / t);
+</pre>
+
+              <p>To the value of the axis, this means that both the minimum value and the maximum value of the axis will always stay the same, just the response inbetween changes.</p>
+
+              <p>For a complete freeform way to change the axis response see the <code class="option">Response Curve Filter</code>.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">--calibration <em class="replaceable"><code>CALIBRATIONSPEC</code></em></code></span></dt>
+
+            <dd>
+              <p>If your gamepad for some reason can't reach the maximum value or isn't centered properly you can fix that via the calibration options:</p>
+              <pre class="programlisting">
+$ xboxdrv --calibration X2=-32768:0:32767
+</pre>
+
+              <p>X2 is the axis name and the three values that follow are min, center and max. Simply insert the values that jstest reports when your axis is in the respective positions.</p>
+
+              <p>You can also use the calibration option if you want to make your joystick more sensitive. A setting of:</p>
+              <pre class="programlisting">
+xboxdrv --calibration AXIS=MIN:CENTER:MAX,...
+</pre>
+
+              <p>Will cause the joystick device report maximum position when your stick is only moved half the way.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">--deadzone <em class="replaceable"><code>NUM</code></em></code></span></dt>
+
+            <dd>
+              <p>The deadzone is the area at which the sticks do not report any events. The default is zero, which gives the best sensitifity but might also cause trouble in some games in that the character or camera might move without moving the stick. To fix this one has to set the value to something higher:</p>
+              <pre class="programlisting">
+$ xboxdrv --deadzone 4000
+</pre>
+
+              <p>A value of 4000 works quite well for most games.</p>
+
+              <p>You can also give the deadzone in percentage:</p>
+              <pre class="programlisting">
+$ xboxdrv --deadzone 15%
+</pre>
+            </dd>
+
+            <dt><span class="term"><code class="option">--deadzone-trigger <em class="replaceable"><code>NUM</code></em></code></span></dt>
+
+            <dd>
+              <p>The left and right trigger have a separate deadzone value which can be specified with:</p>
+              <pre class="programlisting">
+$ xboxdrv --deadzone-trigger 15%  
+</pre>
+            </dd>
+
+            <dt><span class="term"><code class="option">--dpad-rotation</code> <em class="replaceable"><code>DEGREE</code></em></span></dt>
+
+            <dd>
+              <p>Allows you to rotate the dpad. <em class="replaceable"><code>DEGREE</code></em> must be a multiple of 45. This can be useful in isometric games where the playfield itself is rotated, thus a:</p>
+              <pre class="programlisting">
+xboxdrv --dpad-rotation 45
+</pre>
+
+              <p>Will give you controls that are relative to your character instead of your viewpoint.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">--four-way-restrictor</code></span></dt>
+
+            <dd>
+              <p>The <code class="option">--four-way-restrictor</code> option allows to limit the movement on both analogsticks to only four directions (up, down, left, right), the diagonals (up/left, up/right, down/left, down/right) are filtered out from the output. This option is useful for games such as Tetris, that don't need diagonals and where you don't want to accidently trigger the down-move while trying to do a left/right move.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">--relative-axis AXIS=NUM,...</code></span></dt>
+
+            <dd>
+              <p>The function <code class="option">--relative-axis</code> allows you to change the behaviour of an axis so that your movement of it moves its value up or down instead of applying it directly. This allows you to simulate throttle control for flightsim games.</p>
+
+              <p>Since the axis might be upside down, you might want to use the <code class="option">--axismap</code> function to reverse it.</p>
+              <pre class="programlisting">
+$ xboxdrv --relative-axis y2=64000 --axismap -y2=y2
+</pre>
+            </dd>
+
+            <dt><span class="term"><code class="option">--square-axis</code></span></dt>
+
+            <dd>
+              <p>The Xbox360 gamepad, as most other current day gamepads, features a circular movement range, which restricts the movement so that the distance to the center never gets beyond 1. This means that when you have the controller at the top/left the value reported is (0.7, 0.7) (i.e. length 1, angle 45) instead of (1,1). This behaviour is different then most classic PC joysticks, which had a square range and would report (1,1) when hold in the top/left corner.</p>
+
+              <p>Some old games (i.e. mostly DOS stuff) require a square movement range and will not function properly with the Xbox360 gamepad. Via the <code class="option">--square-axis</code> option you can work around this issue and diagonals will be reported as (1,1).</p>
             </dd>
           </dl>
         </div>
       </div>
 
       <div class="refsect2" title="Uinput Preset Configuration Options">
-        <a id="id2980969" name="id2980969"></a>
+        <a id="id3071856" name="id3071856"></a>
 
         <h3>Uinput Preset Configuration Options</h3>
 
-        <p>The following options are simple shortcuts for common configurations that can be accomplished by <code class="option">--ui-buttonmap</code> and <code class="option">--ui-axismap</code>.</p>
+        <p>The following options are simple shortcuts for common configurations that can be accomplished manually by using <code class="option">--ui-buttonmap</code> and <code class="option">--ui-axismap</code>.</p>
 
         <div class="variablelist">
           <dl>
@@ -808,7 +1148,7 @@ $ xboxdrv \
       </div>
 
       <div class="refsect2" title="Uinput Configuration Options">
-        <a id="id2930518" name="id2930518"></a>
+        <a id="id3072024" name="id3072024"></a>
 
         <h3>Uinput Configuration Options</h3>
 
@@ -817,42 +1157,31 @@ $ xboxdrv \
             <dt><span class="term"><code class="option">--no-uinput</code></span></dt>
 
             <dd>
-              <p>Do not try to start uinput event dispatching, useful for debugging.</p>
+              <p>Do not to start UInput, instead simply read events from the controller, useful for debugging.</p>
             </dd>
 
-            <dt><span class="term"><code class="option">--name DEVNAME</code></span></dt>
+            <dt><span class="term"><code class="option">--no-extra-devices</code></span></dt>
 
             <dd>
-              <p>Changes the descriptive name the device will have</p>
+              <p>By default xboxdrv will allocate multiple uinput devices and sort events to each of them. Thus mouse related events like BTN_LEFT or REL_X will go to a virtual mouse device, while ABS_X events would go to a virtual joystick device. This option disables that automatism and all events will go to the same virtual device. Manual assignment to a specific device is still possible.</p>
             </dd>
 
-            <dt><span class="term"><code class="option">--ui-new</code></span></dt>
+            <dt><span class="term"><code class="option">--name NAME</code></span></dt>
 
             <dd>
-              <p>Allows the creation of an alternative uinput configuration to which one can toggle at runtime by pressing the ui-toggle button (defaults to guide).</p>
-              <pre class="programlisting">
-$ xboxdrv \
-    --mouse \
-  --ui-new 
-    --ui-axismap X1=ABS_X,Y1=ABS_Y \
-    --ui-buttonmap A=JS_0,B=JS_1
-</pre>
+              <p>Changes the descriptive name the device will have. This options acts the same as --device-name <em class="replaceable"><code>CURRENTSLOT</code></em>.auto=<em class="replaceable"><code>NAME</code></em></p>
+            </dd>
 
-              <p>The above configuration would install mouse emulation as first configuration and a simple joystick emulation as second configuration. Allowing toggling between mouse emulation and joystick handling by pressing the guide button.</p>
+            <dt><span class="term"><code class="option">--device-name TYPE.SLOT=NAME</code></span></dt>
 
-              <p>Not that <code class="option">--ui-new</code> is currently limited to only configurations done with <code class="option">--ui-buttonmap</code> and <code class="option">--ui-axismap</code>, autofire, throttle emulation, deadzones and all other things can currently not be switched at runtime.</p>
+            <dd>
+              <p>Changes the descriptive name the device will have. <em class="replaceable"><code>TYPE</code></em> is one of <code class="constant">mouse</code>, <code class="constant">keyboard</code>, <code class="constant">joystick</code>, <code class="constant">auto</code> or a number. <em class="replaceable"><code>SLOT</code></em> is a slot number or <code class="constant">auto</code>. The <code class="constant">auto</code> name acts as wild card and matches everything.</p>
             </dd>
 
             <dt><span class="term"><code class="option">--ui-clear</code></span></dt>
 
             <dd>
               <p>Removes all uinput mappings and will leave the driver in a blank state and only map those things you added yourself. If you only want to get rid of individual buttons you can use the 'void' event.</p>
-            </dd>
-
-            <dt><span class="term"><code class="option">--ui-toggle</code> <em class="replaceable"><code>XBOXBTN</code></em></span></dt>
-
-            <dd>
-              <p>Sets the button that will be used to toggle between different uinput configurations.</p>
             </dd>
 
             <dt><span class="term"><code class="option">--ui-buttonmap</code> <em class="replaceable"><code>UIBUTTONSPEC,...</code></em></span></dt>
@@ -880,7 +1209,7 @@ DEVICEID     = NUMBER ;
 
               <p>Instead of the low level <span class="keysym">KEY_</span> names, which represent keycodes, you can also use the higher level X11 keysyms <span class="keysym">XK_</span>, the keysyms have the advantage that they map directly to the key you expect, while a <span class="keysym">KEY_</span> name gets mungled by the X11 keymap and will often not report what you expect in case you use a keymap that is different then your keyboard (i.e. dvorak on a qwerty keyboard).</p>
 
-              <p>A full list of X11 keysyms is available at <code class="filename">/usr/include/X11/keysymdef.h</code>, note that you can only use those that are reachable by your current keymap. Keysyms that are reachable via multiple keycodes might break the mapping from keysym to evdev code.</p>
+              <p>A full list of valid X11 keysyms can be optained with <code class="option">--help-x11keysym</code>.</p>
 
               <p>For joystick buttons there is in addition to the <span class="keysym">BTN_JOYSTICK</span>, <span class="keysym">BTN_X</span>, etc. macros the special name <span class="keysym">JS_$NUM</span>, which sets the given button to the $NUMS joystick button, i.e.:</p>
               <pre class="programlisting">
@@ -908,11 +1237,16 @@ $ xboxdrv --ui-buttonmap X=REL_???:VALUE:REPEAT
               <pre class="programlisting">
 xboxdrv -s \
   --ui-clear \
-  --ui-buttonmap A=0-JS_0,B=0-JS_1 --ui-axismap X2=1-ABS_X,Y2=1-ABS_Y
-  --ui-buttonmap X=1-JS_0,Y=1-JS_1 --ui-axismap X2=1-ABS_X,Y2=1-ABS_Y
+  --ui-buttonmap A=JS_0@0,B=JS_1@0 --ui-axismap X2=ABS_X@0,Y2=ABS_Y@0
+  --ui-buttonmap X=JS_0@0,Y=1-JS_1@0 --ui-axismap X2=ABS_X@1,Y2=ABS_Y@1
 </pre>
 
               <p>In this example the left stick creates a joystick device and the right stick creates a separate joystick device.</p>
+
+              <p>When using multiple controller slots you can additionally append the slot id and thus assign events across controller slot boundaries. The syntax for that is:</p>
+              <pre class="programlisting">
+BTN_A@{deviceid}.{slotid}
+</pre>
 
               <p>Instead of giving just a single button, it is also possible to give two buttons to <code class="option">--ui-buttonmap</code> to allow shifting:</p>
               <pre class="programlisting">
@@ -931,7 +1265,7 @@ xboxdrv -s \
   --ui-buttonmap A^toggle=JS_0
 </pre>
 
-              <h4><a id="id2981677" name="id2981677"></a>Hold Button</h4>
+              <h4><a id="id3072435" name="id3072435"></a>Hold Button</h4>
 
               <p>You can send different events depending on how long a button was pressed by:</p>
               <pre class="programlisting">
@@ -941,7 +1275,7 @@ xboxdrv \
 
               <p>This will send JS_0 events when the button is pressed and switch to JS_1 events when the button was hold for 500 miliseconds.</p>
 
-              <h4><a id="id2981701" name="id2981701"></a>Exec Button</h4>
+              <h4><a id="id3072458" name="id3072458"></a>Exec Button</h4>
 
               <p>You can bind a button to an application, so that the application will be launched when the button was pressed:</p>
               <pre class="programlisting">
@@ -949,7 +1283,7 @@ xboxdrv \
   --ui-buttonmap A=exec:/home/juser/local/bin/screenshot.sh
 </pre>
 
-              <h4><a id="id2981719" name="id2981719"></a>Macro Button</h4>
+              <h4><a id="id3072477" name="id3072477"></a>Macro Button</h4>
 
               <p>A button can be bound to a macros via:</p>
               <pre class="programlisting">
@@ -1016,114 +1350,6 @@ $ xboxdrv --ui-axismap X1=ABS_X,LB+X1=ABS_RX
               <p>This allows you to send ABS_X events normally and ABS_RX events when the LB button is held down.</p>
 
               <p>For information on how to use axis filters, see <a class="link" href="index.html#axisfilter" title="Axis Filter">Axis Filter</a>.</p>
-            </dd>
-
-            <dt><span class="term"><code class="option">--square-axis</code></span></dt>
-
-            <dd>
-              <p>The Xbox360 gamepad, as most other current day gamepads, features a circular movement range, which restricts the movement so that the distance to the center never gets beyond 1. This means that when you have the controller at the top/left the value reported is (0.7, 0.7) (i.e. length 1, angle 45) instead of (1,1). This behaviour is different then most classic PC joysticks, which had a square range and would report (1,1) when hold in the top/left corner.</p>
-
-              <p>Some old games (i.e. mostly DOS stuff) require a square movement range and will not function properly with the Xbox360 gamepad. Via the <code class="option">--square-axis</code> option you can work around this issue and diagonals will be reported as (1,1).</p>
-            </dd>
-
-            <dt><span class="term"><code class="option">--four-way-restrictor</code></span></dt>
-
-            <dd>
-              <p>The <code class="option">--four-way-restrictor</code> option allows to limit the movement on both analogsticks to only four directions (up, down, left, right), the diagonals (up/left, up/right, down/left, down/right) are filtered out from the output. This option is useful for games such as Tetris, that don't need diagonals and where you don't want to accidently trigger the down-move while trying to do a left/right move.</p>
-            </dd>
-
-            <dt><span class="term"><code class="option">--dpad-rotation</code> <em class="replaceable"><code>DEGREE</code></em></span></dt>
-
-            <dd>
-              <p>Allows you to rotate the dpad. <em class="replaceable"><code>DEGREE</code></em> must be a multiple of 45. This can be useful in isometric games where the playfield itself is rotated, thus a:</p>
-              <pre class="programlisting">
-xboxdrv --dpad-rotation 45
-</pre>
-
-              <p>Will give you controls that are relative to your character instead of your viewpoint.</p>
-            </dd>
-
-            <dt><span class="term"><code class="option">--axis-sensitivty <em class="replaceable"><code>AXIS=SENSITIVITY</code></em></code>,...</span></dt>
-
-            <dd>
-              <p>The sensitive of an axis can be adjusted via --axis-sensitivty:</p>
-              <pre class="programlisting">
-$ xboxdrv --axis-sensitivty X1=-1.0,Y1=-1.0
-</pre>
-
-              <p>A value of 0 gives you the default linear sensitivity, values larger then 0 will give you higher sensitivity, while values smaller then 0 will give you lower sensitivity. Sensitivity values in the range of [-1, 1] will generally give good results, everything beyond that won't be of much practical use.</p>
-
-              <p>Sensitivity works by applying:</p>
-              <pre class="programlisting">
-t = 2 ** sensitivity;
-pos = (1.0f - (1.0f - pos) ** t) ** (1 / t);
-</pre>
-
-              <p>To the value of the axis, this means that both the minimum value and the maximum value of the axis will always stay the same, just the response inbetween changes.</p>
-
-              <p>For a complete freeform way to change the axis response see the <code class="option">Response Curve Filter</code>.</p>
-            </dd>
-
-            <dt><span class="term"><code class="option">--relative-axis AXIS=NUM,...</code></span></dt>
-
-            <dd>
-              <p>The function <code class="option">--relative-axis</code> allows you to change the behaviour of an axis so that your movement of it moves its value up or down instead of applying it directly. This allows you to simulate throttle control for flightsim games.</p>
-
-              <p>Since the axis might be upside down, you might want to use the <code class="option">--axismap</code> function to reverse it.</p>
-              <pre class="programlisting">
-$ xboxdrv --relative-axis y2=64000 --axismap -y2=y2
-</pre>
-            </dd>
-
-            <dt><span class="term"><code class="option">--autofire BUTTON=FREQUENCY</code></span></dt>
-
-            <dd>
-              <p>Autofire mapping allows you to let a button automatically fire with a given frequency in miliseconds:</p>
-              <pre class="programlisting">
-$ xboxdrv --autofire A=250
-</pre>
-
-              <p>Combining <code class="option">--autofire</code> with button map allows you to have one button act as autofire while another one, emitting the same signal, acts normally.</p>
-              <pre class="programlisting">
-$ xboxdrv --autofire B=250 --buttonmap B=A
-</pre>
-            </dd>
-
-            <dt><span class="term"><code class="option">--calibration <em class="replaceable"><code>CALIBRATIONSPEC</code></em></code></span></dt>
-
-            <dd>
-              <p>If your gamepad for some reason can't reach the maximum value or isn't centered properly you can fix that via the calibration options:</p>
-              <pre class="programlisting">
-$ xboxdrv --calibration X2=-32768:0:32767
-</pre>
-
-              <p>X2 is the axis name and the three values that follow are min, center and max. Simply insert the values that jstest reports when your axis is in the respective positions.</p>
-
-              <p>You can also use the calibration option if you want to make your joystick more sensitive. A setting of:</p>
-              <pre class="programlisting">
-xboxdrv --calibration AXIS=MIN:CENTER:MAX,...
-</pre>
-
-              <p>Will cause the joystick device report maximum position when your stick is only moved half the way.</p>
-            </dd>
-
-            <dt><span class="term"><code class="option">--axis-sensitivty <em class="replaceable"><code>AXIS=SENSITIVITY</code></em></code>,...</span></dt>
-
-            <dd>
-              <p>The sensitive of an axis can be adjusted via --axis-sensitivty:</p>
-              <pre class="programlisting">
-$ xboxdrv --axis-sensitivty X1=-2.0,Y1=-2.0
-</pre>
-
-              <p>A value of 0 gives you the default linear sensitivity, values larger then 0 will give you heigher sensitivity, while values smaller then 0 will give you lower sensitivity.</p>
-
-              <p>Sensitivity works by applying:</p>
-              <pre class="programlisting">
-t = 2 ** sensitivity;
-pos = (1.0f - (1.0f - pos) ** t) ** (1 / t);
-</pre>
-
-              <p>To the value of the axis, thus both the min and max position will always stay the same, only the values inbetween change.</p>
             </dd>
           </dl>
         </div>
@@ -1226,120 +1452,187 @@ xboxdrv \
           </dl>
         </div>
       </div>
+
+      <div class="refsect2" title="Modifier">
+        <a id="modifier" name="modifier"></a>
+
+        <h3>Modifier</h3>
+
+        <p>While button and axis filter only apply to a single axis or button at a time, modifiers apply to the complete controller at once and can thus be used to perform modifications that require input from multiple axis or buttons. Most of the modifiers explained below replicate functionality provided by regular options, but allow more fine tuning, such as limiting the effects to a single analog stick instead of just applyig it to all. Note that modifiers are applied one after the other, so order is important.</p>
+
+        <div class="variablelist">
+          <dl>
+            <dt><span class="term"><code class="option">dpad-rotate</code>=<em class="replaceable"><code>DEGREE</code></em></span></dt>
+
+            <dd>
+              <p>See <code class="option">--dpad-rotation</code>.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">4wayrest</code>, <code class="option">four-way-restrictor</code>=<em class="replaceable"><code>XAXIS</code></em>:<em class="replaceable"><code>YAXIS</code></em></span></dt>
+
+            <dd>
+              <p>See <code class="option">--four-way-restrictor</code>.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">square</code>, <code class="option">square-axis</code>=<em class="replaceable"><code>XAXIS</code></em>:<em class="replaceable"><code>YAXIS</code></em></span></dt>
+
+            <dd>
+              <p>See <code class="option">--square-axis</code>.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">rotate</code>=<em class="replaceable"><code>XAXIS</code></em>:<em class="replaceable"><code>YAXIS</code></em>:<em class="replaceable"><code>DEGREE</code></em>:<em class="replaceable"><code>MIRROR</code></em></span></dt>
+
+            <dd>
+              <p>Rotates the stick given by <em class="replaceable"><code>XAXIS</code></em> and <em class="replaceable"><code>YAXIS</code></em> by <em class="replaceable"><code>DEGREE</code></em> and optionally <em class="replaceable"><code>MIRRORS</code></em> it.</p>
+            </dd>
+          </dl>
+        </div>
+      </div>
     </div>
 
     <div class="refsect1" title="Running xboxdrv">
-      <a id="id2982714" name="id2982714"></a>
+      <a id="id3073177" name="id3073177"></a>
 
       <h2>Running xboxdrv</h2>
 
-      <p>Plug in your Xbox360 gamepad and then unload the xpad driver via:</p>
-      <pre class="programlisting">
+      <div class="refsect2" title="Using a single controller">
+        <a id="id3073183" name="id3073183"></a>
+
+        <h3>Using a single controller</h3>
+
+        <p>Plug in your Xbox360 gamepad and then unload the xpad driver via:</p>
+        <pre class="programlisting">
 $ rmmod xpad
 </pre>
 
-      <p>If you want to permanently unload it add the following line to <code class="filename">/etc/modprobe.d/blacklist.conf</code>:</p>
-      <pre class="programlisting">
+        <p>If you want to permanently unload it add the following line to <code class="filename">/etc/modprobe.d/blacklist.conf</code>:</p>
+        <pre class="programlisting">
 blacklist xpad
 </pre>
 
-      <p>Next you have to load the uinput kernel module which allows userspace programms to create input devices and the joydev module which gives you the <code class="filename">/dev/input/jsX</code> device:</p>
-      <pre class="programlisting">
+        <p>Next you have to load the uinput kernel module which allows userspace programms to create virtual input devices and the joydev module handles the <code class="filename">/dev/input/jsX</code> devices:</p>
+        <pre class="programlisting">
 $ modprobe uinput
 $ modprobe joydev
 </pre>
 
-      <p>You also have to make sure that you have access rights to /dev/input/uinput, either add yourself to the appropriate group, adjust the permissions or run xboxdrv as root.</p>
+        <p>You also have to make sure that you have access rights to /dev/input/uinput, either add yourself to the appropriate group, adjust the permissions or run xboxdrv as root.</p>
 
-      <p>Once ensured that xpad is out of the way and everything is in place start the userspace driver with:</p>
-      <pre class="programlisting">
+        <p>Once ensured that xpad is out of the way and everything is in place start the userspace driver with:</p>
+        <pre class="programlisting">
 $ xboxdrv
 </pre>
 
-      <p>Or in case you don't have the neccesary rights (being in group root should often be enough) start the driver as root via:</p>
-      <pre class="programlisting">
+        <p>Or in case you don't have the neccesary rights (being in group root should often be enough) start the driver as root via:</p>
+        <pre class="programlisting">
 $ sudo xboxdrv
 </pre>
 
-      <p>This will create /dev/input/js0 and allow you to access the gamepad from any game. To exit the driver press Ctrl-c. If you have multiple wired controllers you need to start multiple instances of the xboxdrv driver and append the -i argument like this:</p>
-      <pre class="programlisting">
+        <p>This will create /dev/input/js0 and allow you to access the gamepad from any game. To exit the driver press Ctrl-c.</p>
+
+        <p>By default xboxdrv will echo all controller events to the console, this makes it easy to see if things are properly working, but will eat a lot of CPU, thus it is strongly recomment to disabled that output with the <code class="option">--silent</code> option.</p>
+
+        <p>The trigger buttons are handled by xboxdrv normally as axis, giving you analog feedback, while this reproduces the Xbox360 controller the most accurately, it will confuse many and only be useful in a few, racing games mainly. So in the majority of cases it is recomment to change the triggers to regular buttons via:</p>
+        <pre class="programlisting">
+$ xboxdrv --trigger-as-button
+</pre>
+      </div>
+
+      <div class="refsect2" title="Using multiple controller">
+        <a id="id3073291" name="id3073291"></a>
+
+        <h3>Using multiple controller</h3>
+
+        <p>If you want to use multiple wired controllers you need to start multiple instances of the xboxdrv driver and append the -i argument to select the appropriate controller like this:</p>
+        <pre class="programlisting">
 $ xboxdrv -i 1
 </pre>
 
-      <p>If you have multiple wireless controller you need to start multiple instances of the xboxdrv driver and append the --wid argument like this:</p>
-      <pre class="programlisting">
+        <p>If you have multiple wireless controller you need to start multiple instances of the xboxdrv driver and append the <code class="option">--wid</code> option like this:</p>
+        <pre class="programlisting">
 $ xboxdrv --wid 1
 </pre>
 
-      <p>You have to sync the wireless controller as usual.</p>
+        <p>You have to sync the wireless controller as usual.</p>
 
-      <p>This will then use the second detected controller, see to see which id your controller has:</p>
-      <pre class="programlisting">
+        <p>To see a list of all the controllers that xboxdrv detects being connected to your system use:</p>
+        <pre class="programlisting">
 $ xboxdrv --list-controller
 </pre>
+      </div>
 
-      <p>When everything works as expected it is recomment that you run xboxdrv with the silent option:</p>
-      <pre class="programlisting">
-$ xboxdrv --silent
+      <div class="refsect2" title="Hotplugging and Xboxdrv Daemon">
+        <a id="id3073338" name="id3073338"></a>
+
+        <h3>Hotplugging and Xboxdrv Daemon</h3>
+
+        <p>To allow hotplugging of gamepads xboxdrv has to be run in daemon mode. This is accomplished with the <code class="option">--daemon</code> option:</p>
+        <pre class="programlisting">
+$ xboxdrv --daemon
 </pre>
 
-      <p>This will suppress the logging of events to the console and will gurantee that no uneccesarry CPU cycles are wasted.</p>
+        <p>When launched in daemon mode xboxdrv will listen to udev events and thus be notified whenever a new USB device gets plugged into the computer. It will then match that device against its list of supported devices and launch a separate thread to handle that gamepad.</p>
 
-      <p>If you want to abuse the led or rumble of the gamepad for notification in scripts you can do see via:</p>
-      <pre class="programlisting">
-$ xboxdrv --led 10 --rumble 30,30 --quit
+        <p>Note that xboxdrv will not allow an arbitarily large number of controllers to be used in that mode, it can only handle as many controllers as you have allocated controller slots at startup. New slots can be allocated with <code class="option">--next-controller</code> and by default one slot is always allocated, thus to support three controller you would run it with:</p>
+        <pre class="programlisting">
+$ xboxdrv --daemon --next-controller --next-controller
 </pre>
 
-      <p>This will cause a mild rumble and the led to rotate, you can stop it again via, which also happens to be the command you can use to stop your Xbox360 controller from blinking:</p>
-      <pre class="programlisting">
-$ xboxdrv ---led 0 --rumble 0,0 --quit
-</pre>
+        <p>Each controller slot can be configured individually and you can limit which gamepad gets assigned to which slot with the <code class="option">--match</code> option.</p>
 
-      <p>For rumble to work make sure you have connected the controller to a USB port that has enough power, an unpowered USB hub might not work.</p>
+        <p>Note that xboxdrv will create the virtual uinput devices on startup, not when a gamepad gets plugged in, this allows to plug in gamepads even after a game or an application like XBMC has already been launched and still have it all function properly.</p>
+
+        <p>In daemon mode xboxdrv can be detached from the current shell via <code class="option">--detach</code>, to get a handle on it to kill it you can write its pid via the <code class="option">--pid-file</code>:</p>
+        <pre class="programlisting">
+$ sudo xboxdrv --daemon --detach --pid-file /var/run/xboxdrv.pid
+</pre>
+      </div>
     </div>
 
     <div class="refsect1" title="Testing">
-      <a id="id2982875" name="id2982875"></a>
+      <a id="id3020331" name="id3020331"></a>
 
       <h2>Testing</h2>
 
       <p>Knowing how to test a xboxdrv configuration is absolutely crucial in understanding what is wrong in a given setup. Testing the configuration in a game is most often not helpful, since you won't see the true cause beyond endless layers of abstraction between you and the actual events. Luckily there are a few tools you can use to test, all of these are command line based and it is recomment that you get familar with them when you want to do any more complex configuration.</p>
 
       <div class="refsect2" title="evtest">
-        <a id="id2982892" name="id2982892"></a>
+        <a id="id3020349" name="id3020349"></a>
 
         <h3>evtest</h3>
 
         <p>evtest lets you read raw input events from <code class="filename">/dev/input/eventX</code>. The event devices are the very core of all event handling, things like the joystick devices are derived from the event device, so if you want to fix some issue on the joystick device, you have to fix the event device.</p>
 
-        <p>evtest is available in the tools/ directory, you might also find it in your distribution.</p>
+        <p>evtest is available in the tools/ directory or as part of your distribution in the package <code class="filename">evtest</code>. your distribution.</p>
       </div>
 
       <div class="refsect2" title="jstest">
-        <a id="id2982918" name="id2982918"></a>
+        <a id="id3020381" name="id3020381"></a>
 
         <h3>jstest</h3>
 
         <p>jstest lets you read the output out of a joystick event device (/dev/input/js0).</p>
 
-        <p>jstest is available in the tools/ directory or as part of your distribution.</p>
+        <p>jstest is available in the tools/ directory or as part of your distribution <code class="filename">joystick</code>.</p>
       </div>
 
       <div class="refsect2" title="sdl-jstest">
-        <a id="id2982934" name="id2982934"></a>
+        <a id="id3020403" name="id3020403"></a>
 
         <h3>sdl-jstest</h3>
 
         <p>sdl-jstest lets you see events as games using SDL see them. This is very important when you want to set and test the SDL_LINUX_JOYSTICK environment variables.</p>
 
-        <p>Currently available via:</p>
+        <p>It is currently available via:</p>
         <pre class="programlisting">
 $ svn co svn://svn.berlios.de/windstille/trunk/sdl-jstest
 </pre>
+
+        <p>Or from the same Ubuntu PPA that also contains xboxdrv in the package <code class="filename">sdl-jstest</code>.</p>
       </div>
 
       <div class="refsect2" title="xev">
-        <a id="id2982957" name="id2982957"></a>
+        <a id="id3073668" name="id3073668"></a>
 
         <h3>xev</h3>
 
@@ -1351,16 +1644,18 @@ $ apt-get install x11-utils
 </pre>
       </div>
 
-      <div class="refsect2" title="jscalc">
-        <a id="id2982981" name="id2982981"></a>
+      <div class="refsect2" title="jscalc and jscalibrator">
+        <a id="id3073691" name="id3073691"></a>
 
-        <h3>jscalc</h3>
+        <h3>jscalc and jscalibrator</h3>
 
-        <p>Do not use this tool, for current day joysticks it doesn't do anything useful, so don't touch it, it won't fix your problems.</p>
+        <p>Both of these tools lets you calibrate your gamepad, however with pretty much all current gamepads this is no longer needed and actually harmful as it might overwrite a perfectly good working configuration with a broken one (unplugging the gamepad or a reboot will fix that). So avoid them unless you clearly understand the issues of using them.</p>
+
+        <p>If your gamepad produces incorrect data and you do want to calibrate it you might want to check out the option <code class="option">--calibration</code>, which lets you tweak the way xboxdrv interprets your gamepad data.</p>
       </div>
 
       <div class="refsect2" title="mouse">
-        <a id="id2982993" name="id2982993"></a>
+        <a id="id3073718" name="id3073718"></a>
 
         <h3>mouse</h3>
 
@@ -1368,7 +1663,7 @@ $ apt-get install x11-utils
       </div>
 
       <div class="refsect2" title="Note">
-        <a id="id2983004" name="id2983004"></a>
+        <a id="id3073729" name="id3073729"></a>
 
         <h3>Note</h3>
 
@@ -1376,17 +1671,44 @@ $ apt-get install x11-utils
       </div>
     </div>
 
-    <div class="refsect1" title="EXAMPLES">
-      <a id="id2983018" name="id2983018"></a>
+    <div class="refsect1" title="Examples">
+      <a id="id3073744" name="id3073744"></a>
 
-      <h2>EXAMPLES</h2>
+      <h2>Examples</h2>
+
+      <div class="refsect2" title="Turning triggers into buttons">
+        <a id="id3073749" name="id3073749"></a>
+
+        <h3>Turning triggers into buttons</h3>
+
+        <p>By default xboxdrv will handle the trigger as analog axis, not buttons, while this is beneficial for racing games, it will confuse many other games, thus xboxdrv provides an easy way to change the handling into buttons via the <code class="option">--trigger-as-button</code> option:</p>
+        <pre class="programlisting">
+$ xboxdrv --trigger-as-button
+</pre>
+      </div>
+
+      <div class="refsect2" title="Configure a deadzone">
+        <a id="id3073772" name="id3073772"></a>
+
+        <h3>Configure a deadzone</h3>
+
+        <p>Many gamepads don't center exactly at zero, but at random values around it. This 'noise' can confuse some games and is thus be best filtered out, this can be accomplished with:</p>
+        <pre class="programlisting">
+$ xboxdrv --deadzone 25%
+</pre>
+
+        <p>The percentance is the amount of noise that will get filtered out, you can also give raw device values if you leave out the % sign. If you want to have a deadzone only on a specific axis you have to use axis filter:</p>
+        <pre class="programlisting">
+$ xboxdrv --buttonmap X1^deadzone:15000
+</pre>
+      </div>
 
       <div class="refsect2" title="Keyboard Emulation">
-        <a id="id2983024" name="id2983024"></a>
+        <a id="id3073806" name="id3073806"></a>
 
         <h3>Keyboard Emulation</h3>
 
-        <p>The following configuration works for games that are played with keyboard, like Flash games or games that don't support a joystick. You might have to adjust the keybindings to fit the game:</p>
+        <p>The following configuration will cause xboxdrv to emulate a keyboard, which can be useful for games that are played with keyboard, like Flash games or games that don't support a joystick. Since different games use different keyboard keys you might have to adjust the keybindings to fit the game:</p>
         <pre class="programlisting">
 $ xboxdrv \
   --ui-clear \
@@ -1395,34 +1717,24 @@ $ xboxdrv \
 </pre>
       </div>
 
-      <div class="refsect2" title="Prince of Persia or Tomb Raider Anniversary in Wine">
-        <a id="id2983041" name="id2983041"></a>
+      <div class="refsect2" title="Fighting games:">
+        <a id="id3073825" name="id3073825"></a>
 
-        <h3>Prince of Persia or Tomb Raider Anniversary in Wine</h3>
+        <h3>Fighting games:</h3>
 
-        <p>Start <span class="command"><strong>xboxdrv</strong></span> with:</p>
+        <p>In this configuration the left and right trigger get turned into digital buttons. All axis except the dpad are ignored. RB and RT are mapped to act as if buttons 1,2 and 3 are pressed simultaniously which is useful for some special attacks. Instead of using the native button names, the 1,2,3,... aliases are used, which makes things a little easier to read:</p>
         <pre class="programlisting">
-$ xboxdrv --trigger-as-button -s 
-</pre>
-
-        <p>The triggers are not regonized in these games when they are analog, so we have to handle them as buttons.</p>
-      </div>
-
-      <div class="refsect2" title="Fighting games with Datel Arcade Pro Joystick:">
-        <a id="id2983072" name="id2983072"></a>
-
-        <h3>Fighting games with Datel Arcade Pro Joystick:</h3>
-
-        <p>The left and right trigger get turned into digital buttons. All axis except the dpad are ignored. RB and RT are mapped to act as if buttons 1,2 and 3 are pressed simultaniously (useful for some special attacks). Instead of using the native button names, the 1,2,3,... aliases are used, which makes things easier to edit:</p>
-        <pre class="programlisting">
-$ xboxdrv --dpad-only \
-  --trigger-as-button  \
-  --buttonmap lb=1,x=2,y=3,lt=4,a=5,b=6,rb=1,rb=2,rb=3,rt=4,rt=5,rt=6
+$ xboxdrv \
+  --dpad-only \
+  --trigger-as-button \
+  --buttonmap lb=1,x=2,y=3,lt=4,a=5,b=6 \
+  --buttonmap rb=1,rb=2,rb=3 \
+  --buttonmap rt=4,rt=5,rt=6
 </pre>
       </div>
 
       <div class="refsect2" title="CH Flightstick emulation in Dosbox:">
-        <a id="id2983093" name="id2983093"></a>
+        <a id="id3073850" name="id3073850"></a>
 
         <h3>CH Flightstick emulation in Dosbox:</h3>
 
@@ -1439,11 +1751,42 @@ $ xboxdrv -s \
   --relative-axis y2=64000 --axismap -y2=x2,x2=y2
 </pre>
 
-        <p>Your right analog stick will act as trottle control, the trigger as rudder.</p>
+        <p>Your right analog stick will act as trottle control, the trigger as rudder. Using <code class="option">--modifier</code> to install a four-way restrictor might also be worth a consideration to not accidently touch the throttle when the rudder is moved.</p>
+      </div>
+
+      <div class="refsect2" title="Using mouse emulation and joystick at the same time">
+        <a id="id3073896" name="id3073896"></a>
+
+        <h3>Using mouse emulation and joystick at the same time</h3>
+
+        <p>To use mouse emulation and joystick at the same time you have to register two configuration with xboxdrv, this works via:</p>
+        <pre class="programlisting">
+$ xboxdrv --next-config --mouse
+</pre>
+
+        <p>The <code class="option">--next-config</code> option will open up a second configuration and all configuration options on the right side of it will go there, while everything on the left side of it will go into the first configuration. Toggling between the configurations works with the guide button, you can have as many configuratios as you want.</p>
+      </div>
+
+      <div class="refsect2" title="Mapping every button multiple">
+        <a id="id3073927" name="id3073927"></a>
+
+        <h3>Mapping every button multiple</h3>
+
+        <p>Some games might require more buttons then your gamepad has, in those situation it can be useful to map a button twice by using shifted buttons:</p>
+        <pre class="programlisting">
+$ xboxdrv \
+  --ui-clear \
+  --ui-axismap X1=ABS_X,Y1=ABS_Y \
+  --ui-buttonmap a=JS_0,b=JS_1,x=JS_2,y=JS_3 \
+  --ui-buttonmap lb+a=JS_4,lb+b=JS_5,lb+x=JS_6,lb+y=JS_7 \
+  --ui-buttonmap rb+a=JS_8,rb+b=JS_9,rb+x=JS_10,rb+y=JS_11
+</pre>
+
+        <p>Here all face buttons are get mapped three times, once when pressed normally, once when pressed while LB is held down and once when RB is held down, thus given you for the six buttons 12 virtual ones.</p>
       </div>
 
       <div class="refsect2" title="Sauerbraten">
-        <a id="id2983132" name="id2983132"></a>
+        <a id="id3073948" name="id3073948"></a>
 
         <h3>Sauerbraten</h3>
 
@@ -1459,7 +1802,7 @@ $ xboxdrv \
       </div>
 
       <div class="refsect2" title="Warsow">
-        <a id="id2983150" name="id2983150"></a>
+        <a id="id3073974" name="id3073974"></a>
 
         <h3>Warsow</h3>
 
@@ -1475,23 +1818,32 @@ $ xboxdrv \
   -s --deadzone 6000 --dpad-as-button --trigger-as-button
 </pre>
       </div>
+    </div>
 
-      <div class="refsect2" title="Using mouse emulation and joystick at the same time">
-        <a id="id2983174" name="id2983174"></a>
+    <div class="refsect1" title="Writing Start-Up Scripts for Games">
+      <a id="wrapperscripts" name="wrapperscripts"></a>
 
-        <h3>Using mouse emulation and joystick at the same time</h3>
+      <h2>Writing Start-Up Scripts for Games</h2>
 
-        <p>To use mouse emulation and joystick at the same time you have to register two uinput configuration with xboxdrv, this works via:</p>
-        <pre class="programlisting">
-$ xboxdrv --ui-new --mouse
+      <p>When you want full game specific configurability and automatic launching of xboxdrv, it is easiest to write little startup scripts for your games that will launch xboxdrv, launch your game and then when the game is finished tear down xboxdrv:</p>
+      <pre class="programlisting">
+#!/bin/sh
+
+exec xboxdrv \
+  --trigger-as-button -s \
+  -- \
+  your_favorite_game
+
+# EOF #
 </pre>
 
-        <p>The <code class="option">--ui-new</code> option will open up a second configuration and all configuration options on the right side of it will go there, while everything on the left side of it will go into the first configuration. Toggling between the configurations works with the guide button, you can have as many configuratios as you want.</p>
-      </div>
+      <p>Here <code class="filename">your_favorite_game</code> is the executable of your game and is passed to xboxdrv as last argument. This will cause xboxdrv to start the game and keep running as long as the game is running, when the game is done, xboxdrv will quit automatically.</p>
+
+      <p>If you want to pass parameters to the game you have to add a <code class="option">--</code> separator, as otherwise your options to the game would be eaten up by xboxdrv.</p>
     </div>
 
     <div class="refsect1" title="SDL Notes">
-      <a id="id2983214" name="id2983214"></a>
+      <a id="id3074057" name="id3074057"></a>
 
       <h2>SDL Notes</h2>
 
@@ -1537,21 +1889,21 @@ $ export SDL_JOYSTICK_DEVICE
     </div>
 
     <div class="refsect1" title="Troubleshooting">
-      <a id="id2983325" name="id2983325"></a>
+      <a id="id3074167" name="id3074167"></a>
 
       <h2>Troubleshooting</h2>
 
       <div class="refsect2" title="&quot;No Xbox or Xbox360 controller found&quot;">
-        <a id="id2983331" name="id2983331"></a>
+        <a id="id3074173" name="id3074173"></a>
 
         <h3>"No Xbox or Xbox360 controller found"</h3>
 
-        <p>This means that either your controller isn't plugged in or not recognized by the driver. To fix this you need to know the idVendor and the idProduct numbers, which you can find out via:</p>
+        <p>This means that either your controller isn't plugged in or is not recognized by the driver. To fix this you need to know the idVendor and the idProduct numbers, which you can find out via:</p>
         <pre class="programlisting">
 $ lsusb -v
 </pre>
 
-        <p>Once done you can try to add them to this array in <code class="filename">xpad_device.cpp</code>:</p>
+        <p>Once done you can try to add them to this array in <code class="filename">src/xpad_device.cpp</code>:</p>
         <pre class="programlisting">
 XPadDevice xpad_devices[] = { ... }
 </pre>
@@ -1562,7 +1914,7 @@ XPadDevice xpad_devices[] = { ... }
       </div>
 
       <div class="refsect2" title="&quot;Unknown data: bytes: 3 Data: ...&quot;">
-        <a id="id2983382" name="id2983382"></a>
+        <a id="id3074224" name="id3074224"></a>
 
         <h3>"Unknown data: bytes: 3 Data: ..."</h3>
 
@@ -1574,21 +1926,8 @@ $ lsusb -v
         <p>Along with all the "Unknown data" lines you get.</p>
       </div>
 
-      <div class="refsect2" title="Program starts and then just does nothing">
-        <a id="id2983414" name="id2983414"></a>
-
-        <h3>Program starts and then just does nothing</h3>
-
-        <p>This is what the program is supposed to do. After you started it, it will give you basically two devices, a new /dev/input/eventX and a /dev/input/jsX. You can access and test your controller with jstest and evtest applications (available from your distribution or in the tools/ subdirectory). Or in case you want just see if your driver is working correctly you can pass the -v option:</p>
-        <pre class="programlisting">
-$ xboxdrv -v
-</pre>
-
-        <p>This will cause the driver to output all the events that it received from the controller.</p>
-      </div>
-
       <div class="refsect2" title="&quot;Error: No stuitable uinput device found&quot;">
-        <a id="id2983442" name="id2983442"></a>
+        <a id="id3074264" name="id3074264"></a>
 
         <h3>"Error: No stuitable uinput device found"</h3>
 
@@ -1601,21 +1940,20 @@ $ xboxdrv --no-uinput -v
       </div>
 
       <div class="refsect2" title="The wireless controller doesn't work">
-        <a id="id2983467" name="id2983467"></a>
+        <a id="id3074289" name="id3074289"></a>
 
         <h3>The wireless controller doesn't work</h3>
 
         <p>You have to sync the controller befor it can be used, restart of the driver isn't needed and the driver should let you now when it recieves a connection after you sync the controller.</p>
       </div>
-    </div>
 
-    <div class="refsect1" title="Keyboard Emulation">
-      <a id="keyboardemulation" name="keyboardemulation"></a>
+      <div class="refsect2" title="Keyboard Emulation">
+        <a id="keyboardemulation" name="keyboardemulation"></a>
 
-      <h2>Keyboard Emulation</h2>
+        <h3>Keyboard Emulation</h3>
 
-      <p>When you try to let xboxdrv send a keyboard events via <code class="option">--ui-buttonmap</code> or <code class="option">--ui-axismap</code> Xorg must register the device as keyboard device to work properly. This seems to work automatically when you bind more then two keyboard keys, if you bind less you need to create the file <code class="filename">/etc/hal/fdi/preprobe/xboxdrv.fdi</code> containing:</p>
-      <pre class="programlisting">
+        <p>When you try to let xboxdrv send a keyboard events via <code class="option">--ui-buttonmap</code> or <code class="option">--ui-axismap</code> Xorg must register the device as keyboard device to work properly. This seems to work automatically when you bind more then two keyboard keys, if you bind less you need to create the file <code class="filename">/etc/hal/fdi/preprobe/xboxdrv.fdi</code> containing:</p>
+        <pre class="programlisting">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;deviceinfo version="0.2"&gt;
   &lt;device&gt;
@@ -1626,18 +1964,57 @@ $ xboxdrv --no-uinput -v
 &lt;/deviceinfo&gt;
 </pre>
 
-      <p>This will tell HAL and later Xorg that xboxdrv acts as keyboard.</p>
+        <p>This will tell HAL and later Xorg that xboxdrv acts as keyboard.</p>
+      </div>
+
+      <div class="refsect2" title="Wacom issues">
+        <a id="id3074346" name="id3074346"></a>
+
+        <h3>Wacom issues</h3>
+
+        <p>In some older kernels a Wacom graphic tablet creates a joystick device, so xboxdrv or any other real joysticks ends up as <code class="filename">/dev/input/js1</code> instead of <code class="filename">/dev/input/js0</code>. In many games this causes the joystick to not function any more.</p>
+
+        <p>A temporary workaround for this is to simply delete the joystick device js0 and replace it with a symbolic link js1 via:</p>
+        <pre class="programlisting">
+$ sudo ln -sf /dev/input/js1 /dev/input/js0
+</pre>
+
+        <p>This workaround will only last till the next reboot, since the device names are dynamically created, but for the time being there doesn't seem to any other way to easily work around this issue.</p>
+
+        <p>In newer kernels this issue is fixed.</p>
+      </div>
+
+      <div class="refsect2" title="uinput issues">
+        <a id="id3074393" name="id3074393"></a>
+
+        <h3>uinput issues</h3>
+
+        <p>On Ubuntu 9.04 the permissions of the uinput device have changed to 0640, meaning only root has access to the device. To change this back so that users in the group root have access the device and in turn can run xboxdrv without sudo you have to create a file called <code class="filename">/etc/udev/rules.d/55-permissions-uinput.rules</code> with the content:</p>
+        <pre class="programlisting">
+KERNEL=="uinput", MODE="0660", GROUP="root"
+</pre>
+      </div>
+
+      <div class="refsect2" title="Wine issues">
+        <a id="id3074420" name="id3074420"></a>
+
+        <h3>Wine issues</h3>
+
+        <p>When using the Xbox360 gamepad in Wine it is not specially handled as Xbox360 gamepad, but as generic DirectInput gamepad. This means games will not display the proper button labels, but just numbers (i.e. 'Btn1' instead of 'A' for example). Aside from that it should work fine.</p>
+
+        <p>XInput support (the Microsoft DirectInput replacment, not the Xorg xinput) is as of January 2011 not implemented in Wine, so games that require XInput and don't have an DirectInput fallback will not work with a Xbox360 controller, unofficial patches however do exist.</p>
+      </div>
     </div>
 
-    <div class="refsect1" title="Xorg Trouble">
-      <a id="id2983526" name="id2983526"></a>
+    <div class="refsect1" title="Xorg issues">
+      <a id="id3074450" name="id3074450"></a>
 
-      <h2>Xorg Trouble</h2>
+      <h2>Xorg issues</h2>
 
       <p>If you start xboxdrv and instead of having a fully working joystick, you end up controlling the mouse that might be due to recent changes in Xorg and its device hotplug handling. There are four workarounds, the one that involves editing <code class="filename">/etc/hal/fdi/policy/preferences.fdi</code> is the recommont one.</p>
 
       <div class="refsect2" title="Temporary workaround using hal-device">
-        <a id="id2983544" name="id2983544"></a>
+        <a id="id3074469" name="id3074469"></a>
 
         <h3>Temporary workaround using hal-device</h3>
 
@@ -1653,7 +2030,7 @@ $ hal-device -r $DEVICEID
       </div>
 
       <div class="refsect2" title="Temporary workaround using xinput">
-        <a id="id2983571" name="id2983571"></a>
+        <a id="id3074496" name="id3074496"></a>
 
         <h3>Temporary workaround using xinput</h3>
 
@@ -1665,7 +2042,7 @@ $ xinput set-int-prop $DEVICEID 'Device Enabled' 32 0
       </div>
 
       <div class="refsect2" title="Permanent workaround using .fdi files">
-        <a id="id2983589" name="id2983589"></a>
+        <a id="id3074514" name="id3074514"></a>
 
         <h3>Permanent workaround using .fdi files</h3>
 
@@ -1684,7 +2061,7 @@ $ xinput set-int-prop $DEVICEID 'Device Enabled' 32 0
       </div>
 
       <div class="refsect2" title="Permanent workaround by disabling device auto detection">
-        <a id="id2983619" name="id2983619"></a>
+        <a id="id3074546" name="id3074546"></a>
 
         <h3>Permanent workaround by disabling device auto detection</h3>
 
@@ -1699,48 +2076,8 @@ EndSection
       </div>
     </div>
 
-    <div class="refsect1" title="Wacom Trouble">
-      <a id="id2983659" name="id2983659"></a>
-
-      <h2>Wacom Trouble</h2>
-
-      <p>In recent kernels a Wacom graphic tablet creates a joystick device, so xboxdrv or any other real joysticks ends up as <code class="filename">/dev/input/js1</code> instead of <code class="filename">/dev/input/js0</code>. In many games this causes the joystick to not function any more.</p>
-
-      <p>A temporary workaround for this is to simply delete the joystick device js0 and replace it with a symbolic link js1 via:</p>
-      <pre class="programlisting">
-$ sudo ln -sf /dev/input/js1 /dev/input/js0
-</pre>
-
-      <p>This workaround will only last till the next reboot, since the device names are dynamically created, but for the time being there doesn't seem to any other way to easily work around this issue.</p>
-    </div>
-
-    <div class="refsect1" title="uinput Trouble">
-      <a id="id2983701" name="id2983701"></a>
-
-      <h2>uinput Trouble</h2>
-
-      <p>On Ubuntu 9.04 the permissions of the uinput device have changed to 0640, meaning only root has access to the device. To change this back so that users in the group root have access the device and in turn can run xboxdrv without sudo you have to create a file called:</p>
-
-      <p><code class="filename">/etc/udev/rules.d/55-permissions-uinput.rules</code></p>
-
-      <p>With the content:</p>
-      <pre class="programlisting">
-KERNEL=="uinput", MODE="0660", GROUP="root"
-</pre>
-    </div>
-
-    <div class="refsect1" title="Wine Trouble">
-      <a id="id2983735" name="id2983735"></a>
-
-      <h2>Wine Trouble</h2>
-
-      <p>When using the Xbox360 gamepad in Wine it is not specially handled as Xbox360 gamepad, this means games will not display the proper button labels, but just numbers (i.e. 'Btn1' instead of 'A' for example). Aside from that it should work fine.</p>
-
-      <p>XInput support (the DirectInput replacment, not the Xorg xinput) is as of August 2010 not implemented in Wine, so games that require XInput and don't have an DirectInput fallback will not work with a Xbox360 controller, unofficial patches however do exist.</p>
-    </div>
-
     <div class="refsect1" title="Force Feedback Programming">
-      <a id="id2983757" name="id2983757"></a>
+      <a id="id3074586" name="id3074586"></a>
 
       <h2>Force Feedback Programming</h2>
 
@@ -1774,58 +2111,49 @@ KERNEL=="uinput", MODE="0660", GROUP="root"
 
       <p><span class="command"><strong>fftest</strong></span> is an application you can use to test the force feedback interface.</p>
 
-      <p>Force feedback is disabed by default since it seems to causes trouble in certain application, namely "Tomb Raider: Legend" when run in Wine it crashes at startup when rumble is enabled, while it works perfectly normal when rumble is disabled.</p>
-
-      <p>"Tomb Raider: Anniversary" running in Wine seems to work together with xboxdrv and rumble, but hasn't been intensivly tested.</p>
-    </div>
-
-    <div class="refsect1" title="Writing Start-Up Scripts for Games">
-      <a id="id2983834" name="id2983834"></a>
-
-      <h2>Writing Start-Up Scripts for Games</h2>
-
-      <p>When you want configurability and automatic launching, it is recomment that you write little startup scripts for your games, such as this:</p>
-      <pre class="programlisting">
-#!/bin/sh
-
-# Start xboxdrv and remember its PID in the variable XBOXPID
-xboxdrv --trigger-as-button -s &amp;amp;
-XBOXPID=$!
-
-# Give xboxdrv a second to startup and create the device
-sleep 1
-
-# Launch your favorite game
-your_favorite_game
-
-# Kill xboxdrv and wait for it to finish
-kill $XBOXPID
-wait $XBOXPID
-
-# EOF #
-</pre>
-
-      <p>That way you can individually configure every game and not have to worry about launching xboxdrv manually.</p>
+      <p>Force feedback is disabed by default since it causes trouble in certain application. "Tomb Raider: Legend" for example when run in Wine crashes at startup when rumble is enabled, while it works perfectly normal when rumble is disabled.</p>
     </div>
 
     <div class="refsect1" title="Bugs">
-      <a id="id2983863" name="id2983863"></a>
+      <a id="id3074658" name="id3074658"></a>
 
       <h2>Bugs</h2>
 
-      <p>X11 keysyms might not work correctly in <code class="option">--ui-buttonmap a=XK_Foobar</code> when Foobar is mapped to multiple keycodes in the keymap.</p>
+      <div class="refsect2" title="X11 keysym issues">
+        <a id="id3074663" name="id3074663"></a>
 
-      <p>Workaround: Use <span class="keysym">KEY_</span> instead or cleanup your keymap</p>
+        <h3>X11 keysym issues</h3>
 
-      <p>Force feedback support is brittle, if you Ctrl-c the driver in the wrong moment you will end up with a dead uninterruptable process and basically have to reboot. This looks like it might be a kernel issue and not a xboxdrv one.</p>
+        <p>X11 keysyms might not work correctly in <code class="option">--ui-buttonmap a=XK_Foobar</code> when Foobar is mapped to multiple keycodes in the keymap.</p>
 
-      <p>Workaround: Kill the app that uses xboxdrv before xboxdrv itself.</p>
+        <p>Workaround: Use <span class="keysym">KEY_</span> instead or cleanup your keymap</p>
 
-      <p>Report bugs to Ingo Ruhnke <code class="email">&lt;<a class="email" href="mailto:grumbel@gmx.de">grumbel@gmx.de</a>&gt;</code>.</p>
+        <p>Newer versions of Xorg will also do perform some auto configuration that might lead to your keymap being switched whenever a new keyboard is detected, in cases of custom Xmodmaps this might confuse xboxdrv and make the XK_ style names unusable. No workaround for that is known right now.</p>
+      </div>
+
+      <div class="refsect2" title="Non-interruptable processes due to force feedback">
+        <a id="id3074694" name="id3074694"></a>
+
+        <h3>Non-interruptable processes due to force feedback</h3>
+
+        <p>Force feedback support is brittle, if you Ctrl-c the driver in the wrong moment you will end up with a dead uninterruptable process and basically have to reboot. This looks like it might be a kernel issue and not a xboxdrv one.</p>
+
+        <p>Workaround: Kill the app that uses xboxdrv before xboxdrv itself.</p>
+      </div>
+
+      <div class="refsect2" title="Bug Reports and Feature Requests">
+        <a id="id3074713" name="id3074713"></a>
+
+        <h3>Bug Reports and Feature Requests</h3>
+
+        <p>If you have bug reports or feature request report them by email to:</p>
+
+        <p>Ingo Ruhnke <code class="email">&lt;<a class="email" href="mailto:grumbel@gmx.de">grumbel@gmx.de</a>&gt;</code></p>
+      </div>
     </div>
 
     <div class="refsect1" title="Copyright">
-      <a id="id2983904" name="id2983904"></a>
+      <a id="id3074733" name="id3074733"></a>
 
       <h2>Copyright</h2>
 
@@ -1833,11 +2161,11 @@ wait $XBOXPID
     </div>
 
     <div class="refsect1" title="See also">
-      <a id="id2983927" name="id2983927"></a>
+      <a id="id3074755" name="id3074755"></a>
 
       <h2>See also</h2>
 
-      <p><span class="citerefentry"><span class="refentrytitle">xboxdrv-daemon</span>(1)</span>, <span class="citerefentry"><span class="refentrytitle">evtest</span>(1)</span>, <span class="citerefentry"><span class="refentrytitle">jstest</span>(1)</span>, <span class="citerefentry"><span class="refentrytitle">xev</span>(1)</span>, <span class="citerefentry"><span class="refentrytitle">fftest</span>(1)</span>, <span class="citerefentry"><span class="refentrytitle">lsusb</span>(1)</span></p>
+      <p><span class="citerefentry"><span class="refentrytitle">evtest</span>(1)</span>, <span class="citerefentry"><span class="refentrytitle">jstest</span>(1)</span>, <span class="citerefentry"><span class="refentrytitle">jstest-gtk</span>(1)</span>, <span class="citerefentry"><span class="refentrytitle">xev</span>(1)</span>, <span class="citerefentry"><span class="refentrytitle">fftest</span>(1)</span>, <span class="citerefentry"><span class="refentrytitle">lsusb</span>(1)</span></p>
     </div>
   </div>
 

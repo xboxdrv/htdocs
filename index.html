@@ -89,6 +89,61 @@
 
           <article class="news">
             <header>
+              <h3>0.7.1 released</h3>
+              <time datetime="2011-01-30" pubdate="pubdate">30. Jan 2011</time>
+            </header>
+            <ul>
+              <li>added --match-group</li>
+              <li>added --on-connect and --on-disconnect to xboxdrv --daemon</li>
+              <li>added --usb-debug</li>
+              <li>added --no-extra-events</li>
+              <li>added support for Playstation button names (triangle, circle, square, cross, L1, L2, L3, R1, R2, R3)</li>
+              <li>added ability to set LED per controller slot</li>
+              <li>added [controller0/config0/modifier] style sections to the ini file</li>
+              <li>added new match rules: usbserial=SERIAL, vendor=VENDOR, product=PRODUCT and property=PROPERTY:VALUE</li>
+              <li>added some example configurations to examples/</li>
+              <li>fixed issues with older libudev versions</li>
+              <li>fixed LED not getting switched off on shutdown</li>
+              <li>fixed some missing #include directives</li>
+              <li>fixed axis inversion issue in --axismap</li>
+              <li>fixed assertion in relative axis filter</li>
+              <li>fixed --dpad-as-button</li>
+              <li>fixed --dpad-only</li>
+              <li>fixed --mimic-xpad</li>
+              <li>fixed issue with using --trigger-as-zaxis in combination with axisfilter</li>
+              <li>man-page updates and cleanup</li>
+              <li>new version of runxboxdrv</li>
+            </ul>
+          </article>
+
+          <article class="news">
+            <header>
+              <h3>0.7.0 released</h3>
+              <time datetime="2011-01-27" pubdate="pubdate">27. Jan 2011</time>
+            </header>
+            <ul>
+              <li>switched to libusb-1.0</li>
+              <li>-D, --daemon replaces xboxdrv-daemon</li>
+              <li>--daemon supports hotpluging via libudev, even in applications that don't support it themselves</li>
+              <li>cleaned up axis/button modifier some more</li>
+              <li>startup output got cleaned up</li>
+              <li>fixed double Ctrl-c issue</li>
+              <li>added --modifier MODIFIER,...</li>
+              <li>configuration toggle button now works with modifiers too</li>
+              <li>renamed --ui-new to --next-config</li>
+              <li>renamed --ui-toggle to --toggle</li>
+              <li>fixed incorrect endpoint detection for Xbox1 controller</li>
+              <li>native Playstation 3 USB controller support</li>
+              <li>added axis rotation modifier</li>
+              <li>renamed A, B, X, Y axis to BTN_A, BTN_B, BTN_X, BTN_Y to avoid confusion with X1, Y1</li>
+              <li>added --list-all, --list-key, -list-rel, ... to display all available symbolic name</li>
+              <li>changed device_id syntax from 1-BTN_A to now BTN_A@1</li>
+            </ul>
+          </article>
+
+
+          <article class="news">
+            <header>
               <h3>0.6.6 released</h3>
               <time datetime="2011-01-23" pubdate="pubdate">23. Jan 2011</time>
             </header>
@@ -115,7 +170,7 @@
             </header>
             <p>
               The <a href="#gitrepository">development version of
-              git</a> (aka the 0.7.0 release) switched
+                git</a> (aka the 0.7.0 release) switched
               to <a href="http://www.libusb.org/wiki/libusb-1.0">libusb-1.0</a>,
               as this is a rather large change, there might be new
               bugs. Testers are welcome to give it a try.
@@ -505,6 +560,8 @@
 
           <h2>How to help</h2>
           <p>
+          </p>
+          <p>
             Two things are currently not working, the headset and the
             racing wheel. With the headset it is relativly easy to
             capture and play sound, but the exact sound format is
@@ -593,9 +650,23 @@
         </section>        
 
         <section>
+          <h2>Donate</h2>
+          <p>
+            Like Xboxdrv and want to give something back? You can do so via three ways:
+          </p>
+          <ul>
+            <li><a href="https://flattr.com/thing/2423/Xbox360-Gamepad-Driver-for-Linux">Donate via Flattr</a></li>
+            <li>Donate via Paypal (see button at the top/right of the page)</li>
+            <li><a href="http://www.amazon.de/wishlist/3AXGAYERY26TF">My Amazon Wishlist (German)</a></li>
+          </ul>
+        </section>
+
+        <section>
           <h2>Source Code Download</h2>
           <ul>
-            <li><strong><a href="xboxdrv-linux-0.6.6.tar.bz2">xboxdrv-linux-0.6.6.tar.bz2</a> ← newest</strong></li>
+            <li><strong><a href="xboxdrv-linux-0.7.1.tar.bz2">xboxdrv-linux-0.7.1.tar.bz2</a> ← newest</strong></li>
+            <li><a href="xboxdrv-linux-0.7.0.tar.bz2">xboxdrv-linux-0.7.0.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.6.6.tar.bz2">xboxdrv-linux-0.6.6.tar.bz2</a></li>
             <li><a href="xboxdrv-linux-0.6.5.tar.bz2">xboxdrv-linux-0.6.5.tar.bz2</a></li>
             <li><a href="xboxdrv-linux-0.6.4.tar.bz2">xboxdrv-linux-0.6.4.tar.bz2</a></li>
             <li><a href="xboxdrv-linux-0.6.3.tar.bz2">xboxdrv-linux-0.6.3.tar.bz2</a></li>
@@ -642,15 +713,17 @@
             <li><a href="http://happypenguin.org/show?xboxdrv">Happypenguin XboxDrv Page, in case you want to leave comments</a></li>
             <li><a href="http://matt-land.com/xbcd/">Xbox 360 Gamepad Support for Windows</a></li>
             <li><a href="http://tattiebogle.net/index.php/ProjectRoot/Xbox360Controller/OsxDriver">Unofficial MacOSX Xbox360 Driver</a></li>
-            <li><a href="http://ubuntuforums.org/showthread.php?t=404577&amp;page=16">Ubuntuforums thread about Xbox360 Controller</a></li>
-            <li><a href="http://gentoo-wiki.com/HOWTO_Xbox_360_controller_on_Linux">Gentoo Howto for the XPad Kernel driver</a></li>
-            <li><a href="http://forums.gentoo.org/viewtopic-p-5061825.html">How to use xboxdrv on Gentoo</a></li>
+            <!-- <li><a href="http://ubuntuforums.org/showthread.php?t=404577&amp;page=16">Ubuntuforums thread about Xbox360 Controller</a></li> -->
+            <!-- <li><a href="http://gentoo-wiki.com/HOWTO_Xbox_360_controller_on_Linux">Gentoo Howto for the XPad Kernel driver</a></li> -->
+            <!-- <li><a href="http://forums.gentoo.org/viewtopic-p-5061825.html">How to use xboxdrv on Gentoo</a></li> -->
+            <li><a href="http://www.pabr.org/sixlinux/sixlinux.en.html">Using the PlayStation 3 controller in Bluetooth mode with Linux</a></li>
+            <li><a href="http://qtsixa.sourceforge.net/">QtSixA - The Sixaxis Joystick Manager</a></li>
           </ul>
         </section>
       </div>
 
       <footer id="footer">
-        Copyright &copy; 2008-2010 <a href="mailto:grumbel@gmx.de?subject=XboxDrv">Ingo Ruhnke
+        Copyright &copy; 2008-2011 <a href="mailto:grumbel@gmx.de?subject=XboxDrv">Ingo Ruhnke
           &lt;grumbel@gmx.de&gt;</a>
       </footer>
     </div>
