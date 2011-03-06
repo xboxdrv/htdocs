@@ -159,17 +159,38 @@ h2 {
   display: none;
 }
 
+.twocolumn { 
+  column-count: 2; 
+  column-rule-style: solid;
+  column-rule-color: rgb(240, 240, 240);
+
+  -moz-column-count: 2; 
+  -moz-column-rule-style: solid;
+  -moz-column-rule-color: rgb(240, 240, 240);
+}
+
 pre.programlisting { 
   background-color: rgb(240, 240, 240);
   padding: 0.5em;
 }
 
 #ShowOldNewsButton, #HideOldNewsButton {
+  display: block;
+  font-size: small;
+  
+  text-align: center;
+  margin-left: 1em;
+  margin-right: 1em;
+  width: 100%;
+
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;  
+
   background-color: rgb(240,240,240);
   padding: 0.25em 0.5em;
   font-weight: bold;
   text-decoration: none;
-  margin: auto;
 }
 
 #HideOldNewsButton {

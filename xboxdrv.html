@@ -43,7 +43,7 @@
     </div>
 
     <div class="refsect1" title="Description">
-      <a id="id3030500" name="id3030500"></a>
+      <a id="id3033142" name="id3033142"></a>
 
       <h2>Description</h2>
 
@@ -57,12 +57,12 @@
     </div>
 
     <div class="refsect1" title="Options">
-      <a id="id3020834" name="id3020834"></a>
+      <a id="id2993254" name="id2993254"></a>
 
       <h2>Options</h2>
 
       <div class="refsect2" title="General Options">
-        <a id="id3020840" name="id3020840"></a>
+        <a id="id2993260" name="id2993260"></a>
 
         <h3>General Options</h3>
 
@@ -103,12 +103,20 @@
             <dd>
               <p>Do not display startup text and suppress most other output.</p>
             </dd>
+
+            <dt><span class="term"><code class="option">--priority</code> <em class="replaceable"><code>PRIORITY</code></em></span></dt>
+
+            <dd>
+              <p>Possible values for <em class="replaceable"><code>PRIORITY</code></em> are "normal" and "realtime". Realtime scheduling gives the xboxdrv process heigher priority and thus allows it to function properly even when the machine is under load.</p>
+
+              <p>Note that realtime priority requires running xboxdrv as root, when running xboxdrv as user there is no way to increase the priority.</p>
+            </dd>
           </dl>
         </div>
       </div>
 
       <div class="refsect2" title="List Options">
-        <a id="id3021341" name="id3021341"></a>
+        <a id="id2993898" name="id2993898"></a>
 
         <h3>List Options</h3>
 
@@ -184,7 +192,7 @@
       </div>
 
       <div class="refsect2" title="Config File Options">
-        <a id="id3021561" name="id3021561"></a>
+        <a id="id2994325" name="id2994325"></a>
 
         <h3>Config File Options</h3>
 
@@ -266,7 +274,7 @@ xboxdrv --config first.ini --alt-config second.ini --alt-config third.ini
       </div>
 
       <div class="refsect2" title="Daemon Options">
-        <a id="id3022667" name="id3022667"></a>
+        <a id="id2994518" name="id2994518"></a>
 
         <h3>Daemon Options</h3>
 
@@ -303,12 +311,24 @@ xboxdrv --daemon \
             <dd>
               <p>Write the xboxdrv daemon process id to FILE.</p>
             </dd>
+
+            <dt><span class="term"><code class="option">--on-connect</code> <em class="replaceable"><code>EXE</code></em></span></dt>
+
+            <dd>
+              <p>Launches <em class="replaceable"><code>EXE</code></em> when a controller gets connected. As arguments "<em class="replaceable"><code>BUSDEV</code></em>:<em class="replaceable"><code>DEVNUM</code></em>", "<em class="replaceable"><code>idVendor</code></em>:<em class="replaceable"><code>idProduct</code></em>", "<em class="replaceable"><code>NAME</code></em> are provided.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">--on-disconnect</code> <em class="replaceable"><code>EXE</code></em></span></dt>
+
+            <dd>
+              <p>Launches <em class="replaceable"><code>EXE</code></em> when a controller gets disconnected. As arguments "<em class="replaceable"><code>BUSDEV</code></em>:<em class="replaceable"><code>DEVNUM</code></em>", "<em class="replaceable"><code>idVendor</code></em>:<em class="replaceable"><code>idProduct</code></em>", "<em class="replaceable"><code>NAME</code></em> are provided.</p>
+            </dd>
           </dl>
         </div>
       </div>
 
       <div class="refsect2" title="Device Options">
-        <a id="id3069915" name="id3069915"></a>
+        <a id="id3042428" name="id3042428"></a>
 
         <h3>Device Options</h3>
 
@@ -384,7 +404,7 @@ xboxdrv --daemon \
       </div>
 
       <div class="refsect2" title="Evdev Option">
-        <a id="id3070119" name="id3070119"></a>
+        <a id="id3042631" name="id3042631"></a>
 
         <h3>Evdev Option</h3>
 
@@ -447,7 +467,7 @@ ABSMAP = EVDEV_ABS [ "+", "-" ] "=" XBOXAXIS ;
       </div>
 
       <div class="refsect2" title="Status Options">
-        <a id="id3070347" name="id3070347"></a>
+        <a id="id3042860" name="id3042860"></a>
 
         <h3>Status Options</h3>
 
@@ -459,7 +479,7 @@ ABSMAP = EVDEV_ABS [ "+", "-" ] "=" XBOXAXIS ;
               <p>Set LED status. Possible values for <em class="replaceable"><code>NUM</code></em> are:</p>
 
               <div class="table">
-                <a id="id3070380" name="id3070380"></a>
+                <a id="id3042893" name="id3042893"></a>
 
                 <p class="title"><b>Table&nbsp;1.&nbsp;LED Status Codes</b></p>
 
@@ -601,7 +621,7 @@ $ xboxdrv --rumble-gain 50%
       </div>
 
       <div class="refsect2" title="Chatpad Options (experimental)">
-        <a id="id3070597" name="id3070597"></a>
+        <a id="id3043110" name="id3043110"></a>
 
         <h3>Chatpad Options (experimental)</h3>
 
@@ -633,7 +653,7 @@ $ xboxdrv --rumble-gain 50%
       </div>
 
       <div class="refsect2" title="Headset Options (experimental, Xbox360 USB only)">
-        <a id="id3070675" name="id3070675"></a>
+        <a id="id3043189" name="id3043189"></a>
 
         <h3>Headset Options (experimental, Xbox360 USB only)</h3>
 
@@ -663,7 +683,7 @@ $ xboxdrv --rumble-gain 50%
       </div>
 
       <div class="refsect2" title="Force Feedback">
-        <a id="id3070749" name="id3070749"></a>
+        <a id="id3043262" name="id3043262"></a>
 
         <h3>Force Feedback</h3>
 
@@ -697,7 +717,7 @@ $ xboxdrv --rumble-gain 50%
       </div>
 
       <div class="refsect2" title="Controller Slot Options">
-        <a id="id3070845" name="id3070845"></a>
+        <a id="id3043358" name="id3043358"></a>
 
         <h3>Controller Slot Options</h3>
 
@@ -773,7 +793,7 @@ $ xboxdrv --rumble-gain 50%
       </div>
 
       <div class="refsect2" title="Config Slot Options">
-        <a id="id3071071" name="id3071071"></a>
+        <a id="id3043589" name="id3043589"></a>
 
         <h3>Config Slot Options</h3>
 
@@ -807,14 +827,14 @@ $ xboxdrv \
             <dt><span class="term"><code class="option">--toggle</code> <em class="replaceable"><code>XBOXBTN</code></em></span></dt>
 
             <dd>
-              <p>Sets the button that will be used to toggle between different different configurations.</p>
+              <p>Sets the button that will be used to toggle between different different configurations. A value of 'void' will disable the toggle button. If no toggle button is specified, the guide button will be used to toggle between configurations.</p>
             </dd>
           </dl>
         </div>
       </div>
 
       <div class="refsect2" title="Configuration Options">
-        <a id="id3071188" name="id3071188"></a>
+        <a id="id3043709" name="id3043709"></a>
 
         <h3>Configuration Options</h3>
 
@@ -829,7 +849,7 @@ $ xboxdrv \
             <dt><span class="term"><code class="option">--timeout <em class="replaceable"><code>MSEC</code></em></code></span></dt>
 
             <dd>
-              <p>Specify the number of miliseconds that xboxdrv will wait for events from the controller before moving on and processing things like auto-fire or relative-axis. Default value is 25, smaller values will give you a higher resoultion auto fire, but will waste some more CPU.</p>
+              <p>Specify the number of miliseconds that xboxdrv will wait for events from the controller before moving on and processing things like auto-fire or relative-axis. Default value is 10, smaller values will give you a higher resoultion auto fire and relative event movement, but will waste some more CPU.</p>
             </dd>
 
             <dt><span class="term"><code class="option">-b, --buttonmap BUTTON=BUTTON,...</code></span></dt>
@@ -848,7 +868,7 @@ $ xboxdrv --buttonmap B=A,X=A,Y=A
               <p>Possible button names are (aliases are in parenthesis):</p>
 
               <div class="table">
-                <a id="id3071285" name="id3071285"></a>
+                <a id="id3043806" name="id3043806"></a>
 
                 <p class="title"><b>Table&nbsp;2.&nbsp;Button Names</b></p>
 
@@ -953,11 +973,11 @@ $ xboxdrv --axismap X2=X1,Y2=Y1,X1=X2,Y1=Y2
       </div>
 
       <div class="refsect2" title="Modifier Preset Configuration Options">
-        <a id="id3071477" name="id3071477"></a>
+        <a id="id3043998" name="id3043998"></a>
 
         <h3>Modifier Preset Configuration Options</h3>
 
-        <p>The options in this sections are sortcuts for <code class="option">--modifier</code>. Unlike <code class="option">--modifier</code> they are not order depended, but have a predefined order that is used no matter the order in which the options are given.</p>
+        <p>The options in this sections are sortcuts for <code class="option">--modifier</code> options. Unlike <code class="option">--modifier</code> they are not order depended, but have a predefined order that is used no matter the order in which the options are given.</p>
 
         <div class="variablelist">
           <dl>
@@ -1079,7 +1099,7 @@ $ xboxdrv --relative-axis y2=64000 --axismap -y2=y2
       </div>
 
       <div class="refsect2" title="Uinput Preset Configuration Options">
-        <a id="id3071856" name="id3071856"></a>
+        <a id="id3044377" name="id3044377"></a>
 
         <h3>Uinput Preset Configuration Options</h3>
 
@@ -1148,7 +1168,7 @@ $ xboxdrv \
       </div>
 
       <div class="refsect2" title="Uinput Configuration Options">
-        <a id="id3072024" name="id3072024"></a>
+        <a id="id3044545" name="id3044545"></a>
 
         <h3>Uinput Configuration Options</h3>
 
@@ -1163,19 +1183,43 @@ $ xboxdrv \
             <dt><span class="term"><code class="option">--no-extra-devices</code></span></dt>
 
             <dd>
-              <p>By default xboxdrv will allocate multiple uinput devices and sort events to each of them. Thus mouse related events like BTN_LEFT or REL_X will go to a virtual mouse device, while ABS_X events would go to a virtual joystick device. This option disables that automatism and all events will go to the same virtual device. Manual assignment to a specific device is still possible.</p>
+              <p>By default xboxdrv will allocate multiple uinput devices and sort events to each of them. Thus mouse related events like BTN_LEFT or REL_X will go to a virtual mouse device, while ABS_X events would go to a virtual joystick device and KEY_ESC would go to a virtual keyboard device.</p>
+
+              <p>This option disables that automatism and all events will go to the same virtual device.</p>
+
+              <p>Manual assignment to a specific device (i.e. KEY_ESC@keyboard, BTN_A@joystick, ...) is still possible.</p>
             </dd>
 
-            <dt><span class="term"><code class="option">--name NAME</code></span></dt>
+            <dt><span class="term"><code class="option">--no-extra-events</code></span></dt>
 
             <dd>
-              <p>Changes the descriptive name the device will have. This options acts the same as --device-name <em class="replaceable"><code>CURRENTSLOT</code></em>.auto=<em class="replaceable"><code>NAME</code></em></p>
+              <p>By default xboxdrv will allocate multiple uinput devices and sort events to each of them. Thus mouse related events like BTN_LEFT or REL_X will go to a virtual mouse device, while ABS_X events would go to a virtual joystick device and KEY_ESC would go to a virtual keyboard device.</p>
+
+              <p>To make sure sure that a mouse, keyboard or joystick device is properly detected by Xorg, the kernel or libraries such SDL xboxdrv will insert extra dummy events. For example a mouse device needs REL_X and REL_Y events to be detected as such, but a configuration that only wants to emulate the mouse buttons won't provide those, thus xboxdrv will add them automatically. The <code class="option">--no-extra-events</code> option will switch this behaviour off.</p>
             </dd>
 
-            <dt><span class="term"><code class="option">--device-name TYPE.SLOT=NAME</code></span></dt>
+            <dt><span class="term"><code class="option">--device-name NAME</code></span></dt>
+
+            <dd>
+              <p>Changes the descriptive name the device will have. This options acts the same as --device-names <em class="replaceable"><code>CURRENTSLOT</code></em>.auto=<em class="replaceable"><code>NAME</code></em></p>
+            </dd>
+
+            <dt><span class="term"><code class="option">--device-names TYPE.SLOT=NAME,...</code></span></dt>
 
             <dd>
               <p>Changes the descriptive name the device will have. <em class="replaceable"><code>TYPE</code></em> is one of <code class="constant">mouse</code>, <code class="constant">keyboard</code>, <code class="constant">joystick</code>, <code class="constant">auto</code> or a number. <em class="replaceable"><code>SLOT</code></em> is a slot number or <code class="constant">auto</code>. The <code class="constant">auto</code> name acts as wild card and matches everything.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">--device-usbid VENDOR:PRODUCT:VERSION:BUS</code></span></dt>
+
+            <dd>
+              <p>Changes the vendor, product, version and bus id that the device will have. The last two arguments are optional. This options acts the same as --device-usbids <em class="replaceable"><code>CURRENTSLOT</code></em>.auto=<em class="replaceable"><code>VENDOR:PRODUCT:VERSION:BUS</code></em></p>
+            </dd>
+
+            <dt><span class="term"><code class="option">--device-usbids TYPE.SLOT=VENDOR:PRODUCT:VERSION:BUS,...</code></span></dt>
+
+            <dd>
+              <p>Changes the vendor, product, version and bus id the device will have. <em class="replaceable"><code>TYPE</code></em> is one of <code class="constant">mouse</code>, <code class="constant">keyboard</code>, <code class="constant">joystick</code>, <code class="constant">auto</code> or a number. <em class="replaceable"><code>SLOT</code></em> is a slot number or <code class="constant">auto</code>. The <code class="constant">auto</code> name acts as wild card and matches everything.</p>
             </dd>
 
             <dt><span class="term"><code class="option">--ui-clear</code></span></dt>
@@ -1265,7 +1309,7 @@ xboxdrv -s \
   --ui-buttonmap A^toggle=JS_0
 </pre>
 
-              <h4><a id="id3072435" name="id3072435"></a>Hold Button</h4>
+              <h4><a id="id3045062" name="id3045062"></a>Hold Button</h4>
 
               <p>You can send different events depending on how long a button was pressed by:</p>
               <pre class="programlisting">
@@ -1275,7 +1319,7 @@ xboxdrv \
 
               <p>This will send JS_0 events when the button is pressed and switch to JS_1 events when the button was hold for 500 miliseconds.</p>
 
-              <h4><a id="id3072458" name="id3072458"></a>Exec Button</h4>
+              <h4><a id="id3045085" name="id3045085"></a>Exec Button</h4>
 
               <p>You can bind a button to an application, so that the application will be launched when the button was pressed:</p>
               <pre class="programlisting">
@@ -1283,7 +1327,7 @@ xboxdrv \
   --ui-buttonmap A=exec:/home/juser/local/bin/screenshot.sh
 </pre>
 
-              <h4><a id="id3072477" name="id3072477"></a>Macro Button</h4>
+              <h4><a id="id3045104" name="id3045104"></a>Macro Button</h4>
 
               <p>A button can be bound to a macros via:</p>
               <pre class="programlisting">
@@ -1468,6 +1512,18 @@ xboxdrv \
               <p>See <code class="option">--dpad-rotation</code>.</p>
             </dd>
 
+            <dt><span class="term"><code class="option">dpad-restrictor</code>=<em class="replaceable"><code>RESTRICTON</code></em></span></dt>
+
+            <dd>
+              <p>Restricts the dpad movement, values for <em class="replaceable"><code>RESTRICTON</code></em> can be:</p>
+
+              <p>x-axis: only allow movement in the X axis</p>
+
+              <p>y-axis: only allow movement in the Y axis</p>
+
+              <p>fourway: allow movement in X and Y axis, but filter out diagonals</p>
+            </dd>
+
             <dt><span class="term"><code class="option">4wayrest</code>, <code class="option">four-way-restrictor</code>=<em class="replaceable"><code>XAXIS</code></em>:<em class="replaceable"><code>YAXIS</code></em></span></dt>
 
             <dd>
@@ -1485,18 +1541,26 @@ xboxdrv \
             <dd>
               <p>Rotates the stick given by <em class="replaceable"><code>XAXIS</code></em> and <em class="replaceable"><code>YAXIS</code></em> by <em class="replaceable"><code>DEGREE</code></em> and optionally <em class="replaceable"><code>MIRRORS</code></em> it.</p>
             </dd>
+
+            <dt><span class="term"><code class="option">stat</code>, <code class="option">statistic</code></span></dt>
+
+            <dd>
+              <p>The statistic modifier doesn't actually modify anything, instead it collects statistics on the controller, such as how many times a button has been pressed. The results of the collections will be displayed on shutdown of xboxdrv.</p>
+
+              <p>Note that the stat modifier is part of the modifier stack, thus to get correct results you must make sure that it comes first in the stack when it should work on real events and not be confused by auto-fire or similar modifications.</p>
+            </dd>
           </dl>
         </div>
       </div>
     </div>
 
     <div class="refsect1" title="Running xboxdrv">
-      <a id="id3073177" name="id3073177"></a>
+      <a id="id3045869" name="id3045869"></a>
 
       <h2>Running xboxdrv</h2>
 
       <div class="refsect2" title="Using a single controller">
-        <a id="id3073183" name="id3073183"></a>
+        <a id="id3045874" name="id3045874"></a>
 
         <h3>Using a single controller</h3>
 
@@ -1539,7 +1603,7 @@ $ xboxdrv --trigger-as-button
       </div>
 
       <div class="refsect2" title="Using multiple controller">
-        <a id="id3073291" name="id3073291"></a>
+        <a id="id3045982" name="id3045982"></a>
 
         <h3>Using multiple controller</h3>
 
@@ -1562,7 +1626,7 @@ $ xboxdrv --list-controller
       </div>
 
       <div class="refsect2" title="Hotplugging and Xboxdrv Daemon">
-        <a id="id3073338" name="id3073338"></a>
+        <a id="id3046030" name="id3046030"></a>
 
         <h3>Hotplugging and Xboxdrv Daemon</h3>
 
@@ -1589,15 +1653,60 @@ $ sudo xboxdrv --daemon --detach --pid-file /var/run/xboxdrv.pid
       </div>
     </div>
 
+    <div class="refsect1" title="Xboxdrv Daemon Dbus Interface">
+      <a id="id3046115" name="id3046115"></a>
+
+      <h2>Xboxdrv Daemon Dbus Interface</h2>
+
+      <p>When Xboxdrv is run as daemon it will export some API functions via D-Bus, thus allowing to make configuration changes at runtime. The D-Bus interface can be accessed either by the numerous language bindings provided or via the generic command line tool <span class="command"><strong>dbus-send</strong></span> or by the more userfriendly <span class="command"><strong>xboxdrvctl</strong></span> tool. Examples below are given for the raw <span class="command"><strong>dbus-send</strong></span>.</p>
+
+      <p>Introspection is provided via the usual means:</p>
+      <pre class="programlisting">
+dbus-send --session --type=method_call --print-reply \
+  --dest=org.seul.Xboxdrv /org/seul/Xboxdrv org.freedesktop.DBus.Introspectable.Introspect
+
+dbus-send --session --type=method_call --print-reply \
+  --dest=org.seul.Xboxdrv /org/seul/Xboxdrv/ControllerSlots/0 org.freedesktop.DBus.Introspectable.Introspect
+
+dbus-send --session --type=method_call --print-reply \
+  --dest=org.seul.Xboxdrv /org/seul/Xboxdrv/Daemon org.freedesktop.DBus.Introspectable.Introspect
+</pre>
+
+      <p>Status information on available slots, configuration and active controllers can be obtained via:</p>
+      <pre class="programlisting">
+dbus-send \
+  --session --type=method_call --print-reply \
+  --dest=org.seul.Xboxdrv /org/seul/Xboxdrv/Daemon  org.seul.Xboxdrv.Daemon.Status
+</pre>
+
+      <p>Setting the LED on controller 0 can be done via:</p>
+      <pre class="programlisting">
+dbus-send --session --type=method_call  --print-reply \
+  --dest=org.seul.Xboxdrv  /org/seul/Xboxdrv/ControllerSlots/0  org.seul.Xboxdrv.Controller.SetLed int32:4
+</pre>
+
+      <p>Setting the rumble motors on controller 0 can be done via:</p>
+      <pre class="programlisting">
+dbus-send --session --type=method_call  --print-reply \
+  --dest=org.seul.Xboxdrv  /org/seul/Xboxdrv/ControllerSlots/0  org.seul.Xboxdrv.Controller.SetRumble int32:255 int32:255
+</pre>
+
+      <p>Setting a specific controller slot configuration, just as <code class="option">--toggle BTN</code> allows, can be done with:</p>
+      <pre class="programlisting">
+dbus-send --session --type=method_call  --print-reply \
+  --dest=org.seul.Xboxdrv  /org/seul/Xboxdrv/ControllerSlots/0  org.seul.Xboxdrv.Controller.SetConfig int32:2
+</pre>
+    </div>
+
     <div class="refsect1" title="Testing">
-      <a id="id3020331" name="id3020331"></a>
+      <a id="id2992774" name="id2992774"></a>
 
       <h2>Testing</h2>
 
       <p>Knowing how to test a xboxdrv configuration is absolutely crucial in understanding what is wrong in a given setup. Testing the configuration in a game is most often not helpful, since you won't see the true cause beyond endless layers of abstraction between you and the actual events. Luckily there are a few tools you can use to test, all of these are command line based and it is recomment that you get familar with them when you want to do any more complex configuration.</p>
 
       <div class="refsect2" title="evtest">
-        <a id="id3020349" name="id3020349"></a>
+        <a id="id2992796" name="id2992796"></a>
 
         <h3>evtest</h3>
 
@@ -1607,7 +1716,7 @@ $ sudo xboxdrv --daemon --detach --pid-file /var/run/xboxdrv.pid
       </div>
 
       <div class="refsect2" title="jstest">
-        <a id="id3020381" name="id3020381"></a>
+        <a id="id3046409" name="id3046409"></a>
 
         <h3>jstest</h3>
 
@@ -1617,7 +1726,7 @@ $ sudo xboxdrv --daemon --detach --pid-file /var/run/xboxdrv.pid
       </div>
 
       <div class="refsect2" title="sdl-jstest">
-        <a id="id3020403" name="id3020403"></a>
+        <a id="id3046430" name="id3046430"></a>
 
         <h3>sdl-jstest</h3>
 
@@ -1632,7 +1741,7 @@ $ svn co svn://svn.berlios.de/windstille/trunk/sdl-jstest
       </div>
 
       <div class="refsect2" title="xev">
-        <a id="id3073668" name="id3073668"></a>
+        <a id="id3046463" name="id3046463"></a>
 
         <h3>xev</h3>
 
@@ -1645,7 +1754,7 @@ $ apt-get install x11-utils
       </div>
 
       <div class="refsect2" title="jscalc and jscalibrator">
-        <a id="id3073691" name="id3073691"></a>
+        <a id="id3046487" name="id3046487"></a>
 
         <h3>jscalc and jscalibrator</h3>
 
@@ -1655,7 +1764,7 @@ $ apt-get install x11-utils
       </div>
 
       <div class="refsect2" title="mouse">
-        <a id="id3073718" name="id3073718"></a>
+        <a id="id3046513" name="id3046513"></a>
 
         <h3>mouse</h3>
 
@@ -1663,7 +1772,7 @@ $ apt-get install x11-utils
       </div>
 
       <div class="refsect2" title="Note">
-        <a id="id3073729" name="id3073729"></a>
+        <a id="id3046524" name="id3046524"></a>
 
         <h3>Note</h3>
 
@@ -1672,12 +1781,14 @@ $ apt-get install x11-utils
     </div>
 
     <div class="refsect1" title="Examples">
-      <a id="id3073744" name="id3073744"></a>
+      <a id="id3046539" name="id3046539"></a>
 
       <h2>Examples</h2>
 
+      <p>The configurations below are just a few random examples, further examples can be found in the <code class="filename">examples/</code> directory of the xboxdrv source tree or in <code class="filename">/usr/share/doc/xboxdrv/examples/</code>.</p>
+
       <div class="refsect2" title="Turning triggers into buttons">
-        <a id="id3073749" name="id3073749"></a>
+        <a id="id3046561" name="id3046561"></a>
 
         <h3>Turning triggers into buttons</h3>
 
@@ -1688,7 +1799,7 @@ $ xboxdrv --trigger-as-button
       </div>
 
       <div class="refsect2" title="Configure a deadzone">
-        <a id="id3073772" name="id3073772"></a>
+        <a id="id3046586" name="id3046586"></a>
 
         <h3>Configure a deadzone</h3>
 
@@ -1704,7 +1815,7 @@ $ xboxdrv --buttonmap X1^deadzone:15000
       </div>
 
       <div class="refsect2" title="Keyboard Emulation">
-        <a id="id3073806" name="id3073806"></a>
+        <a id="id3046619" name="id3046619"></a>
 
         <h3>Keyboard Emulation</h3>
 
@@ -1718,7 +1829,7 @@ $ xboxdrv \
       </div>
 
       <div class="refsect2" title="Fighting games:">
-        <a id="id3073825" name="id3073825"></a>
+        <a id="id3046639" name="id3046639"></a>
 
         <h3>Fighting games:</h3>
 
@@ -1734,7 +1845,7 @@ $ xboxdrv \
       </div>
 
       <div class="refsect2" title="CH Flightstick emulation in Dosbox:">
-        <a id="id3073850" name="id3073850"></a>
+        <a id="id3046664" name="id3046664"></a>
 
         <h3>CH Flightstick emulation in Dosbox:</h3>
 
@@ -1755,7 +1866,7 @@ $ xboxdrv -s \
       </div>
 
       <div class="refsect2" title="Using mouse emulation and joystick at the same time">
-        <a id="id3073896" name="id3073896"></a>
+        <a id="id3046710" name="id3046710"></a>
 
         <h3>Using mouse emulation and joystick at the same time</h3>
 
@@ -1768,7 +1879,7 @@ $ xboxdrv --next-config --mouse
       </div>
 
       <div class="refsect2" title="Mapping every button multiple">
-        <a id="id3073927" name="id3073927"></a>
+        <a id="id3046741" name="id3046741"></a>
 
         <h3>Mapping every button multiple</h3>
 
@@ -1786,7 +1897,7 @@ $ xboxdrv \
       </div>
 
       <div class="refsect2" title="Sauerbraten">
-        <a id="id3073948" name="id3073948"></a>
+        <a id="id3046761" name="id3046761"></a>
 
         <h3>Sauerbraten</h3>
 
@@ -1802,7 +1913,7 @@ $ xboxdrv \
       </div>
 
       <div class="refsect2" title="Warsow">
-        <a id="id3073974" name="id3073974"></a>
+        <a id="id3046788" name="id3046788"></a>
 
         <h3>Warsow</h3>
 
@@ -1843,7 +1954,7 @@ exec xboxdrv \
     </div>
 
     <div class="refsect1" title="SDL Notes">
-      <a id="id3074057" name="id3074057"></a>
+      <a id="id3046871" name="id3046871"></a>
 
       <h2>SDL Notes</h2>
 
@@ -1889,12 +2000,12 @@ $ export SDL_JOYSTICK_DEVICE
     </div>
 
     <div class="refsect1" title="Troubleshooting">
-      <a id="id3074167" name="id3074167"></a>
+      <a id="id3046981" name="id3046981"></a>
 
       <h2>Troubleshooting</h2>
 
       <div class="refsect2" title="&quot;No Xbox or Xbox360 controller found&quot;">
-        <a id="id3074173" name="id3074173"></a>
+        <a id="id3046986" name="id3046986"></a>
 
         <h3>"No Xbox or Xbox360 controller found"</h3>
 
@@ -1914,7 +2025,7 @@ XPadDevice xpad_devices[] = { ... }
       </div>
 
       <div class="refsect2" title="&quot;Unknown data: bytes: 3 Data: ...&quot;">
-        <a id="id3074224" name="id3074224"></a>
+        <a id="id3047038" name="id3047038"></a>
 
         <h3>"Unknown data: bytes: 3 Data: ..."</h3>
 
@@ -1927,7 +2038,7 @@ $ lsusb -v
       </div>
 
       <div class="refsect2" title="&quot;Error: No stuitable uinput device found&quot;">
-        <a id="id3074264" name="id3074264"></a>
+        <a id="id3047070" name="id3047070"></a>
 
         <h3>"Error: No stuitable uinput device found"</h3>
 
@@ -1940,7 +2051,7 @@ $ xboxdrv --no-uinput -v
       </div>
 
       <div class="refsect2" title="The wireless controller doesn't work">
-        <a id="id3074289" name="id3074289"></a>
+        <a id="id3047094" name="id3047094"></a>
 
         <h3>The wireless controller doesn't work</h3>
 
@@ -1968,7 +2079,7 @@ $ xboxdrv --no-uinput -v
       </div>
 
       <div class="refsect2" title="Wacom issues">
-        <a id="id3074346" name="id3074346"></a>
+        <a id="id3047152" name="id3047152"></a>
 
         <h3>Wacom issues</h3>
 
@@ -1985,7 +2096,7 @@ $ sudo ln -sf /dev/input/js1 /dev/input/js0
       </div>
 
       <div class="refsect2" title="uinput issues">
-        <a id="id3074393" name="id3074393"></a>
+        <a id="id3047199" name="id3047199"></a>
 
         <h3>uinput issues</h3>
 
@@ -1996,7 +2107,7 @@ KERNEL=="uinput", MODE="0660", GROUP="root"
       </div>
 
       <div class="refsect2" title="Wine issues">
-        <a id="id3074420" name="id3074420"></a>
+        <a id="id3047226" name="id3047226"></a>
 
         <h3>Wine issues</h3>
 
@@ -2007,14 +2118,14 @@ KERNEL=="uinput", MODE="0660", GROUP="root"
     </div>
 
     <div class="refsect1" title="Xorg issues">
-      <a id="id3074450" name="id3074450"></a>
+      <a id="id3047251" name="id3047251"></a>
 
       <h2>Xorg issues</h2>
 
       <p>If you start xboxdrv and instead of having a fully working joystick, you end up controlling the mouse that might be due to recent changes in Xorg and its device hotplug handling. There are four workarounds, the one that involves editing <code class="filename">/etc/hal/fdi/policy/preferences.fdi</code> is the recommont one.</p>
 
       <div class="refsect2" title="Temporary workaround using hal-device">
-        <a id="id3074469" name="id3074469"></a>
+        <a id="id3047269" name="id3047269"></a>
 
         <h3>Temporary workaround using hal-device</h3>
 
@@ -2030,7 +2141,7 @@ $ hal-device -r $DEVICEID
       </div>
 
       <div class="refsect2" title="Temporary workaround using xinput">
-        <a id="id3074496" name="id3074496"></a>
+        <a id="id3047296" name="id3047296"></a>
 
         <h3>Temporary workaround using xinput</h3>
 
@@ -2042,7 +2153,7 @@ $ xinput set-int-prop $DEVICEID 'Device Enabled' 32 0
       </div>
 
       <div class="refsect2" title="Permanent workaround using .fdi files">
-        <a id="id3074514" name="id3074514"></a>
+        <a id="id3047315" name="id3047315"></a>
 
         <h3>Permanent workaround using .fdi files</h3>
 
@@ -2061,7 +2172,7 @@ $ xinput set-int-prop $DEVICEID 'Device Enabled' 32 0
       </div>
 
       <div class="refsect2" title="Permanent workaround by disabling device auto detection">
-        <a id="id3074546" name="id3074546"></a>
+        <a id="id3047346" name="id3047346"></a>
 
         <h3>Permanent workaround by disabling device auto detection</h3>
 
@@ -2077,7 +2188,7 @@ EndSection
     </div>
 
     <div class="refsect1" title="Force Feedback Programming">
-      <a id="id3074586" name="id3074586"></a>
+      <a id="id3047386" name="id3047386"></a>
 
       <h2>Force Feedback Programming</h2>
 
@@ -2115,12 +2226,12 @@ EndSection
     </div>
 
     <div class="refsect1" title="Bugs">
-      <a id="id3074658" name="id3074658"></a>
+      <a id="id3047458" name="id3047458"></a>
 
       <h2>Bugs</h2>
 
       <div class="refsect2" title="X11 keysym issues">
-        <a id="id3074663" name="id3074663"></a>
+        <a id="id3047464" name="id3047464"></a>
 
         <h3>X11 keysym issues</h3>
 
@@ -2132,7 +2243,7 @@ EndSection
       </div>
 
       <div class="refsect2" title="Non-interruptable processes due to force feedback">
-        <a id="id3074694" name="id3074694"></a>
+        <a id="id3047494" name="id3047494"></a>
 
         <h3>Non-interruptable processes due to force feedback</h3>
 
@@ -2142,7 +2253,7 @@ EndSection
       </div>
 
       <div class="refsect2" title="Bug Reports and Feature Requests">
-        <a id="id3074713" name="id3074713"></a>
+        <a id="id3047514" name="id3047514"></a>
 
         <h3>Bug Reports and Feature Requests</h3>
 
@@ -2153,7 +2264,7 @@ EndSection
     </div>
 
     <div class="refsect1" title="Copyright">
-      <a id="id3074733" name="id3074733"></a>
+      <a id="id3047533" name="id3047533"></a>
 
       <h2>Copyright</h2>
 
@@ -2161,11 +2272,11 @@ EndSection
     </div>
 
     <div class="refsect1" title="See also">
-      <a id="id3074755" name="id3074755"></a>
+      <a id="id3047556" name="id3047556"></a>
 
       <h2>See also</h2>
 
-      <p><span class="citerefentry"><span class="refentrytitle">evtest</span>(1)</span>, <span class="citerefentry"><span class="refentrytitle">jstest</span>(1)</span>, <span class="citerefentry"><span class="refentrytitle">jstest-gtk</span>(1)</span>, <span class="citerefentry"><span class="refentrytitle">xev</span>(1)</span>, <span class="citerefentry"><span class="refentrytitle">fftest</span>(1)</span>, <span class="citerefentry"><span class="refentrytitle">lsusb</span>(1)</span></p>
+      <p><span class="citerefentry"><span class="refentrytitle">xboxdrvctl</span>(1)</span>, <span class="citerefentry"><span class="refentrytitle">evtest</span>(1)</span>, <span class="citerefentry"><span class="refentrytitle">jstest</span>(1)</span>, <span class="citerefentry"><span class="refentrytitle">jstest-gtk</span>(1)</span>, <span class="citerefentry"><span class="refentrytitle">xev</span>(1)</span>, <span class="citerefentry"><span class="refentrytitle">fftest</span>(1)</span>, <span class="citerefentry"><span class="refentrytitle">lsusb</span>(1)</span></p>
     </div>
   </div>
 

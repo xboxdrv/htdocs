@@ -17,13 +17,13 @@
       <script type="text/javascript">
         function ShowOldNews() {
         $('.oldnews').show('slow')
-        $('#ShowOldNewsButton').hide()
-        $('#HideOldNewsButton').show()
+        $('#ShowOldNewsButton').css('display', 'none')
+        $('#HideOldNewsButton').css('display', 'block')
         }
         function HideOldNews() {
         $('.oldnews').hide('slow')
-        $('#ShowOldNewsButton').show()
-        $('#HideOldNewsButton').hide()
+        $('#ShowOldNewsButton').css('display', 'block')
+        $('#HideOldNewsButton').css('display', 'none')
         }
       </script>
     </div>
@@ -89,6 +89,33 @@
 
           <article class="news">
             <header>
+              <h3>0.7.2 released</h3>
+              <time datetime="2011-03-06" pubdate="pubdate">06. Mar 2011</time>
+            </header>
+            <ul>
+              <li>
+                <li>added --mimic-xpad-wireless</li>
+                <li>added --device-usbid and --device-usbids</li>
+                <li>added D-Bus support to the daemon</li>
+                <li>added xboxdrvctl to control the daemon</li>
+                <li>added better handling of rounding errors when sending REL_</li>
+                <li>added dpad-restrictor for X, Y or fourway restriction on the dpad</li>
+                <li>added statistic modifier that counts how often buttons are pressed</li>
+                <li>added support for multiple wireless controller in daemon</li>
+                <li>added --priority to enable realtime scheduling priority</li>
+                <li>added custom configuration for XBMC, see examples/xbmc.xboxdrv</li>
+                <li>changed default timeout to 10msec, for more responsive mouse emulation</li>
+                <li>changed meaning of -m, its now a shortcut for --modifier, not --mouse</li>
+                <li>improved INIParser, can now handle KEY_#NUM style names without quotes</li>
+                <li>improved mouse emulation</li>
+                <li>removed obsolete xboxdrv-daemon script</li>
+                <li>renamed --device-name to --device-names</li>
+                <li>renamed --name to --device-name</li>
+            </ul>
+          </article>
+
+          <article class="news">
+            <header>
               <h3>0.7.1 released</h3>
               <time datetime="2011-01-30" pubdate="pubdate">30. Jan 2011</time>
             </header>
@@ -141,8 +168,7 @@
             </ul>
           </article>
 
-
-          <article class="news">
+          <article class="news oldnews">
             <header>
               <h3>0.6.6 released</h3>
               <time datetime="2011-01-23" pubdate="pubdate">23. Jan 2011</time>
@@ -152,7 +178,7 @@
             </ul>
           </article>
 
-          <article class="news">
+          <article class="news oldnews">
             <header>
               <h3>0.6.5 released</h3>
               <time datetime="2011-01-22" pubdate="pubdate">22. Jan 2011</time>
@@ -163,7 +189,7 @@
             </ul>
           </article>
 
-          <article class="news">
+          <article class="news oldnews">
             <header>
               <h3>libusb-1.0 switch</h3>
               <time datetime="2011-01-14" pubdate="pubdate">14. Jan 2011</time>
@@ -177,7 +203,7 @@
             </p>
           </article>
 
-          <article class="news">
+          <article class="news oldnews">
             <header>
               <h3>0.6.4 released</h3>
               <time datetime="2011-01-13" pubdate="pubdate">13. Jan 2011</time>
@@ -188,7 +214,7 @@
             </ul>
           </article>
 
-          <article class="news">
+          <article class="news oldnews">
             <header>
               <h3>0.6.4 released</h3>
               <time datetime="2011-01-13" pubdate="pubdate">13. Jan 2011</time>
@@ -199,7 +225,7 @@
             </ul>
           </article>
 
-          <article class="news">
+          <article class="news oldnews">
             <header>
               <h3>0.6.3 released</h3>
               <time datetime="2011-01-10" pubdate="pubdate">10. Jan 2011</time>
@@ -216,7 +242,7 @@
             </ul>
           </article>
 
-          <article class="news">
+          <article class="news oldnews">
             <header>
               <h3>0.6.2 released</h3>
               <time datetime="2010-12-31" pubdate="pubdate">31. Dec 2010</time>
@@ -248,7 +274,7 @@
             </ul>
           </article>
 
-          <article class="news">
+          <article class="news oldnews">
             <header>
               <h3>0.6.1 released</h3>
               <time datetime="2010-12-21" pubdate="pubdate">21. Dec 2010</time>
@@ -259,7 +285,7 @@
             </ul>
           </article>
 
-          <article class="news">
+          <article class="news oldnews">
             <header>
               <h3>0.6.0 released</h3>
               <time datetime="2010-12-18" pubdate="pubdate">18. Dec 2010</time>
@@ -510,15 +536,15 @@
               <li>Xbox and Xbox360 USB support</li>
             </ul>
           </article>
-          <a id="ShowOldNewsButton" href="javascript:ShowOldNews()">older releases</a>
-          <a id="HideOldNewsButton" href="javascript:HideOldNews()">hide</a>
+          <a id="ShowOldNewsButton" href="javascript:ShowOldNews()">▼ show older releases</a>
+          <a id="HideOldNewsButton" href="javascript:HideOldNews()">▲ hide older releases</a>
         </section>
 
         <section>
           <h2>Features</h2>
           <ul>
             <li>runs in userspace on top
-              of <a href="libusb.sourceforge.net">libusb</a>, no kernel
+              of <a href="http://www.libusb.org/wiki/libusb-1.0">libusb-1.0</a>, no kernel
               recompile required, very easy to build</li>
 
             <li>gives you what you would expect from a driver, like a
@@ -532,8 +558,8 @@
 
             <li>allows to set the LED status of the Xbox360 gamepad</li>
 
-            <li>supports the use multiple gamepads by starting multiple
-              instances of the driver</li>
+            <li>supports multiple gamepads, either by starting multiple
+              instances of the driver or using daemon mode</li>
 
             <li>allows to remap buttons and axes</li>
 
@@ -596,7 +622,7 @@
 
 
         <section>
-          <h2>Contact / Discussion</h2>
+          <h2>Contact / Discussion / Bug Reports</h2>
           <h3>Google Groups</h3>
           <ul>
             <li><a href="http://groups.google.com/group/xboxdrv">xboxdrv - Google Groups</a></li>
@@ -657,14 +683,17 @@
           <ul>
             <li><a href="https://flattr.com/thing/2423/Xbox360-Gamepad-Driver-for-Linux">Donate via Flattr</a></li>
             <li>Donate via Paypal (see button at the top/right of the page)</li>
-            <li><a href="http://www.amazon.de/wishlist/3AXGAYERY26TF">My Amazon Wishlist (German)</a></li>
+            <li><a href="http://www.amazon.de/wishlist/3AXGAYERY26TF">My
+                Amazon Wishlist (German)</a></li>
           </ul>
         </section>
 
         <section>
           <h2>Source Code Download</h2>
+          <div class="twocolumn">
           <ul>
-            <li><strong><a href="xboxdrv-linux-0.7.1.tar.bz2">xboxdrv-linux-0.7.1.tar.bz2</a> ← newest</strong></li>
+            <li><strong><a href="xboxdrv-linux-0.7.2.tar.bz2">xboxdrv-linux-0.7.2.tar.bz2</a> ← newest</strong></li>
+            <li><a href="xboxdrv-linux-0.7.1.tar.bz2">xboxdrv-linux-0.7.1.tar.bz2</a></li>
             <li><a href="xboxdrv-linux-0.7.0.tar.bz2">xboxdrv-linux-0.7.0.tar.bz2</a></li>
             <li><a href="xboxdrv-linux-0.6.6.tar.bz2">xboxdrv-linux-0.6.6.tar.bz2</a></li>
             <li><a href="xboxdrv-linux-0.6.5.tar.bz2">xboxdrv-linux-0.6.5.tar.bz2</a></li>
@@ -674,24 +703,25 @@
             <li><a href="xboxdrv-linux-0.6.1.tar.bz2">xboxdrv-linux-0.6.1.tar.bz2</a></li>
             <li><a href="xboxdrv-linux-0.6.0.tar.bz2">xboxdrv-linux-0.6.0.tar.bz2</a></li>
             <li><a href="xboxdrv-linux-0.5.0.tar.bz2">xboxdrv-linux-0.5.0.tar.bz2</a></li>
-            <li class="oldrelease"><a href="xboxdrv-linux-0.4.13.tar.bz2">xboxdrv-linux-0.4.13.tar.bz2</a></li>
-            <li class="oldrelease"><a href="xboxdrv-linux-0.4.12.tar.bz2">xboxdrv-linux-0.4.12.tar.bz2</a></li>
-            <li class="oldrelease"><a href="xboxdrv-linux-0.4.11.tar.bz2">xboxdrv-linux-0.4.11.tar.bz2</a></li>
-            <li class="oldrelease"><a href="xboxdrv-linux-0.4.10.tar.bz2">xboxdrv-linux-0.4.10.tar.bz2</a></li>
-            <li class="oldrelease"><a href="xboxdrv-linux-0.4.9.tar.bz2">xboxdrv-linux-0.4.9.tar.bz2</a></li>
-            <li class="oldrelease"><a href="xboxdrv-linux-0.4.8.tar.bz2">xboxdrv-linux-0.4.8.tar.bz2</a></li>
-            <li class="oldrelease"><a href="xboxdrv-linux-0.4.7.tar.bz2">xboxdrv-linux-0.4.7.tar.bz2</a></li>
-            <li class="oldrelease"><a href="xboxdrv-linux-0.4.6.tar.bz2">xboxdrv-linux-0.4.6.tar.bz2</a></li>
-            <li class="oldrelease"><a href="xboxdrv-linux-0.4.5.tar.bz2">xboxdrv-linux-0.4.5.tar.bz2</a></li>
-            <li class="oldrelease"><a href="xboxdrv-linux-0.4.4.tar.bz2">xboxdrv-linux-0.4.4.tar.bz2</a></li>
-            <li class="oldrelease"><a href="xboxdrv-linux-0.4.3.tar.bz2">xboxdrv-linux-0.4.3.tar.bz2</a></li>
-            <li class="oldrelease"><a href="xboxdrv-linux-0.4.2.tar.bz2">xboxdrv-linux-0.4.2.tar.bz2</a></li>
-            <li class="oldrelease"><a href="xboxdrv-linux-0.4.1.tar.bz2">xboxdrv-linux-0.4.1.tar.bz2</a></li>
-            <li class="oldrelease"><a href="xboxdrv-linux-0.4.tar.bz2">xboxdrv-linux-0.4.tar.bz2</a></li>
-            <li class="oldrelease"><a href="xboxdrv-linux-0.3.tar.bz2">xboxdrv-linux-0.3.tar.bz2</a></li>
-            <li class="oldrelease"><a href="xboxdrv-linux-0.2.tar.bz2">xboxdrv-linux-0.2.tar.bz2</a></li>
-            <li class="oldrelease"><a href="xboxdrv-linux-0.1.tar.bz2">xboxdrv-linux-0.1.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.4.13.tar.bz2">xboxdrv-linux-0.4.13.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.4.12.tar.bz2">xboxdrv-linux-0.4.12.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.4.11.tar.bz2">xboxdrv-linux-0.4.11.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.4.10.tar.bz2">xboxdrv-linux-0.4.10.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.4.9.tar.bz2">xboxdrv-linux-0.4.9.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.4.8.tar.bz2">xboxdrv-linux-0.4.8.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.4.7.tar.bz2">xboxdrv-linux-0.4.7.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.4.6.tar.bz2">xboxdrv-linux-0.4.6.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.4.5.tar.bz2">xboxdrv-linux-0.4.5.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.4.4.tar.bz2">xboxdrv-linux-0.4.4.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.4.3.tar.bz2">xboxdrv-linux-0.4.3.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.4.2.tar.bz2">xboxdrv-linux-0.4.2.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.4.1.tar.bz2">xboxdrv-linux-0.4.1.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.4.tar.bz2">xboxdrv-linux-0.4.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.3.tar.bz2">xboxdrv-linux-0.3.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.2.tar.bz2">xboxdrv-linux-0.2.tar.bz2</a></li>
+            <li><a href="xboxdrv-linux-0.1.tar.bz2">xboxdrv-linux-0.1.tar.bz2</a></li>
           </ul>
+          </div>
         </section>
 
         <section>
