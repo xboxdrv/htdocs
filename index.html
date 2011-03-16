@@ -89,6 +89,43 @@
 
           <article class="news">
             <header>
+              <h3>0.7.3 released</h3>
+              <time datetime="2011-03-16" pubdate="pubdate">16. Mar 2011</time>
+            </header>
+            <ul>
+              <li>fixed installation of xboxdrvctl</li>
+              <li>added special REL repeat value '-1' to avoid jaggy mouse emulation movement</li>
+              <li>added "rel-repeat:" axis-event for better scroll wheel emulation</li>
+              <li>added --no-dbus, to disable D-Bus support</li>
+              <li>added xbmc.xboxdrv, a config fine tuned for XBMC</li>
+              <li>added zsnes.xboxdrv, a config file for ZSNES</li>
+              <li>reenabled USBReadThread to work around ignored input events</li>
+              <li>'--daemon' is broken in this release</li>
+            </ul>
+            <p>
+              This release should fix the issue with buttons getting
+              stuck and events getting lost of previous 0.7.x releases
+              and bring it on par with 0.6.6, '--daemon' mode however
+              is now broken and will require a larger code
+              restructuring to get fixed.
+            </p>
+          </article>
+
+          <article class="news">
+            <header>
+              <h3>Bugs in 0.7.0, 0.7.1, 0.7.2</h3>
+              <time datetime="2011-03-12" pubdate="pubdate">12. Mar 2011</time>
+            </header>
+            <p>
+              The current 0.7.x xboxdrv releases have issues with
+              input events getting lost, resulting in stuck buttons
+              and other problems. For the time being it is recommended
+              to stick with the 0.6.6 release.
+            </p>
+          </article>
+
+          <article class="news">
+            <header>
               <h3>0.7.2 released</h3>
               <time datetime="2011-03-06" pubdate="pubdate">06. Mar 2011</time>
             </header>
@@ -97,7 +134,6 @@
                 <li>added --mimic-xpad-wireless</li>
                 <li>added --device-usbid and --device-usbids</li>
                 <li>added D-Bus support to the daemon</li>
-                <li>added xboxdrvctl to control the daemon</li>
                 <li>added better handling of rounding errors when sending REL_</li>
                 <li>added dpad-restrictor for X, Y or fourway restriction on the dpad</li>
                 <li>added statistic modifier that counts how often buttons are pressed</li>
@@ -655,7 +691,18 @@
             sudo add-apt-repository ppa:grumbel/ppa<br/>
             sudo apt-get update<br/>
             sudo apt-get install xboxdrv
+            sudo apt-get install xboxdrv-stable
           </div>
+
+          <p>
+            Note that there are two xboxdrv packages in the
+            repository, the <tt>xboxdrv</tt> package is the latest
+            version, with the most features, but also potentially bugs
+            and issues. The <tt>xboxdrv-stable</tt> package is simply
+            an older version of xboxdrv for which no critical bugs are
+            know.
+          </p>
+
           <!--
              <p>
                or click the apturl link below:
@@ -692,10 +739,11 @@
           <h2>Source Code Download</h2>
           <div class="twocolumn">
           <ul>
-            <li><strong><a href="xboxdrv-linux-0.7.2.tar.bz2">xboxdrv-linux-0.7.2.tar.bz2</a> ← newest</strong></li>
+            <li><strong><a href="xboxdrv-linux-0.7.3.tar.bz2">xboxdrv-linux-0.7.3.tar.bz2</a> ← latest</strong></li>
+            <li><a href="xboxdrv-linux-0.7.2.tar.bz2">xboxdrv-linux-0.7.2.tar.bz2</a></li>
             <li><a href="xboxdrv-linux-0.7.1.tar.bz2">xboxdrv-linux-0.7.1.tar.bz2</a></li>
             <li><a href="xboxdrv-linux-0.7.0.tar.bz2">xboxdrv-linux-0.7.0.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.6.6.tar.bz2">xboxdrv-linux-0.6.6.tar.bz2</a></li>
+            <li><strong><a href="xboxdrv-linux-0.6.6.tar.bz2">xboxdrv-linux-0.6.6.tar.bz2</a> ← stable</strong></li>
             <li><a href="xboxdrv-linux-0.6.5.tar.bz2">xboxdrv-linux-0.6.5.tar.bz2</a></li>
             <li><a href="xboxdrv-linux-0.6.4.tar.bz2">xboxdrv-linux-0.6.4.tar.bz2</a></li>
             <li><a href="xboxdrv-linux-0.6.3.tar.bz2">xboxdrv-linux-0.6.3.tar.bz2</a></li>
