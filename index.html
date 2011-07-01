@@ -89,6 +89,36 @@
 
           <article class="news">
             <header>
+              <h3>0.8.0 released</h3>
+              <time datetime="2011-05-26" pubdate="pubdate">26. May 2011</time>
+            </header>
+            <ul>
+              <li>added --no-dbus option</li>
+              <li>added ABS/axis support to macros</li>
+              <li>added Street Fighter Fightpad support</li>
+              <li>added example config for Microsoft Ergonomic 4000 zoom wheel</li>
+              <li>added example config for Star Wars: Tie Fighter</li>
+              <li>added rel-repeat value of -1 for sending an event only once</li>
+              <li>added support for chatpad on bcdVersion 1.14 wired controller</li>
+              <li>added support for relative filenames for macros</li>
+              <li>fixed daemon mode</li>
+              <li>fixed deadzone filter issues with MIN:MAX:SMOOTH</li>
+              <li>fixed endian issues in Xbox360 and Xbox360 wireless controller</li>
+              <li>fixed wireless controller not getting reset to neutral position on disconnected</li>
+              <li>changed the meaning of --timeout 0</li>
+              <li>removed boost::thread dependency</li>
+              <li>switched from threads to asynchronous USB handling and glib</li>
+            </ul>
+            <p>
+              This releases contains a large scale switch to
+              asynchronous USB communication, so expect some bugs to
+              pop up. Daemon mode is working again. Bug reports are
+              welcome.
+            </p>
+          </article>
+
+          <article class="news oldnews">
+            <header>
               <h3>0.7.3 released</h3>
               <time datetime="2011-03-16" pubdate="pubdate">16. Mar 2011</time>
             </header>
@@ -111,7 +141,7 @@
             </p>
           </article>
 
-          <article class="news">
+          <article class="news oldnews">
             <header>
               <h3>Bugs in 0.7.0, 0.7.1, 0.7.2</h3>
               <time datetime="2011-03-12" pubdate="pubdate">12. Mar 2011</time>
@@ -124,7 +154,7 @@
             </p>
           </article>
 
-          <article class="news">
+          <article class="news oldnews">
             <header>
               <h3>0.7.2 released</h3>
               <time datetime="2011-03-06" pubdate="pubdate">06. Mar 2011</time>
@@ -150,7 +180,7 @@
             </ul>
           </article>
 
-          <article class="news">
+          <article class="news oldnews">
             <header>
               <h3>0.7.1 released</h3>
               <time datetime="2011-01-30" pubdate="pubdate">30. Jan 2011</time>
@@ -179,7 +209,7 @@
             </ul>
           </article>
 
-          <article class="news">
+          <article class="news oldnews">
             <header>
               <h3>0.7.0 released</h3>
               <time datetime="2011-01-27" pubdate="pubdate">27. Jan 2011</time>
@@ -620,51 +650,44 @@
             <li>any joystick support by Linux via the evdev interface</li>
           </ul>
 
-          <h2>How to help</h2>
+          <h2>How to help</h2>         
           <p>
-          </p>
-          <p>
-            Two things are currently not working, the headset and the
-            racing wheel. With the headset it is relativly easy to
-            capture and play sound, but the exact sound format is
-            unknown (best guess so far some form of non-linear 4bit
-            PCM, Mono, 16000Hz):
-          </p>
-
-          <ul>
-            <li><a href="http://pingus.seul.org/~grumbel/tmp/xbox360-headset-1-2-3-test.raw">1, 2, 3, test</a></li>
-            <li><a href="http://pingus.seul.org/~grumbel/tmp/xbox360-headset-5sec-silence.raw">5sec silence</a></li>
-          </ul>
-
-          <p>
-            The racing wheel support should be doable if somebody wants to
-            spend some time on it, according to first reports the device
-            sends out events, so those just need to be deciphered. It is
-            also supported by the Windows driver, so capturing the
-            communication is possible.
+            Chatpad support is currently working only for the wired
+            USB controllers, not the wireless ones. As both work a
+            little different one can't just apply code from one to the
+            other. Capturing the USB communication between an real
+            Xbox360 and the wireless receiver should however be
+            possible if somebody has both an USB protocol analyzer and
+            an Xbox360 to take apport. The wireless receiver in an
+            Xbox360 is internally connected via regular USB, it just
+            uses a non-standard connector, so some soldering might be
+            required.
           </p>
         </section>
 
         <section>
           <h2>Documentation</h2>
           <p>
-            Xboxdrv provides extensive documentation in the form of man-pages:
+            Xboxdrv provides extensive documentation in the form a man-page:
           </p>
           <ul>
             <li><a href="xboxdrv.html">xboxdrv (1)</a></li>
-            <li><a href="xboxdrv-daemon.html">xboxdrv-daemon (1)</a></li>
           </ul>
         </section>
 
-
         <section>
-          <h2>Contact / Discussion / Bug Reports</h2>
-          <h3>Google Groups</h3>
+          <h2>Contact / Help / Discussion / Bug Reports</h2>
+          <h3>Google Group / Mailing List</h3>
           <ul>
             <li><a href="http://groups.google.com/group/xboxdrv">xboxdrv - Google Groups</a></li>
           </ul>
 
-          <h3>IRC Channel</h3>
+          <h3>Bug Reports</h3>
+          <ul>
+            <li><a href="https://github.com/Grumbel/xboxdrv/issues/new">GitHub Issue Tracker</a></li>
+          </ul>
+
+          <h3>IRC Channel (not very active)</h3>
           <ul>
             <li><a href="irc://freenode.net/%23xboxdrv">irc://irc.freenode.net/#xboxdrv</a></li>
           </ul>
@@ -677,10 +700,23 @@
         </section>
 
         <section>
+          <h2>Donate</h2>
+          <p>
+            Like Xboxdrv and want to give something back? You can do so via three ways:
+          </p>
+          <ul>
+            <li><a href="https://flattr.com/thing/2423/Xbox360-Gamepad-Driver-for-Linux">Donate via Flattr</a></li>
+            <li>Donate via Paypal (see button at the top/right of the page)</li>
+            <li><a href="http://www.amazon.de/wishlist/3AXGAYERY26TF">My
+                Amazon Wishlist (German)</a></li>
+          </ul>
+        </section>
+
+        <section>
           <h2>Binary Package Download</h2>
           <p>
             Prebuild official binary packages are available for Ubuntu
-            10.10 and Ubuntu 10.04 LTS can be obtained from
+            11.04 and Ubuntu 10.04 LTS can be obtained from
             the <a href="https://launchpad.net/~grumbel/+archive/ppa">PPA</a>.
             To automatically add the repository to
             the <tt>sources.list</tt> and install <tt>xboxdrv</tt>
@@ -690,7 +726,7 @@
           <div class="code">
             sudo add-apt-repository ppa:grumbel/ppa<br/>
             sudo apt-get update<br/>
-            sudo apt-get install xboxdrv
+            sudo apt-get install xboxdrv<br/>
             sudo apt-get install xboxdrv-stable
           </div>
 
@@ -723,53 +759,47 @@
         </section>        
 
         <section>
-          <h2>Donate</h2>
-          <p>
-            Like Xboxdrv and want to give something back? You can do so via three ways:
-          </p>
-          <ul>
-            <li><a href="https://flattr.com/thing/2423/Xbox360-Gamepad-Driver-for-Linux">Donate via Flattr</a></li>
-            <li>Donate via Paypal (see button at the top/right of the page)</li>
-            <li><a href="http://www.amazon.de/wishlist/3AXGAYERY26TF">My
-                Amazon Wishlist (German)</a></li>
-          </ul>
-        </section>
-
-        <section>
           <h2>Source Code Download</h2>
           <div class="twocolumn">
-          <ul>
-            <li><strong><a href="xboxdrv-linux-0.7.3.tar.bz2">xboxdrv-linux-0.7.3.tar.bz2</a> ← latest</strong></li>
-            <li><a href="xboxdrv-linux-0.7.2.tar.bz2">xboxdrv-linux-0.7.2.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.7.1.tar.bz2">xboxdrv-linux-0.7.1.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.7.0.tar.bz2">xboxdrv-linux-0.7.0.tar.bz2</a></li>
-            <li><strong><a href="xboxdrv-linux-0.6.6.tar.bz2">xboxdrv-linux-0.6.6.tar.bz2</a> ← stable</strong></li>
-            <li><a href="xboxdrv-linux-0.6.5.tar.bz2">xboxdrv-linux-0.6.5.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.6.4.tar.bz2">xboxdrv-linux-0.6.4.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.6.3.tar.bz2">xboxdrv-linux-0.6.3.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.6.2.tar.bz2">xboxdrv-linux-0.6.2.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.6.1.tar.bz2">xboxdrv-linux-0.6.1.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.6.0.tar.bz2">xboxdrv-linux-0.6.0.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.5.0.tar.bz2">xboxdrv-linux-0.5.0.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.4.13.tar.bz2">xboxdrv-linux-0.4.13.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.4.12.tar.bz2">xboxdrv-linux-0.4.12.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.4.11.tar.bz2">xboxdrv-linux-0.4.11.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.4.10.tar.bz2">xboxdrv-linux-0.4.10.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.4.9.tar.bz2">xboxdrv-linux-0.4.9.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.4.8.tar.bz2">xboxdrv-linux-0.4.8.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.4.7.tar.bz2">xboxdrv-linux-0.4.7.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.4.6.tar.bz2">xboxdrv-linux-0.4.6.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.4.5.tar.bz2">xboxdrv-linux-0.4.5.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.4.4.tar.bz2">xboxdrv-linux-0.4.4.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.4.3.tar.bz2">xboxdrv-linux-0.4.3.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.4.2.tar.bz2">xboxdrv-linux-0.4.2.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.4.1.tar.bz2">xboxdrv-linux-0.4.1.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.4.tar.bz2">xboxdrv-linux-0.4.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.3.tar.bz2">xboxdrv-linux-0.3.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.2.tar.bz2">xboxdrv-linux-0.2.tar.bz2</a></li>
-            <li><a href="xboxdrv-linux-0.1.tar.bz2">xboxdrv-linux-0.1.tar.bz2</a></li>
-          </ul>
+            <ul>
+              <li><strong><a href="xboxdrv-linux-0.8.0.tar.bz2">xboxdrv-linux-0.8.0.tar.bz2</a> ← latest</strong></li>
+              <li><a href="xboxdrv-linux-0.7.3.tar.bz2">xboxdrv-linux-0.7.3.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.7.2.tar.bz2">xboxdrv-linux-0.7.2.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.7.1.tar.bz2">xboxdrv-linux-0.7.1.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.7.0.tar.bz2">xboxdrv-linux-0.7.0.tar.bz2</a></li>
+              <li><strong><a href="xboxdrv-linux-0.6.6.tar.bz2">xboxdrv-linux-0.6.6.tar.bz2</a> ← stable</strong></li>
+              <li><a href="xboxdrv-linux-0.6.5.tar.bz2">xboxdrv-linux-0.6.5.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.6.4.tar.bz2">xboxdrv-linux-0.6.4.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.6.3.tar.bz2">xboxdrv-linux-0.6.3.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.6.2.tar.bz2">xboxdrv-linux-0.6.2.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.6.1.tar.bz2">xboxdrv-linux-0.6.1.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.6.0.tar.bz2">xboxdrv-linux-0.6.0.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.5.0.tar.bz2">xboxdrv-linux-0.5.0.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.4.13.tar.bz2">xboxdrv-linux-0.4.13.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.4.12.tar.bz2">xboxdrv-linux-0.4.12.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.4.11.tar.bz2">xboxdrv-linux-0.4.11.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.4.10.tar.bz2">xboxdrv-linux-0.4.10.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.4.9.tar.bz2">xboxdrv-linux-0.4.9.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.4.8.tar.bz2">xboxdrv-linux-0.4.8.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.4.7.tar.bz2">xboxdrv-linux-0.4.7.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.4.6.tar.bz2">xboxdrv-linux-0.4.6.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.4.5.tar.bz2">xboxdrv-linux-0.4.5.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.4.4.tar.bz2">xboxdrv-linux-0.4.4.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.4.3.tar.bz2">xboxdrv-linux-0.4.3.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.4.2.tar.bz2">xboxdrv-linux-0.4.2.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.4.1.tar.bz2">xboxdrv-linux-0.4.1.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.4.tar.bz2">xboxdrv-linux-0.4.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.3.tar.bz2">xboxdrv-linux-0.3.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.2.tar.bz2">xboxdrv-linux-0.2.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.1.tar.bz2">xboxdrv-linux-0.1.tar.bz2</a></li>
+            </ul>
           </div>
+          <p>
+            Note: You should always try the <strong>latest</strong>
+            first, the <strong>stable</strong> one is just an outdated
+            version that is known to not have any important bugs, it
+            however also lacks plenty of features and potentially support for controllers.
+          </p>
         </section>
 
         <section>
@@ -795,7 +825,9 @@
             <!-- <li><a href="http://gentoo-wiki.com/HOWTO_Xbox_360_controller_on_Linux">Gentoo Howto for the XPad Kernel driver</a></li> -->
             <!-- <li><a href="http://forums.gentoo.org/viewtopic-p-5061825.html">How to use xboxdrv on Gentoo</a></li> -->
             <li><a href="http://www.pabr.org/sixlinux/sixlinux.en.html">Using the PlayStation 3 controller in Bluetooth mode with Linux</a></li>
-            <li><a href="http://qtsixa.sourceforge.net/">QtSixA - The Sixaxis Joystick Manager</a></li>
+            <li><a href="http://qtsixa.sourceforge.net/">QtSixA - The Sixaxis Joystick Manager for Linux</a></li>
+            <li><a href="http://www.xpadder.com/">Xpadder - powerful joystick to keyboard mapper for Windows (commercial, old 5.2 version is freeware)</a></li>
+            <li><a href="http://www.electracode.com/4/joy2key/JoyToKey%20English%20Version.htm">Simple joystick to keyboard mapper for Windows (freeware)</a>
           </ul>
         </section>
       </div>
