@@ -43,7 +43,7 @@
     </div>
 
     <div class="refsect1" title="Description">
-      <a id="id2919211" name="id2919211"></a>
+      <a id="id2965297" name="id2965297"></a>
 
       <h2>Description</h2>
 
@@ -57,12 +57,12 @@
     </div>
 
     <div class="refsect1" title="Options">
-      <a id="id2909553" name="id2909553"></a>
+      <a id="id2956285" name="id2956285"></a>
 
       <h2>Options</h2>
 
       <div class="refsect2" title="General Options">
-        <a id="id2909558" name="id2909558"></a>
+        <a id="id2956290" name="id2956290"></a>
 
         <h3>General Options</h3>
 
@@ -95,7 +95,7 @@
             <dt><span class="term"><code class="option">-s</code>, <code class="option">--silent</code></span></dt>
 
             <dd>
-              <p>Do not display controller events on the terminal. For regular use this option should alway be used as output data to the terminal can eat up quite a bit of CPU.</p>
+              <p>Do not display controller events on the terminal. For regular use this option should always be used as output data to the terminal can eat up quite a bit of CPU.</p>
             </dd>
 
             <dt><span class="term"><code class="option">--quiet</code></span></dt>
@@ -107,16 +107,18 @@
             <dt><span class="term"><code class="option">--priority</code> <em class="replaceable"><code>PRIORITY</code></em></span></dt>
 
             <dd>
-              <p>Possible values for <em class="replaceable"><code>PRIORITY</code></em> are "normal" and "realtime". Realtime scheduling gives the xboxdrv process heigher priority and thus allows it to function properly even when the machine is under load.</p>
+              <p>Possible values for <em class="replaceable"><code>PRIORITY</code></em> are "normal" and "realtime". Realtime scheduling gives the xboxdrv process higher priority and thus allows it to function properly even when the machine is under load.</p>
 
               <p>Note that realtime priority requires running xboxdrv as root, when running xboxdrv as user there is no way to increase the priority.</p>
+
+              <p>This option is deprecated, use <span class="citerefentry"><span class="refentrytitle">chrt</span>(1)</span> instead to achive the same effect.</p>
             </dd>
           </dl>
         </div>
       </div>
 
       <div class="refsect2" title="List Options">
-        <a id="id2910082" name="id2910082"></a>
+        <a id="id2955554" name="id2955554"></a>
 
         <h3>List Options</h3>
 
@@ -192,7 +194,7 @@
       </div>
 
       <div class="refsect2" title="Config File Options">
-        <a id="id2911229" name="id2911229"></a>
+        <a id="id2957320" name="id2957320"></a>
 
         <h3>Config File Options</h3>
 
@@ -274,7 +276,7 @@ xboxdrv --config first.ini --alt-config second.ini --alt-config third.ini
       </div>
 
       <div class="refsect2" title="Daemon Options">
-        <a id="id2911421" name="id2911421"></a>
+        <a id="id2957512" name="id2957512"></a>
 
         <h3>Daemon Options</h3>
 
@@ -328,7 +330,7 @@ xboxdrv --daemon \
       </div>
 
       <div class="refsect2" title="Device Options">
-        <a id="id2958731" name="id2958731"></a>
+        <a id="id3004833" name="id3004833"></a>
 
         <h3>Device Options</h3>
 
@@ -390,8 +392,26 @@ xboxdrv --daemon \
                   <li class="listitem">
                     <p>xbox360-guitar</p>
                   </li>
+
+                  <li class="listitem">
+                    <p>firestorm</p>
+                  </li>
+
+                  <li class="listitem">
+                    <p>firestorm-vsb</p>
+                  </li>
+
+                  <li class="listitem">
+                    <p>saitek-p2500</p>
+                  </li>
+
+                  <li class="listitem">
+                    <p>generic-usb</p>
+                  </li>
                 </ul>
               </div>
+
+              <p>The <code class="option">generic-usb</code> type is a special type that will work with any USB controller, it will however not interpret the input it gets, but just dump it to the console for development purposes. See <code class="option">--generic-usb-spec</code> for further information.</p>
             </dd>
 
             <dt><span class="term"><code class="option">-d</code>, <code class="option">--detach-kernel-driver</code></span></dt>
@@ -399,12 +419,46 @@ xboxdrv --daemon \
             <dd>
               <p>Detaches the kernel driver that is currently associated with the given device. This is useful when you have the xpad module loaded and want to use xboxdrv without unloading it.</p>
             </dd>
+
+            <dt><span class="term"><code class="option">--generic-usb-spec</code> <em class="replaceable"><code>NAME=VALUE,...</code></em></span></dt>
+
+            <dd>
+              <p>Allows to specify from which endpoint <code class="option">generic-usb</code> will read. The spec as the form of <em class="replaceable"><code>NAME=VALUE,...</code></em>. Allowed values are:</p>
+
+              <div class="variablelist">
+                <dl>
+                  <dt><span class="term">vid=HEX</span></dt>
+
+                  <dd>
+                    <p>The vendor id of the controller to which this spec applies</p>
+                  </dd>
+
+                  <dt><span class="term">pid=HEX</span></dt>
+
+                  <dd>
+                    <p>The product id of the controller to which this spec applies</p>
+                  </dd>
+
+                  <dt><span class="term">if=NUM</span></dt>
+
+                  <dd>
+                    <p>The interface from which GenericUSBController should be read</p>
+                  </dd>
+
+                  <dt><span class="term">ep=NUM</span></dt>
+
+                  <dd>
+                    <p>The endpoint from which GenericUSBController should be read</p>
+                  </dd>
+                </dl>
+              </div>
+            </dd>
           </dl>
         </div>
       </div>
 
       <div class="refsect2" title="Evdev Option">
-        <a id="id2958935" name="id2958935"></a>
+        <a id="id3005146" name="id3005146"></a>
 
         <h3>Evdev Option</h3>
 
@@ -427,7 +481,7 @@ xboxdrv --daemon \
             <dt><span class="term"><code class="option">--evdev-no-grab</code></span></dt>
 
             <dd>
-              <p>By default the evdev driver will grab the device, thus making it impossible for other applications to receive events from that device. This is done to avoid confusing applications, as otherwise an app would receive every event twice, once from the original device and once from the virtual xboxdrv one. In some cases this behaviour is undesired, such when mapping only an other wise unhandled subset of keys of an device, i.e. mapping the multimedia keys on a keyboard, so this option turns the grab off.</p>
+              <p>By default the evdev driver will grab the device, thus making it impossible for other applications to receive events from that device. This is done to avoid confusing applications, as otherwise an app would receive every event twice, once from the original device and once from the virtual xboxdrv one. In some cases this behaviour is undesired, such when mapping only an otherwise unhandled subset of keys of an device, i.e. mapping the multimedia keys on a keyboard, so this option turns the grab off.</p>
             </dd>
 
             <dt><span class="term"><code class="option">--evdev-absmap</code> <em class="replaceable"><code>ABSMAP,...</code></em></span></dt>
@@ -467,7 +521,7 @@ ABSMAP = EVDEV_ABS [ "+", "-" ] "=" XBOXAXIS ;
       </div>
 
       <div class="refsect2" title="Status Options">
-        <a id="id2959162" name="id2959162"></a>
+        <a id="id2955193" name="id2955193"></a>
 
         <h3>Status Options</h3>
 
@@ -479,7 +533,7 @@ ABSMAP = EVDEV_ABS [ "+", "-" ] "=" XBOXAXIS ;
               <p>Set LED status. Possible values for <em class="replaceable"><code>NUM</code></em> are:</p>
 
               <div class="table">
-                <a id="id2959196" name="id2959196"></a>
+                <a id="id3005552" name="id3005552"></a>
 
                 <p class="title"><b>Table&nbsp;1.&nbsp;LED Status Codes</b></p>
 
@@ -494,7 +548,7 @@ ABSMAP = EVDEV_ABS [ "+", "-" ] "=" XBOXAXIS ;
                       <tr>
                         <th align="right">Num</th>
 
-                        <th align="left">Behaviour</th>
+                        <th align="left">Behavior</th>
                       </tr>
                     </thead>
 
@@ -621,7 +675,7 @@ $ xboxdrv --rumble-gain 50%
       </div>
 
       <div class="refsect2" title="Chatpad Options (experimental)">
-        <a id="id2959414" name="id2959414"></a>
+        <a id="id3005768" name="id3005768"></a>
 
         <h3>Chatpad Options (experimental)</h3>
 
@@ -653,7 +707,7 @@ $ xboxdrv --rumble-gain 50%
       </div>
 
       <div class="refsect2" title="Headset Options (experimental, Xbox360 USB only)">
-        <a id="id2959493" name="id2959493"></a>
+        <a id="id3005846" name="id3005846"></a>
 
         <h3>Headset Options (experimental, Xbox360 USB only)</h3>
 
@@ -664,13 +718,13 @@ $ xboxdrv --rumble-gain 50%
             <dt><span class="term"><code class="option">--headset</code></span></dt>
 
             <dd>
-              <p>Enable headset support and dump incomming data to stdout.</p>
+              <p>Enable headset support and dump incoming data to stdout.</p>
             </dd>
 
             <dt><span class="term"><code class="option">--headset-dump</code> <em class="replaceable"><code>FILE</code></em></span></dt>
 
             <dd>
-              <p>Enable headset support and dump incomming data to FILE.</p>
+              <p>Enable headset support and dump incoming data to FILE.</p>
             </dd>
 
             <dt><span class="term"><code class="option">--headset-play</code> <em class="replaceable"><code>FILE</code></em></span></dt>
@@ -683,7 +737,7 @@ $ xboxdrv --rumble-gain 50%
       </div>
 
       <div class="refsect2" title="Force Feedback">
-        <a id="id2959566" name="id2959566"></a>
+        <a id="id3005919" name="id3005919"></a>
 
         <h3>Force Feedback</h3>
 
@@ -717,7 +771,7 @@ $ xboxdrv --rumble-gain 50%
       </div>
 
       <div class="refsect2" title="Controller Slot Options">
-        <a id="id2959662" name="id2959662"></a>
+        <a id="id3006015" name="id3006015"></a>
 
         <h3>Controller Slot Options</h3>
 
@@ -765,7 +819,7 @@ $ xboxdrv --rumble-gain 50%
                   <dt><span class="term">property=<em class="replaceable"><code>PROPERTY</code></em>:<em class="replaceable"><code>VALUE</code></em></span></dt>
 
                   <dd>
-                    <p>Match against an arbitary udev property, with name <em class="replaceable"><code>PROPERTY</code></em> and value <em class="replaceable"><code>VALUE</code></em>.</p>
+                    <p>Match against an arbitrary udev property, with name <em class="replaceable"><code>PROPERTY</code></em> and value <em class="replaceable"><code>VALUE</code></em>.</p>
                   </dd>
 
                   <dt><span class="term">usbpath=<em class="replaceable"><code>BUS</code></em>:<em class="replaceable"><code>DEV</code></em></span></dt>
@@ -793,11 +847,11 @@ $ xboxdrv --rumble-gain 50%
       </div>
 
       <div class="refsect2" title="Config Slot Options">
-        <a id="id2959893" name="id2959893"></a>
+        <a id="id3006242" name="id3006242"></a>
 
         <h3>Config Slot Options</h3>
 
-        <p>You can use multple configurations, called config slots, with your controller. You switch between those multiple configurations by pressing the Guide button by default, but you can also set another button via the option <code class="option">--toggle</code>.</p>
+        <p>You can use multiple configurations, called config slots, with your controller. You switch between those multiple configurations by pressing the Guide button by default, but you can also set another button via the option <code class="option">--toggle</code>.</p>
 
         <div class="variablelist">
           <dl>
@@ -834,7 +888,7 @@ $ xboxdrv \
       </div>
 
       <div class="refsect2" title="Configuration Options">
-        <a id="id2960012" name="id2960012"></a>
+        <a id="id3006361" name="id3006361"></a>
 
         <h3>Configuration Options</h3>
 
@@ -849,7 +903,7 @@ $ xboxdrv \
             <dt><span class="term"><code class="option">--timeout <em class="replaceable"><code>MSEC</code></em></code></span></dt>
 
             <dd>
-              <p>Specify the number of miliseconds that xboxdrv will wait for events from the controller before moving on and processing things like auto-fire or relative-axis. Default value is 10, smaller values will give you a higher resoultion auto fire and relative event movement, but will waste some more CPU.</p>
+              <p>Specify the number of miliseconds that xboxdrv will wait for events from the controller before moving on and processing things like auto-fire or relative-axis. Default value is 10, smaller values will give you a higher resolution auto fire and relative event movement, but will waste some more CPU.</p>
             </dd>
 
             <dt><span class="term"><code class="option">-b, --buttonmap BUTTON=BUTTON,...</code></span></dt>
@@ -868,7 +922,7 @@ $ xboxdrv --buttonmap B=A,X=A,Y=A
               <p>Possible button names are (aliases are in parenthesis):</p>
 
               <div class="table">
-                <a id="id2960110" name="id2960110"></a>
+                <a id="id3006458" name="id3006458"></a>
 
                 <p class="title"><b>Table&nbsp;2.&nbsp;Button Names</b></p>
 
@@ -973,7 +1027,7 @@ $ xboxdrv --axismap X2=X1,Y2=Y1,X1=X2,Y1=Y2
       </div>
 
       <div class="refsect2" title="Modifier Preset Configuration Options">
-        <a id="id2960301" name="id2960301"></a>
+        <a id="id3006651" name="id3006651"></a>
 
         <h3>Modifier Preset Configuration Options</h3>
 
@@ -1099,7 +1153,7 @@ $ xboxdrv --relative-axis y2=64000 --axismap -y2=y2
       </div>
 
       <div class="refsect2" title="Uinput Preset Configuration Options">
-        <a id="id2960680" name="id2960680"></a>
+        <a id="id3007030" name="id3007030"></a>
 
         <h3>Uinput Preset Configuration Options</h3>
 
@@ -1134,7 +1188,7 @@ $ xboxdrv --relative-axis y2=64000 --axismap -y2=y2
             <dt><span class="term"><code class="option">--guitar</code></span></dt>
 
             <dd>
-              <p>Sets a predefined button and axis mapping for use with guitar controllers. This mainly gets rid of a few unnecesary buttons and axis not used by a guitar controller.</p>
+              <p>Sets a predefined button and axis mapping for use with guitar controllers. This mainly gets rid of a few unnecessary buttons and axis not used by a guitar controller.</p>
             </dd>
 
             <dt><span class="term"><code class="option">-m, --mouse</code></span></dt>
@@ -1174,7 +1228,7 @@ $ xboxdrv \
       </div>
 
       <div class="refsect2" title="Uinput Configuration Options">
-        <a id="id2960865" name="id2960865"></a>
+        <a id="id3007215" name="id3007215"></a>
 
         <h3>Uinput Configuration Options</h3>
 
@@ -1257,7 +1311,7 @@ DEVICEID     = NUMBER ;
 
               <p>Aside from the named keys, you can also give the input code directly as number via the syntax <span class="keysym">KEY_#<em class="replaceable"><code>NUM</code></em></span>.</p>
 
-              <p>Instead of the low level <span class="keysym">KEY_</span> names, which represent keycodes, you can also use the higher level X11 keysyms <span class="keysym">XK_</span>, the keysyms have the advantage that they map directly to the key you expect, while a <span class="keysym">KEY_</span> name gets mungled by the X11 keymap and will often not report what you expect in case you use a keymap that is different then your keyboard (i.e. dvorak on a qwerty keyboard).</p>
+              <p>Instead of the low level <span class="keysym">KEY_</span> names, which represent keycodes, you can also use the higher level X11 keysyms <span class="keysym">XK_</span>, the keysyms have the advantage that they map directly to the key you expect, while a <span class="keysym">KEY_</span> name gets mangled by the X11 keymap and will often not report what you expect in case you use a keymap that is different then your keyboard (i.e. dvorak on a qwerty keyboard).</p>
 
               <p>A full list of valid X11 keysyms can be optained with <code class="option">--help-x11keysym</code>.</p>
 
@@ -1283,7 +1337,7 @@ $ xboxdrv --ui-buttonmap X=REL_???:VALUE:REPEAT
 
               <p>Note that the 'mouse' and 'keyboard' device_id names do not give you a mouse or keyboard device, these are just symbolic names for the devices into which xboxdrv will sort events that look like a mouse or keyboard event. The final determination of which device gets handled as what will be done by the Kernel or Xorg depending on what events a device provides.</p>
 
-              <p>An example configuration makeing use of device_id would look like this:</p>
+              <p>An example configuration making use of device_id would look like this:</p>
               <pre class="programlisting">
 xboxdrv -s \
   --ui-clear \
@@ -1314,41 +1368,6 @@ xboxdrv -s \
 xboxdrv -s \
   --ui-buttonmap A^toggle=JS_0
 </pre>
-
-              <h4><a id="id2961382" name="id2961382"></a>Hold Button</h4>
-
-              <p>You can send different events depending on how long a button was pressed by:</p>
-              <pre class="programlisting">
-xboxdrv \
-  --ui-buttonmap A=JS_0:JS_1:500
-</pre>
-
-              <p>This will send JS_0 events when the button is pressed and switch to JS_1 events when the button was hold for 500 miliseconds.</p>
-
-              <h4><a id="id2961405" name="id2961405"></a>Exec Button</h4>
-
-              <p>You can bind a button to an application, so that the application will be launched when the button was pressed:</p>
-              <pre class="programlisting">
-xboxdrv \
-  --ui-buttonmap A=exec:/home/juser/local/bin/screenshot.sh
-</pre>
-
-              <h4><a id="id2961424" name="id2961424"></a>Macro Button</h4>
-
-              <p>A button can be bound to a macros via:</p>
-              <pre class="programlisting">
-xboxdrv \
-  --ui-buttonmap A=macro:/home/juser/.xboxdrv/somefile.macro
-</pre>
-
-              <p>The <code class="filename">.macro</code> file has the form of:</p>
-              <pre class="programlisting">
-send KEY_LEFTSHIFT 1
-wait 500
-send KEY_LEFTSHIFT 0
-</pre>
-
-              <p>All abs, rel and key events can be send from a macro file.</p>
 
               <p>For documentation on the filters you can apply to events see <a class="link" href="index.html#buttonfilter" title="Button Filter">Button Filter</a>.</p>
             </dd>
@@ -1409,6 +1428,200 @@ $ xboxdrv --ui-axismap X1=ABS_X,LB+X1=ABS_RX
       </div>
     </div>
 
+    <div class="refsect1" title="Input Event Handler">
+      <a id="inputeventhandler" name="inputeventhandler"></a>
+
+      <h2>Input Event Handler</h2>
+
+      <p>Input event handler decide what comes out of the virtual input devices that xboxdrv creates. They for example decide that when button A is pressed on a gamepad, that a virtual keyboard will emit a press of the space key.</p>
+
+      <p>Furthermore input event handler can also perform some basic transformation of the input signals, thus a joystick can be used to send WASD keys.</p>
+
+      <div class="refsect2" title="Button Event Handler">
+        <a id="buttoneventhandler" name="buttoneventhandler"></a>
+
+        <h3>Button Event Handler</h3>
+
+        <p>A button event handler decides what happens when a button is pressed, it needs to be specified with the <code class="option">--ui-buttonmap</code> option. The example below shows the simplest use case:</p>
+        <pre class="programlisting">
+$ xboxdrv --ui-buttonmap A=key:KEY_A
+</pre>
+
+        <p>Here <code class="option">key</code> is the name of the button event handler, while <code class="option">KEY_A</code> is an argument for the event handler. What kind of arguments an event handler allows depends on the event handler.</p>
+
+        <p>There is also a shorthand form of specifing event handlers by just writing:</p>
+        <pre class="programlisting">
+$ xboxdrv --ui-buttonmap A=KEY_A
+</pre>
+
+        <p>Here no handler is specified explicitly, if that is the case, the appropriate handler will be guessed based on the event type. <code class="literal">EV_KEY</code> events will be handled by the <code class="option">key</code> handler, <code class="literal">EV_REL</code> by the <code class="option">rel</code> handler and <code class="literal">EV_ABS</code> by the <code class="option">abs</code> handler.</p>
+
+        <div class="variablelist">
+          <dl>
+            <dt><span class="term"><code class="option">key</code>:<em class="replaceable"><code>KEY_EVENT</code></em>,</span> <span class="term"><code class="option">key</code>:<em class="replaceable"><code>KEY_EVENT</code></em>:<em class="replaceable"><code>KEY_EVENT</code></em>:<em class="replaceable"><code>HOLD_THRESHOLD_MSEC</code></em></span></dt>
+
+            <dd>
+              <p>The <code class="option">key</code> handler is the most basic one, it maps a button directly to a virtual key or another button.</p>
+
+              <p>If additional arguments are supplied the button will be able to send out two different events. The first event specified will be send when the button is clicked normally, while the second event will be send in case the button is hold down for the time specified in <em class="replaceable"><code>HOLD_THRESHOLD_MSEC</code></em>.</p>
+
+              <p>An example for the hold button would look like:</p>
+              <pre class="programlisting">
+xboxdrv \
+  --ui-buttonmap A=JS_0:JS_1:500
+</pre>
+
+              <p>This will send JS_0 events when the button is pressed and switch to JS_1 events when the button was hold for 500 miliseconds.</p>
+
+              <p>The hold button feature is useful to effectly double the number of available buttons, thus the dpad can for example be used to send out eight different button events instead of just four, which is enough to handle weapons in most FPS games.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">abs</code></span></dt>
+
+            <dd>
+              <p>not yet implemented</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">rel</code>:<em class="replaceable"><code>REL_EVENT</code></em>:<em class="replaceable"><code>VALUE</code></em>:<em class="replaceable"><code>REPEAT</code></em></span></dt>
+
+            <dd>
+              <p>The rel handler will send out a REL event whenever the button is pressed. <em class="replaceable"><code>VALUE</code></em> gives the value of the event that will be send, while <em class="replaceable"><code>REPEAT</code></em> gives the number of miliseconds till the event will be send again.</p>
+
+              <p>A typical use for REL events is emulation of the scroll wheel of a mouse, an example configuration would be:</p>
+              <pre class="programlisting">
+xboxdrv \
+  --ui-buttonmap Y=rel:REL_WHEEL:1:500,A=rel:REL_WHEEL:-1:500
+</pre>
+
+              <p>Here Y will scroll up and A will scroll down.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">cycle-key</code>:<em class="replaceable"><code>KEY_EVENT</code></em>:...</span></dt>
+
+            <dd>
+              <p>The cycle-key handler will switch the <em class="replaceable"><code>KEY_EVENT</code></em> that gets send with each button press. This is useful in situations where a range of buttons should be mapped to a single key. For example a FPS might have weapons mapped from 1 to 6, but only a single key on the gamepad is free, thus one could write:</p>
+              <pre class="programlisting">
+xboxdrv \
+  --ui-buttonmap A=cycle-key:KEY_1:KEY_2:KEY_3:KEY_4:KEY_5:KEY_6
+</pre>
+            </dd>
+
+            <dt><span class="term"><code class="option">cycle-key-named:<em class="replaceable"><code>NAME</code></em>:<em class="replaceable"><code>KEY_EVENT</code></em>:...</code></span></dt>
+
+            <dd>
+              <p>The <code class="option">cycle-key-named</code> handler works exactly like the <code class="option">cycle-key</code> handler, except that a name has to be supplied for the cycle sequence. The name of the sequence is used by <code class="option">cycle-key-ref</code> to access the sequence and reuse it for another button.</p>
+
+              <p>In this simple example A is used to toggle through all weapon keys forward, while B is used to toggle the keys backwards:</p>
+              <pre class="programlisting">
+xboxdrv \
+  --ui-buttonmap A=cycle-key-named:weapons:KEY_1:KEY_2:KEY_3:KEY_4,B=cycle-key-ref:weapons
+</pre>
+            </dd>
+
+            <dt><span class="term"><code class="option">cycle-key-ref</code>:<em class="replaceable"><code>NAME</code></em>:<em class="replaceable"><code>DIRECTION</code></em></span></dt>
+
+            <dd>
+              <p>The <code class="option">cycle-key-ref</code> handler will access and reuse the named cycle keysequence given by <em class="replaceable"><code>NAME</code></em>. If <em class="replaceable"><code>DIRECTION</code></em> can either be 'forward' or 'backward', if no direction is supplied it will default to 'backward'.</p>
+
+              <p>See <code class="option">cycle-key-named</code> for a full example.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">exec</code></span></dt>
+
+            <dd>
+              <p>The exec button handler allows to launch an application when the button was pressed. An example would look like this:</p>
+              <pre class="programlisting">
+xboxdrv \
+  --ui-buttonmap A=exec:/home/juser/local/bin/screenshot.sh
+</pre>
+
+              <p>Possible uses for the button are the ability to do screenshots or perform other tasks that are outside the main application you are using xboxdrv with.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">macro</code></span></dt>
+
+            <dd>
+              <p>A button can be bound to a macro via:</p>
+              <pre class="programlisting">
+xboxdrv \
+  --ui-buttonmap A=macro:/home/juser/.xboxdrv/somefile.macro
+</pre>
+
+              <p>The <code class="filename">.macro</code> file has the form of:</p>
+              <pre class="programlisting">
+send KEY_LEFTSHIFT 1
+wait 500
+send KEY_LEFTSHIFT 0
+</pre>
+
+              <p>All abs, rel and key events can be send from a macro file.</p>
+            </dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="refsect2" title="Axis Event Handler">
+        <a id="axiseventhandler" name="axiseventhandler"></a>
+
+        <h3>Axis Event Handler</h3>
+
+        <p>Axis event handler decide what happens when an axis is moved. Like button event handler they come in different forms and like button event handler they provide a shortcut form. <code class="literal">EV_KEY</code> events will be handled by the <code class="option">key</code> handler, <code class="literal">EV_REL</code> by the <code class="option">rel</code> handler and <code class="literal">EV_ABS</code> by the <code class="option">abs</code> handler.</p>
+
+        <div class="variablelist">
+          <dl>
+            <dt><span class="term"><code class="option">abs</code>:<em class="replaceable"><code>ABS_EVENT</code></em></span></dt>
+
+            <dd>
+              <p>The <code class="option">abs</code> handler is the simplest of them all, it will simply send out the value it gets as input as the given <em class="replaceable"><code>ABS_EVENT</code></em> event to the kernel. Thus a basic configuration to make the left stick behave as joystick would look like this:</p>
+              <pre class="programlisting">
+xboxdrv \
+  --ui-axismap X1=abs:ABS_X,Y1=abs:ABS_Y
+</pre>
+            </dd>
+
+            <dt><span class="term"><code class="option">key</code>:<em class="replaceable"><code>KEY_UP</code></em>:<em class="replaceable"><code>KEY_DOWN</code></em>:<em class="replaceable"><code>THRESHOLD</code></em></span></dt>
+
+            <dd>
+              <p><em class="replaceable"><code>KEY_UP</code></em> gives the keycode to be send when the axis is moved up</p>
+
+              <p><em class="replaceable"><code>KEY_DOWN</code></em> gives the keycode to be send when the axis is moved down</p>
+
+              <p><em class="replaceable"><code>THRESHOLD</code></em> gives the threshold that triggers the sending of an event</p>
+
+              <p>Just like <code class="option">--ui-buttonmap</code>, you can also use shift keys in place of the XBOXAXIS:</p>
+              <pre class="programlisting">
+$ xboxdrv --ui-axismap X1=ABS_X,LB+X1=ABS_RX
+</pre>
+
+              <p>This allows you to send ABS_X events normally and ABS_RX events when the LB button is held down.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">rel</code>:<em class="replaceable"><code>REL_EVENT</code></em>:<em class="replaceable"><code>VALUE</code></em>:<em class="replaceable"><code>REPEAT</code></em></span></dt>
+
+            <dd>
+              <p><em class="replaceable"><code>VALUE</code></em> gives the maximum value of the event, the actual value that gets send is <em class="replaceable"><code>VALUE</code></em> * axis_state. (default: 10)</p>
+
+              <p><em class="replaceable"><code>REPEAT</code></em> gives the number of milisecond to pass before the event is fired again (default: 5).</p>
+
+              <p>The value of -1 has a special meaning, it will result in the REL event being fired as soon as possible (i.e. every <em class="replaceable"><code>timeout</code></em> miliseconds). This is the recomment way for handling mouse emulation, as it will keep REL events syncronized and thus avoid jaggies in the movement, that will result from manually specifying a timeout.</p>
+
+              <p>The <code class="option">rel</code> handler is mainly useful for mouse pointer emulation, if you want to emulate a mouse scroll wheel use the <code class="option">rel-repeat</code> handler instead.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">rel-repeat</code>:<em class="replaceable"><code>REL_EVENT</code></em>:<em class="replaceable"><code>VALUE</code></em>:<em class="replaceable"><code>REPEAT</code></em></span></dt>
+
+            <dd>
+              <p>The <code class="option">rel-repeat</code> handler is similar to the <code class="option">rel</code> handler, but optimized for emulating the scroll wheel of a mouse.</p>
+
+              <p><em class="replaceable"><code>VALUE</code></em> isn't scaled to how far the axis has moved, instead it is constant, instead the time given in <em class="replaceable"><code>REPEAT</code></em> is scaled according to the axis movement. Thus the further the stick is moved, the more events will be send.</p>
+
+              <p>The need for both <code class="option">rel-repeat</code> and <code class="option">rel</code> arises from the fact that Xorg converts scroll wheel movement to button presses before they are handed to an application, thus an application never properly sees the changes in <em class="replaceable"><code>VALUE</code></em>, by scaling <em class="replaceable"><code>REPEAT</code></em> instead that problem is worked around.</p>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+
     <div class="refsect1" title="Input Filter">
       <a id="inputfilter" name="inputfilter"></a>
 
@@ -1443,6 +1656,12 @@ $ xboxdrv --ui-axismap X1=ABS_X,LB+X1=ABS_RX
               <p><em class="replaceable"><code>RATE</code></em> is the number of miliseconds between button press events.</p>
 
               <p><em class="replaceable"><code>DELAY</code></em> the amount of miliseconds till the autofire will start, before that delay the button will act as normal.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">const</code>:<em class="replaceable"><code>VALUE</code></em></span></dt>
+
+            <dd>
+              <p>The const filter will ignore the input signal and send a constant value to the output. This can be used for example in combination with multiple configurations to signal a game or another application which configuration is currently active.</p>
             </dd>
 
             <dt><span class="term"><code class="option">log</code>:<em class="replaceable"><code>STRING</code></em></span></dt>
@@ -1495,6 +1714,12 @@ xboxdrv \
 </pre>
 
               <p>Here the X1 axis is manipulated so that it will have a lower sensitivity in the center and a higher one on the outside.</p>
+            </dd>
+
+            <dt><span class="term"><code class="option">const</code>:<em class="replaceable"><code>VALUE</code></em></span></dt>
+
+            <dd>
+              <p>The const filter will ignore the input signal and send a constant value to the output. This can be used for example in combination with multiple configurations to signal a game or another application which configuration is currently active.</p>
             </dd>
 
             <dt><span class="term"><code class="option">log</code>:<em class="replaceable"><code>STRING</code></em></span></dt>
@@ -1564,12 +1789,12 @@ xboxdrv \
     </div>
 
     <div class="refsect1" title="Running xboxdrv">
-      <a id="id2962221" name="id2962221"></a>
+      <a id="id3009266" name="id3009266"></a>
 
       <h2>Running xboxdrv</h2>
 
       <div class="refsect2" title="Using a single controller">
-        <a id="id2962226" name="id2962226"></a>
+        <a id="id3009271" name="id3009271"></a>
 
         <h3>Using a single controller</h3>
 
@@ -1612,7 +1837,7 @@ $ xboxdrv --trigger-as-button
       </div>
 
       <div class="refsect2" title="Using multiple controller">
-        <a id="id2962334" name="id2962334"></a>
+        <a id="id3009379" name="id3009379"></a>
 
         <h3>Using multiple controller</h3>
 
@@ -1635,7 +1860,7 @@ $ xboxdrv --list-controller
       </div>
 
       <div class="refsect2" title="Hotplugging and Xboxdrv Daemon">
-        <a id="id2962381" name="id2962381"></a>
+        <a id="id3009426" name="id3009426"></a>
 
         <h3>Hotplugging and Xboxdrv Daemon</h3>
 
@@ -1646,7 +1871,7 @@ $ xboxdrv --daemon
 
         <p>When launched in daemon mode xboxdrv will listen to udev events and thus be notified whenever a new USB device gets plugged into the computer. It will then match that device against its list of supported devices and launch a separate thread to handle that gamepad.</p>
 
-        <p>Note that xboxdrv will not allow an arbitarily large number of controllers to be used in that mode, it can only handle as many controllers as you have allocated controller slots at startup. New slots can be allocated with <code class="option">--next-controller</code> and by default one slot is always allocated, thus to support three controller you would run it with:</p>
+        <p>Note that xboxdrv will not allow an arbitrary large number of controllers to be used in that mode, it can only handle as many controllers as you have allocated controller slots at startup. New slots can be allocated with <code class="option">--next-controller</code> and by default one slot is always allocated, thus to support three controller you would run it with:</p>
         <pre class="programlisting">
 $ xboxdrv --daemon --next-controller --next-controller
 </pre>
@@ -1663,7 +1888,7 @@ $ sudo xboxdrv --daemon --detach --pid-file /var/run/xboxdrv.pid
     </div>
 
     <div class="refsect1" title="Xboxdrv Daemon Dbus Interface">
-      <a id="id2962467" name="id2962467"></a>
+      <a id="id3009512" name="id3009512"></a>
 
       <h2>Xboxdrv Daemon Dbus Interface</h2>
 
@@ -1708,14 +1933,14 @@ dbus-send --session --type=method_call  --print-reply \
     </div>
 
     <div class="refsect1" title="Testing">
-      <a id="id2962566" name="id2962566"></a>
+      <a id="id3009612" name="id3009612"></a>
 
       <h2>Testing</h2>
 
       <p>Knowing how to test a xboxdrv configuration is absolutely crucial in understanding what is wrong in a given setup. Testing the configuration in a game is most often not helpful, since you won't see the true cause beyond endless layers of abstraction between you and the actual events. Luckily there are a few tools you can use to test, all of these are command line based and it is recomment that you get familar with them when you want to do any more complex configuration.</p>
 
       <div class="refsect2" title="evtest">
-        <a id="id2962588" name="id2962588"></a>
+        <a id="id3009633" name="id3009633"></a>
 
         <h3>evtest</h3>
 
@@ -1725,7 +1950,7 @@ dbus-send --session --type=method_call  --print-reply \
       </div>
 
       <div class="refsect2" title="jstest">
-        <a id="id2962619" name="id2962619"></a>
+        <a id="id3009664" name="id3009664"></a>
 
         <h3>jstest</h3>
 
@@ -1735,7 +1960,7 @@ dbus-send --session --type=method_call  --print-reply \
       </div>
 
       <div class="refsect2" title="sdl-jstest">
-        <a id="id2962641" name="id2962641"></a>
+        <a id="id3009686" name="id3009686"></a>
 
         <h3>sdl-jstest</h3>
 
@@ -1750,7 +1975,7 @@ $ svn co svn://svn.berlios.de/windstille/trunk/sdl-jstest
       </div>
 
       <div class="refsect2" title="xev">
-        <a id="id2962674" name="id2962674"></a>
+        <a id="id3009719" name="id3009719"></a>
 
         <h3>xev</h3>
 
@@ -1763,7 +1988,7 @@ $ apt-get install x11-utils
       </div>
 
       <div class="refsect2" title="jscalc and jscalibrator">
-        <a id="id2962697" name="id2962697"></a>
+        <a id="id3009742" name="id3009742"></a>
 
         <h3>jscalc and jscalibrator</h3>
 
@@ -1773,7 +1998,7 @@ $ apt-get install x11-utils
       </div>
 
       <div class="refsect2" title="mouse">
-        <a id="id2962724" name="id2962724"></a>
+        <a id="id3009769" name="id3009769"></a>
 
         <h3>mouse</h3>
 
@@ -1781,7 +2006,7 @@ $ apt-get install x11-utils
       </div>
 
       <div class="refsect2" title="Note">
-        <a id="id2962735" name="id2962735"></a>
+        <a id="id3009780" name="id3009780"></a>
 
         <h3>Note</h3>
 
@@ -1790,14 +2015,14 @@ $ apt-get install x11-utils
     </div>
 
     <div class="refsect1" title="Examples">
-      <a id="id2962750" name="id2962750"></a>
+      <a id="id3009795" name="id3009795"></a>
 
       <h2>Examples</h2>
 
       <p>The configurations below are just a few random examples, further examples can be found in the <code class="filename">examples/</code> directory of the xboxdrv source tree or in <code class="filename">/usr/share/doc/xboxdrv/examples/</code>.</p>
 
       <div class="refsect2" title="Turning triggers into buttons">
-        <a id="id2962772" name="id2962772"></a>
+        <a id="id3009817" name="id3009817"></a>
 
         <h3>Turning triggers into buttons</h3>
 
@@ -1808,7 +2033,7 @@ $ xboxdrv --trigger-as-button
       </div>
 
       <div class="refsect2" title="Configure a deadzone">
-        <a id="id2962797" name="id2962797"></a>
+        <a id="id3009842" name="id3009842"></a>
 
         <h3>Configure a deadzone</h3>
 
@@ -1824,7 +2049,7 @@ $ xboxdrv --buttonmap X1^deadzone:15000
       </div>
 
       <div class="refsect2" title="Keyboard Emulation">
-        <a id="id2962830" name="id2962830"></a>
+        <a id="id3009875" name="id3009875"></a>
 
         <h3>Keyboard Emulation</h3>
 
@@ -1838,7 +2063,7 @@ $ xboxdrv \
       </div>
 
       <div class="refsect2" title="Fighting games:">
-        <a id="id2962850" name="id2962850"></a>
+        <a id="id3009895" name="id3009895"></a>
 
         <h3>Fighting games:</h3>
 
@@ -1854,7 +2079,7 @@ $ xboxdrv \
       </div>
 
       <div class="refsect2" title="CH Flightstick emulation in Dosbox:">
-        <a id="id2962874" name="id2962874"></a>
+        <a id="id3009919" name="id3009919"></a>
 
         <h3>CH Flightstick emulation in Dosbox:</h3>
 
@@ -1875,7 +2100,7 @@ $ xboxdrv -s \
       </div>
 
       <div class="refsect2" title="Using mouse emulation and joystick at the same time">
-        <a id="id2962920" name="id2962920"></a>
+        <a id="id3009965" name="id3009965"></a>
 
         <h3>Using mouse emulation and joystick at the same time</h3>
 
@@ -1888,7 +2113,7 @@ $ xboxdrv --next-config --mouse
       </div>
 
       <div class="refsect2" title="Mapping every button multiple">
-        <a id="id2962952" name="id2962952"></a>
+        <a id="id3009997" name="id3009997"></a>
 
         <h3>Mapping every button multiple</h3>
 
@@ -1906,7 +2131,7 @@ $ xboxdrv \
       </div>
 
       <div class="refsect2" title="Sauerbraten">
-        <a id="id2962972" name="id2962972"></a>
+        <a id="id3010017" name="id3010017"></a>
 
         <h3>Sauerbraten</h3>
 
@@ -1922,7 +2147,7 @@ $ xboxdrv \
       </div>
 
       <div class="refsect2" title="Warsow">
-        <a id="id2962999" name="id2962999"></a>
+        <a id="id3010044" name="id3010044"></a>
 
         <h3>Warsow</h3>
 
@@ -1963,7 +2188,7 @@ exec xboxdrv \
     </div>
 
     <div class="refsect1" title="SDL Notes">
-      <a id="id2963082" name="id2963082"></a>
+      <a id="id3010127" name="id3010127"></a>
 
       <h2>SDL Notes</h2>
 
@@ -2009,12 +2234,12 @@ $ export SDL_JOYSTICK_DEVICE
     </div>
 
     <div class="refsect1" title="Troubleshooting">
-      <a id="id2963192" name="id2963192"></a>
+      <a id="id3010237" name="id3010237"></a>
 
       <h2>Troubleshooting</h2>
 
       <div class="refsect2" title="&quot;No Xbox or Xbox360 controller found&quot;">
-        <a id="id2963197" name="id2963197"></a>
+        <a id="id3010242" name="id3010242"></a>
 
         <h3>"No Xbox or Xbox360 controller found"</h3>
 
@@ -2028,17 +2253,17 @@ $ lsusb -v
 XPadDevice xpad_devices[] = { ... }
 </pre>
 
-        <p>If you have success with that, send a patch to <code class="email">&lt;<a class="email" href="mailto:grumbel@gmx.de">grumbel@gmx.de</a>&gt;</code>, if not, contact me too, I might be able to provide additional help.</p>
+        <p>If you have success with that, send a patch to <code class="email">&lt;<a class="email" href="mailto:grumbel@gmail.com">grumbel@gmail.com</a>&gt;</code>, if not, contact me too, I might be able to provide additional help.</p>
 
         <p>As an alternative you can also use the --device and --type option to enforce a USB device as well as a controller type an bypass any auto detection.</p>
       </div>
 
       <div class="refsect2" title="&quot;Unknown data: bytes: 3 Data: ...&quot;">
-        <a id="id2963248" name="id2963248"></a>
+        <a id="id3010293" name="id3010293"></a>
 
         <h3>"Unknown data: bytes: 3 Data: ..."</h3>
 
-        <p>This means that your controller is sending data that isn't understood by the driver. If your controller still works, you can just ignore it, the Xbox360 controller seems to send out useless data every now and then. If your controller does not work and you get plenty of those lines when you move the sticks or press buttons it means that your controller talks an un-understood protocol and some reverse enginiering is required. Contact <code class="email">&lt;<a class="email" href="mailto:grumbel@gmx.de">grumbel@gmx.de</a>&gt;</code> and include the output of:</p>
+        <p>This means that your controller is sending data that isn't understood by the driver. If your controller still works, you can just ignore it, the Xbox360 controller seems to send out useless data every now and then. If your controller does not work and you get plenty of those lines when you move the sticks or press buttons it means that your controller talks an un-understood protocol and some reverse enginiering is required. Contact <code class="email">&lt;<a class="email" href="mailto:grumbel@gmail.com">grumbel@gmail.com</a>&gt;</code> and include the output of:</p>
         <pre class="programlisting">
 $ lsusb -v
 </pre>
@@ -2047,7 +2272,7 @@ $ lsusb -v
       </div>
 
       <div class="refsect2" title="&quot;Error: No stuitable uinput device found&quot;">
-        <a id="id2963280" name="id2963280"></a>
+        <a id="id3010325" name="id3010325"></a>
 
         <h3>"Error: No stuitable uinput device found"</h3>
 
@@ -2060,7 +2285,7 @@ $ xboxdrv --no-uinput -v
       </div>
 
       <div class="refsect2" title="The wireless controller doesn't work">
-        <a id="id2963305" name="id2963305"></a>
+        <a id="id3010350" name="id3010350"></a>
 
         <h3>The wireless controller doesn't work</h3>
 
@@ -2088,7 +2313,7 @@ $ xboxdrv --no-uinput -v
       </div>
 
       <div class="refsect2" title="Wacom issues">
-        <a id="id2963362" name="id2963362"></a>
+        <a id="id3010407" name="id3010407"></a>
 
         <h3>Wacom issues</h3>
 
@@ -2105,7 +2330,7 @@ $ sudo ln -sf /dev/input/js1 /dev/input/js0
       </div>
 
       <div class="refsect2" title="uinput issues">
-        <a id="id2963409" name="id2963409"></a>
+        <a id="id3010454" name="id3010454"></a>
 
         <h3>uinput issues</h3>
 
@@ -2116,7 +2341,7 @@ KERNEL=="uinput", MODE="0660", GROUP="root"
       </div>
 
       <div class="refsect2" title="Wine issues">
-        <a id="id2963436" name="id2963436"></a>
+        <a id="id3010482" name="id3010482"></a>
 
         <h3>Wine issues</h3>
 
@@ -2127,14 +2352,14 @@ KERNEL=="uinput", MODE="0660", GROUP="root"
     </div>
 
     <div class="refsect1" title="Xorg issues">
-      <a id="id2963461" name="id2963461"></a>
+      <a id="id3010506" name="id3010506"></a>
 
       <h2>Xorg issues</h2>
 
       <p>If you start xboxdrv and instead of having a fully working joystick, you end up controlling the mouse that might be due to recent changes in Xorg and its device hotplug handling. There are four workarounds, the one that involves editing <code class="filename">/etc/hal/fdi/policy/preferences.fdi</code> is the recommont one.</p>
 
       <div class="refsect2" title="Temporary workaround using hal-device">
-        <a id="id2963480" name="id2963480"></a>
+        <a id="id3010525" name="id3010525"></a>
 
         <h3>Temporary workaround using hal-device</h3>
 
@@ -2150,7 +2375,7 @@ $ hal-device -r $DEVICEID
       </div>
 
       <div class="refsect2" title="Temporary workaround using xinput">
-        <a id="id2963507" name="id2963507"></a>
+        <a id="id3010552" name="id3010552"></a>
 
         <h3>Temporary workaround using xinput</h3>
 
@@ -2162,7 +2387,7 @@ $ xinput set-int-prop $DEVICEID 'Device Enabled' 32 0
       </div>
 
       <div class="refsect2" title="Permanent workaround using .fdi files">
-        <a id="id2963525" name="id2963525"></a>
+        <a id="id3010570" name="id3010570"></a>
 
         <h3>Permanent workaround using .fdi files</h3>
 
@@ -2181,7 +2406,7 @@ $ xinput set-int-prop $DEVICEID 'Device Enabled' 32 0
       </div>
 
       <div class="refsect2" title="Permanent workaround by disabling device auto detection">
-        <a id="id2963557" name="id2963557"></a>
+        <a id="id3010602" name="id3010602"></a>
 
         <h3>Permanent workaround by disabling device auto detection</h3>
 
@@ -2197,7 +2422,7 @@ EndSection
     </div>
 
     <div class="refsect1" title="Force Feedback Programming">
-      <a id="id2963597" name="id2963597"></a>
+      <a id="id3010642" name="id3010642"></a>
 
       <h2>Force Feedback Programming</h2>
 
@@ -2235,12 +2460,12 @@ EndSection
     </div>
 
     <div class="refsect1" title="Bugs">
-      <a id="id2963669" name="id2963669"></a>
+      <a id="id3010714" name="id3010714"></a>
 
       <h2>Bugs</h2>
 
       <div class="refsect2" title="X11 keysym issues">
-        <a id="id2963674" name="id2963674"></a>
+        <a id="id3010719" name="id3010719"></a>
 
         <h3>X11 keysym issues</h3>
 
@@ -2252,7 +2477,7 @@ EndSection
       </div>
 
       <div class="refsect2" title="Non-interruptable processes due to force feedback">
-        <a id="id2963705" name="id2963705"></a>
+        <a id="id3010750" name="id3010750"></a>
 
         <h3>Non-interruptable processes due to force feedback</h3>
 
@@ -2261,27 +2486,31 @@ EndSection
         <p>Workaround: Kill the app that uses xboxdrv before xboxdrv itself.</p>
       </div>
 
-      <div class="refsect2" title="Bug Reports and Feature Requests">
-        <a id="id2963724" name="id2963724"></a>
+      <div class="refsect2" title="Questions, Bug Reports and Feature Requests">
+        <a id="id3010769" name="id3010769"></a>
 
-        <h3>Bug Reports and Feature Requests</h3>
+        <h3>Questions, Bug Reports and Feature Requests</h3>
 
-        <p>If you have bug reports or feature request report them by email to:</p>
+        <p>Bug reports and feature request can be report to the xboxdrv issue tracker at:</p>
 
-        <p>Ingo Ruhnke <code class="email">&lt;<a class="email" href="mailto:grumbel@gmx.de">grumbel@gmx.de</a>&gt;</code></p>
+        <p><a class="ulink" href="https://github.com/Grumbel/xboxdrv/issues/new" target="_top">https://github.com/Grumbel/xboxdrv/issues/new</a></p>
+
+        <p>General questions and requests for configuration help should be directed to the xboxdrv mailing list at:</p>
+
+        <p><a class="ulink" href="http://groups.google.com/group/xboxdrv" target="_top">http://groups.google.com/group/xboxdrv</a></p>
       </div>
     </div>
 
     <div class="refsect1" title="Copyright">
-      <a id="id2963744" name="id2963744"></a>
+      <a id="id3010804" name="id3010804"></a>
 
       <h2>Copyright</h2>
 
-      <p>Copyright © 2010 Ingo Ruhnke <code class="email">&lt;<a class="email" href="mailto:grumbel@gmx.de">grumbel@gmx.de</a>&gt;</code> License GPLv3+: GNU GPL version 3 or later <a class="ulink" href="http://gnu.org/licenses/gpl.html" target="_top">http://gnu.org/licenses/gpl.html</a>. This is free software: you are free to change and redistribute it. There is NO WARRANTY, to the extent permitted by law.</p>
+      <p>Copyright © 2010-2011 Ingo Ruhnke <code class="email">&lt;<a class="email" href="mailto:grumbel@gmail.com">grumbel@gmail.com</a>&gt;</code> License GPLv3+: GNU GPL version 3 or later <a class="ulink" href="http://gnu.org/licenses/gpl.html" target="_top">http://gnu.org/licenses/gpl.html</a>. This is free software: you are free to change and redistribute it. There is NO WARRANTY, to the extent permitted by law.</p>
     </div>
 
     <div class="refsect1" title="See also">
-      <a id="id2963766" name="id2963766"></a>
+      <a id="id3010827" name="id3010827"></a>
 
       <h2>See also</h2>
 
