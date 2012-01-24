@@ -89,6 +89,32 @@
 
           <article class="news">
             <header>
+              <h3>0.8.4 released</h3>
+              <time datetime="2012-01-24" pubdate="pubdate">24. January 2012</time>
+            </header>
+            <ul>
+              <li>readded man-page that had gone missing</li>
+              <li>added documentation for --dbus and --ff-device</li>
+            </ul>
+          </article>
+
+          <article class="news">
+            <header>
+              <h3>0.8.3 released</h3>
+              <time datetime="2012-01-23" pubdate="pubdate">23. January 2012</time>
+            </header>
+            <ul>
+              <li>added --dbus option to switch between system and session bus</li>
+              <li>added sequence-key, same as cycle-key but doesn't wrap around</li>
+              <li>added workaround for libudev older then v150</li>
+              <li>added --ff-device DEV to select force-feedback device</li>
+              <li>fixed force feedback getting on the wrong evdev</li>
+              <li>fixed Xbox360 wireless LED not getting properly set on late plugin</li>
+            </ul>
+          </article>
+
+          <article class="news">
+            <header>
               <h3>0.8.2 released</h3>
               <time datetime="2011-08-07" pubdate="pubdate">07. August 2011</time>
             </header>
@@ -796,7 +822,9 @@
           <h2>Source Code Download</h2>
           <div class="twocolumn">
             <ul>
-              <li><strong><a href="xboxdrv-linux-0.8.2.tar.bz2">xboxdrv-linux-0.8.2.tar.bz2</a> ← latest</strong></li>
+              <li><strong><a href="xboxdrv-linux-0.8.4.tar.bz2">xboxdrv-linux-0.8.4.tar.bz2</a> ← latest</strong></li>
+              <li><a href="xboxdrv-linux-0.8.3.tar.bz2">xboxdrv-linux-0.8.3.tar.bz2</a></li>
+              <li><a href="xboxdrv-linux-0.8.2.tar.bz2">xboxdrv-linux-0.8.2.tar.bz2</a></li>
               <li><a href="xboxdrv-linux-0.8.1.tar.bz2">xboxdrv-linux-0.8.1.tar.bz2</a></li>
               <li><a href="xboxdrv-linux-0.8.0.tar.bz2">xboxdrv-linux-0.8.0.tar.bz2</a></li>
               <li><a href="xboxdrv-linux-0.7.3.tar.bz2">xboxdrv-linux-0.7.3.tar.bz2</a></li>
@@ -849,6 +877,13 @@
             <li>git clone http://pingus.seul.org/~grumbel/xboxdrv.git</li>
             <li>git clone git://github.com/Grumbel/xboxdrv.git</li>
           </ul>
+          <p>
+            There are also Git repositories for
+              the <a href="https://github.com/Grumbel/xboxdrv-ubuntu">Ubuntu
+              packages</a> source and
+              the <a href="https://github.com/Grumbel/xboxdrv-htdocs">source
+              of this webpage</a>.
+          </p>
         </section>        
 
         <section>
@@ -865,6 +900,8 @@
             <li><a href="http://www.xpadder.com/">Xpadder - powerful joystick to keyboard mapper for Windows (commercial, old 5.2 version is freeware)</a></li>
             <li><a href="http://www.electracode.com/4/joy2key/JoyToKey%20English%20Version.htm">Simple joystick to keyboard mapper for Windows (freeware)</a></li>
             <li><a href="http://code.google.com/p/diyps3controller/">Emulate a PS3 controller via a Linux PC with a Blutooth Adapter</a></li>
+            <li><a href="http://www.pabr.org/linmctool/linmctool.en.html">linmctool - Linux motion-sensing controller tool</a></li>
+            <li><a href="http://ubuntuforums.org/showthread.php?t=1190061">Ubuntu forum discussion on Playstion 3 Controller support</a></li>
           </ul>
         </section>
       </div>
