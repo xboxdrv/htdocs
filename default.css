@@ -1,5 +1,4 @@
-body { 
-
+body {
   font-family: sans-serif;
 
   background-color: rgb(0,100,0);
@@ -7,11 +6,11 @@ body {
   background-repeat: repeat-x;
 }
 
-header, article, section { 
+header, article, section {
   display: block;
 }
 
-#body, .refentry { 
+#body, .refentry {
   background-color: white;
 
   max-width: 60em;
@@ -19,8 +18,8 @@ header, article, section {
 
   border-radius: 16px;
   -moz-border-radius: 16px;
-  -webkit-border-radius: 16px;  
-  
+  -webkit-border-radius: 16px;
+
   border-style: solid;
   border-color: white;
   border-width: 2px;
@@ -28,9 +27,11 @@ header, article, section {
   overflow: hidden;
 }
 
-#title { 
-  text-shadow: 0.1em 0.1em 0.2em white;
+#title {
+  text-shadow: 0px 0.1em 0.1em black;
   display: block;
+
+  color: white;
 
   font-family: sans-serif;
 
@@ -46,7 +47,7 @@ header, article, section {
   padding: 0.5em 1em 0.5em 1em;
 }
 
-#content, .refentry { 
+#content, .refentry {
   overflow: hidden;
   display: block;
   padding: 0em 3em 1em 3em;
@@ -54,7 +55,7 @@ header, article, section {
   background-color: white;
 }
 
-#footer { 
+#footer {
   background:  rgb(144,238,144);
   background-image: url("background.jpg");
   background-repeat: repeat-x;
@@ -66,27 +67,27 @@ header, article, section {
   padding: 0.5em;
 
   text-align: right;
- 
+
   -moz-border-radius: 0 0 16px 16px;
   -webkit-border-radius: 0 0 16px 16px;
   border-radius: 0 0 16px 16px;
 }
 
-p { 
+p {
   text-indent: 1em;
 }
 
-ul { 
+ul {
   padding-top: 0;
   margin: 0;
 }
 
-dl { 
+dl {
   padding-left:  4em;
   padding-right: 4em;
 }
 
-dl>dt {  
+dl>dt {
   font-weight: bold;
 }
 
@@ -94,7 +95,7 @@ dl>dd {
   margin-bottom: 1em;
 }
 
-article.news header { 
+article.news header {
   width: 100%;
   border-bottom: thin solid lightgrey;
   margin-bottom: 0.5em;
@@ -113,19 +114,19 @@ article.news time {
   color: grey;
 }
 
-article.news { 
+article.news {
   margin-bottom: 1.5em;
 }
 
-article.oldnews { 
+article.oldnews {
   display: none;
 }
 
-li.oldrelease { 
+li.oldrelease {
   display: none;
 }
 
-h2 { 
+h2 {
   background:  rgb(144,238,144);
   background-image: url("background2.jpg");
   background-repeat: repeat-x;
@@ -144,7 +145,7 @@ h2 {
   /* text-decoration: underline; */
 }
 
-.code { 
+.code {
   background-color: hsl(60, 100%, 95%);
   padding: 1em;
   margin: 0em 4em;
@@ -155,21 +156,21 @@ h2 {
   border-color: hsl(60, 100%, 40%);
 }
 
-.navheader /* manpage */ { 
+.navheader /* manpage */ {
   display: none;
 }
 
-.twocolumn { 
-  column-count: 2; 
+.twocolumn {
+  column-count: 2;
   column-rule-style: solid;
   column-rule-color: rgb(240, 240, 240);
 
-  -moz-column-count: 2; 
+  -moz-column-count: 2;
   -moz-column-rule-style: solid;
   -moz-column-rule-color: rgb(240, 240, 240);
 }
 
-pre.programlisting { 
+pre.programlisting {
   background-color: rgb(240, 240, 240);
   padding: 0.5em;
 }
@@ -177,7 +178,7 @@ pre.programlisting {
 #ShowOldNewsButton, #HideOldNewsButton {
   display: block;
   font-size: small;
-  
+
   text-align: center;
   margin-left: 1em;
   margin-right: 1em;
@@ -185,7 +186,7 @@ pre.programlisting {
 
   border-radius: 8px;
   -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;  
+  -webkit-border-radius: 8px;
 
   background-color: rgb(240,240,240);
   padding: 0.25em 0.5em;
