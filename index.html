@@ -3,7 +3,7 @@
   <head>
     <meta  charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="default.css" />
-    <link rel="shortcut icon" href="favicon.png" type="image/png" /> 
+    <link rel="shortcut icon" href="favicon.png" type="image/png" />
     <title>Userspace Xbox/Xbox360 USB Gamepad Driver for Linux</title>
   </head>
 
@@ -41,6 +41,10 @@
         <input type="hidden" name="bn" value="PP-DonationsBF" />
         <input type="image" style="border-style: none" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="Donate via Paypal" />
       </form>
+    </div>
+
+    <div style="position: absolute; left: 16px; top: 100px;">
+      <a href="bitcoin:1N3L2iQQ4rg7wPtiXWQhRbvoYD4AVm6MLn"><img src="donatebitcoin.png" alt="Donate via Bitcoin"/></a>
     </div>
 
     <div id="body">
@@ -82,7 +86,7 @@
         <p>
           You can find a full list of possible options in the <a href="xboxdrv.html">xboxdrv manpage</a>.
         </p>
-        
+
         <section>
           <header>
             <h2>News</h2>
@@ -125,7 +129,7 @@
             </ul>
           </article>
 
-          <article class="news">
+          <article class="news oldnews">
             <header>
               <h3>0.8.3 released</h3>
               <time datetime="2012-01-23" pubdate="pubdate">23. January 2012</time>
@@ -140,7 +144,7 @@
             </ul>
           </article>
 
-          <article class="news">
+          <article class="news oldnews">
             <header>
               <h3>0.8.2 released</h3>
               <time datetime="2011-08-07" pubdate="pubdate">07. August 2011</time>
@@ -154,7 +158,7 @@
             </ul>
           </article>
 
-          <article class="news">
+          <article class="news oldnews">
             <header>
               <h3>0.8.1 released</h3>
               <time datetime="2011-07-20" pubdate="pubdate">20. July 2011</time>
@@ -174,7 +178,7 @@
             </ul>
           </article>
 
-          <article class="news">
+          <article class="news oldnews">
             <header>
               <h3>0.8.0 released</h3>
               <time datetime="2011-05-26" pubdate="pubdate">26. May 2011</time>
@@ -737,7 +741,7 @@
             <li>any joystick support by Linux via the evdev interface</li>
           </ul>
 
-          <h2>How to help</h2>         
+          <h2>How to help</h2>
           <p>
             Chatpad support is currently working only for the wired
             USB controllers, not the wireless ones. As both work a
@@ -771,7 +775,7 @@
 
           <h3>Feature Requests and Bug Reports</h3>
           <ul>
-            <li><a href="https://github.com/Grumbel/xboxdrv/issues/new">GitHub Issue Tracker</a></li>
+            <li><a href="https://github.com/xboxdrv/xboxdrv/issues/new">GitHub Issue Tracker</a></li>
           </ul>
 
           <h3>IRC Channel (not very active)</h3>
@@ -789,11 +793,12 @@
         <section>
           <h2>Donate</h2>
           <p>
-            Like Xboxdrv and want to give something back? You can do so via three ways:
+            Like Xboxdrv and want to give something back? You can do so via four ways:
           </p>
           <ul>
             <li><a href="https://flattr.com/thing/2423/Xbox360-Gamepad-Driver-for-Linux">Donate via Flattr</a></li>
             <li>Donate via Paypal (see button at the top/right of the page)</li>
+            <li>Donate via Bitcoin to <a href="bitcoin:1N3L2iQQ4rg7wPtiXWQhRbvoYD4AVm6MLn">bitcoin:1N3L2iQQ4rg7wPtiXWQhRbvoYD4AVm6MLn</a></li>
             <li><a href="http://www.amazon.de/wishlist/3AXGAYERY26TF">My
                 Amazon Wishlist (German)</a></li>
           </ul>
@@ -803,7 +808,7 @@
           <h2>Binary Package Download</h2>
           <p>
             Prebuild official binary packages are available for Ubuntu
-            11.04 and Ubuntu 10.04 LTS can be obtained from
+            13.04 and Ubuntu 12.04 LTS can be obtained from
             the <a href="https://launchpad.net/~grumbel/+archive/ppa">PPA</a>.
             To automatically add the repository to
             the <tt>sources.list</tt> and install <tt>xboxdrv</tt>
@@ -814,7 +819,7 @@
             sudo add-apt-repository ppa:grumbel/ppa<br/>
             sudo apt-get update<br/>
             sudo apt-get install xboxdrv<br/>
-            sudo apt-get install xboxdrv-stable
+            <!--sudo apt-get install xboxdrv-stable-->
           </div>
 
           <p>
@@ -830,7 +835,7 @@
              <p>
                or click the apturl link below:
              </p>
-             
+
              <p>
                <ul>
                  <li><a href="apt:apt+http://launchpad.net/~grumbel/ppa?package=xboxdrv">Install xboxdrv</a></li>
@@ -843,14 +848,14 @@
             you might want to grab for debugging purposes with SDL
             applications.
           </p>
-        </section>        
+        </section>
 
         <section>
           <h2>Source Code Download</h2>
           <div class="twocolumn">
             <ul>
               <li><strong><a href="xboxdrv-linux-0.8.5.tar.bz2">xboxdrv-linux-0.8.5.tar.bz2</a> ← latest</strong></li>
-              <li><a href="xboxdrv-linux-0.8.4.tar.bz2">xboxdrv-linux-0.8.4.tar.bz2</a> ← stable</li>
+              <li><a href="xboxdrv-linux-0.8.4.tar.bz2">xboxdrv-linux-0.8.4.tar.bz2</a></li>
               <li><a href="xboxdrv-linux-0.8.3.tar.bz2">xboxdrv-linux-0.8.3.tar.bz2</a></li>
               <li><a href="xboxdrv-linux-0.8.2.tar.bz2">xboxdrv-linux-0.8.2.tar.bz2</a></li>
               <li><a href="xboxdrv-linux-0.8.1.tar.bz2">xboxdrv-linux-0.8.1.tar.bz2</a></li>
@@ -859,7 +864,7 @@
               <li><a href="xboxdrv-linux-0.7.2.tar.bz2">xboxdrv-linux-0.7.2.tar.bz2</a></li>
               <li><a href="xboxdrv-linux-0.7.1.tar.bz2">xboxdrv-linux-0.7.1.tar.bz2</a></li>
               <li><a href="xboxdrv-linux-0.7.0.tar.bz2">xboxdrv-linux-0.7.0.tar.bz2</a></li>
-              <li><a href="xboxdrv-linux-0.6.6.tar.bz2">xboxdrv-linux-0.6.6.tar.bz2</a></strong></li>
+              <li><a href="xboxdrv-linux-0.6.6.tar.bz2">xboxdrv-linux-0.6.6.tar.bz2</a></li>
               <li><a href="xboxdrv-linux-0.6.5.tar.bz2">xboxdrv-linux-0.6.5.tar.bz2</a></li>
               <li><a href="xboxdrv-linux-0.6.4.tar.bz2">xboxdrv-linux-0.6.4.tar.bz2</a></li>
               <li><a href="xboxdrv-linux-0.6.3.tar.bz2">xboxdrv-linux-0.6.3.tar.bz2</a></li>
@@ -886,34 +891,32 @@
               <li><a href="xboxdrv-linux-0.1.tar.bz2">xboxdrv-linux-0.1.tar.bz2</a></li>
             </ul>
           </div>
-          <p>
+          <!--<p>
             Note: You should always try the <strong>latest</strong>
             first, the <strong>stable</strong> one is just an outdated
             version that is known to not have any important bugs, it
             however might also lacks plenty of features and
             potentially support for controllers.
-          </p>
+          </p>-->
         </section>
 
         <section>
           <h2 id="gitrepository">Git Repository</h2>
           <p>
             You can get xboxdrv
-            from <a href="http://github.com/Grumbel/xboxdrv/">github</a>
-            or via http from seul.org. Both repositories are identical.
+            from <a href="http://github.com/xboxdrv/xboxdrv/">GitHub</a>:
           </p>
           <ul>
-            <li>git clone http://pingus.seul.org/~grumbel/xboxdrv.git</li>
-            <li>git clone git://github.com/Grumbel/xboxdrv.git</li>
+            <li>git clone git://github.com/xboxdrv/xboxdrv.git</li>
           </ul>
           <p>
             There are also Git repositories for
-              the <a href="https://github.com/Grumbel/xboxdrv-ubuntu">Ubuntu
+              the <a href="https://github.com/xboxdrv/ubuntu">Ubuntu
               packages</a> source and
-              the <a href="https://github.com/Grumbel/xboxdrv-htdocs">source
+              the <a href="https://github.com/xboxdrv/htdocs">source
               of this webpage</a>.
           </p>
-        </section>        
+        </section>
 
         <section>
           <h2>Links</h2>
@@ -936,7 +939,7 @@
       </div>
 
       <footer id="footer">
-        Copyright &copy; 2008-2011 <a href="mailto:grumbel@gmx.de?subject=XboxDrv">Ingo Ruhnke
+        Copyright &copy; 2008-2013 <a href="mailto:grumbel@gmx.de?subject=XboxDrv">Ingo Ruhnke
           &lt;grumbel@gmx.de&gt;</a>
       </footer>
     </div>
