@@ -94,8 +94,26 @@
 
           <article class="news">
             <header>
+              <h3>0.8.8 released</h3>
+              <time datetime="2015-11-09" pubdate="pubdate">09. Nov 2015</time>
+            </header>
+            <ul>
+              <li>use session dbus even for user root, except when DISPLAY is not set</li>
+              <li>fixed issue in to_float() triggering assert()</li>
+              <li>fixed vendor/product not getting set for virtual device in daemon mode</li>
+              <li>fixed \r\n newlines causing errors in INIParser, ignore \r like whitespace</li>
+              <li>added device support for Rock Candy Gamepad Wired Controller, Mad
+                Catz Street Fighter IV SE Fighting Stick, MadCatz GamePad, Hori
+                Fighting Edge, Elcom JC-U3613M, Mad Catz Fightpad, Mad Cats Ghost
+                Recon FS GamePad, Mad Catz SFxT Fightstick Pro, Razer Sabertooth,
+                FUS1ON Tournament Controller, PowerA Pro Ex and others</li>
+            </ul>
+          </article>
+
+          <article class="news">
+            <header>
               <h3>0.8.7 released</h3>
-              <time datetime="2015-28-10" pubdate="pubdate">28. October 2015</time>
+              <time datetime="2015-10-28" pubdate="pubdate">28. October 2015</time>
             </header>
             <ul>
               <li>fixed USB cleanup issue on exit</li>
@@ -105,7 +123,7 @@
           <article class="news">
             <header>
               <h3>0.8.6 released</h3>
-              <time datetime="2015-25-10" pubdate="pubdate">25. October 2015</time>
+              <time datetime="2015-10-25" pubdate="pubdate">25. October 2015</time>
             </header>
             <ul>
               <li>Buttonevent exec: double fork to avoid zombies</li>
@@ -861,17 +879,17 @@
           </p>
 
           <!--
-             <p>
-               or click the apturl link below:
-             </p>
+              <p>
+                or click the apturl link below:
+              </p>
 
-             <p>
-               <ul>
-                 <li><a href="apt:apt+http://launchpad.net/~grumbel/ppa?package=xboxdrv">Install xboxdrv</a></li>
-                 <li><a href="apt:apt+http://launchpad.net/~grumbel/ppa?package=sdl-jstest">Install sdl-jstest</a></li>
-               </ul>
-             </p>
-             -->
+              <p>
+                <ul>
+                  <li><a href="apt:apt+http://launchpad.net/~grumbel/ppa?package=xboxdrv">Install xboxdrv</a></li>
+                  <li><a href="apt:apt+http://launchpad.net/~grumbel/ppa?package=sdl-jstest">Install sdl-jstest</a></li>
+                </ul>
+              </p>
+              -->
           <p>
             That repository also contains <tt>sdl-jstest</tt>, which
             you might want to grab for debugging purposes with SDL
@@ -923,12 +941,12 @@
             </ul>
           </div>
           <!--<p>
-            Note: You should always try the <strong>latest</strong>
-            first, the <strong>stable</strong> one is just an outdated
-            version that is known to not have any important bugs, it
-            however might also lacks plenty of features and
-            potentially support for controllers.
-          </p>-->
+              Note: You should always try the <strong>latest</strong>
+              first, the <strong>stable</strong> one is just an outdated
+              version that is known to not have any important bugs, it
+              however might also lacks plenty of features and
+              potentially support for controllers.
+              </p>-->
         </section>
 
         <section>
@@ -942,9 +960,9 @@
           </ul>
           <p>
             There are also Git repositories for
-              the <a href="https://github.com/xboxdrv/ubuntu">Ubuntu
+            the <a href="https://github.com/xboxdrv/ubuntu">Ubuntu
               packages</a> source and
-              the <a href="https://github.com/xboxdrv/htdocs">source
+            the <a href="https://github.com/xboxdrv/htdocs">source
               of this webpage</a>.
           </p>
         </section>
